@@ -1,0 +1,11 @@
+{
+    "application": "udata",
+    "identifier": "gouvlu",
+    "name": "gouvlu",
+    "author": "DataPublicLu",
+    "description": "Official udata theme of the Open Data Portal of Luxembourg",
+    "website": "https://data.public.lu/en/",
+    "license": "AGPL",
+    "version": "0.1.0",
+    "doctype": "html5"
+}
