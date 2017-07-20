@@ -97,6 +97,9 @@ setup(
     entry_points={
         'udata.themes': [
             'gouvlu = gouvlu'
+        ],
+        'udata.harvesters': [
+            'statec = gouvlu.harvesters.statec:StatecBackend',
         ]
     },
     license='AGPL',
