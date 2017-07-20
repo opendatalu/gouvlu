@@ -6,6 +6,7 @@ services:
     command: mongod
     volumes:
       - mongo-data:/data/db
+      - ./mongo-backup:/src/mongo-backup
     ports:
       - "27017:27017"
 
