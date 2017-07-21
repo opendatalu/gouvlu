@@ -34,6 +34,7 @@ services:
     volumes:
       - ./udata.cfg:/udata/udata.cfg
       - .:/src/gouvlu
+      - ./static:/udata/fs
     ports:
       - "7000:7000"
 

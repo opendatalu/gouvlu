@@ -90,3 +90,4 @@ ENV/
 
 # Docker Stuff
 mongo-backup
+static
