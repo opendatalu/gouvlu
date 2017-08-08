@@ -1,0 +1,13 @@
+{
+    "application": "udata",
+    "identifier": "gouvlu",
+    "name": "data.public.lu",
+    "author": "Digital Lëtzebuerg",
+    "description": "data.public.lu theme",
+    "website": "http://www.data.public.lu",
+    "license": "AGPL",
+    "version": "0.1.0",
+    "doctype": "html5",
+    "variants": ["deuil", "preview"],
+    "github_faq_url_pattern": "https://github.com/opendatalu/udata-gouvlu/edit/master/udata_gouvlu/templates/faq/{page_name}.html"
+}

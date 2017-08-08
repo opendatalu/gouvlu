@@ -1,0 +1,393 @@
+# Translations template for udata-gouvlu.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the udata-gouvlu project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: udata-gouvlu 0.1.0.dev0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-07-12 16:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Patrick Weber <pweber@spatialbit.com>, 2016\n"
+"Language-Team: French (https://www.transifex.com/opendatalu-1/teams/63761/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: udata_gouvlu/metrics.py:14
+msgid "Public services"
+msgstr "Services publics"
+
+#: udata_gouvlu/models.py:22
+msgid "Dataconnexions 5 candidate"
+msgstr "Candidat Dataconnexions 5"
+
+#: udata_gouvlu/models.py:23
+msgid "Dataconnexions 5 laureate"
+msgstr "Lauréat Dataconnexions 5"
+
+#: udata_gouvlu/models.py:24
+msgid "Dataconnexions 6 candidate"
+msgstr "Candidat Dataconnexions 6"
+
+#: udata_gouvlu/models.py:25
+msgid "Dataconnexions 6 laureate"
+msgstr "Lauréat Dataconnexions 6"
+
+#: udata_gouvlu/models.py:31
+msgid "C³"
+msgstr "C³"
+
+#: udata_gouvlu/models.py:32
+msgid "Nec Mergitur"
+msgstr "Nec Mergitur"
+
+#: udata_gouvlu/templates/faq/citizen.html:4
+msgid "Découvrir l’OpenData en tant que citoyen - FAQ"
+msgstr "Découvrir l’OpenData en tant que citoyen - FAQ"
+
+#: udata_gouvlu/templates/faq/citizen.html:5
+#: udata_gouvlu/templates/faq/developer.html:5
+#: udata_gouvlu/templates/faq/home.html:5
+#: udata_gouvlu/templates/faq/producer.html:5
+#: udata_gouvlu/templates/faq/reuser.html:5
+#: udata_gouvlu/templates/faq/system-integrator.html:5
+msgid "Questions fréquemment posées sur la plateforme data.gouv.fr"
+msgstr "Questions fréquemment posées sur la plateforme data.gouv.fr"
+
+#: udata_gouvlu/templates/faq/developer.html:4
+msgid "Découvrir l’OpenData en tant que développeur - FAQ"
+msgstr "Découvrir l’OpenData en tant que développeur - FAQ"
+
+#: udata_gouvlu/templates/faq/home.html:4
+msgid "Découvrir l’OpenData - FAQ"
+msgstr "Découvrir l’OpenData - FAQ"
+
+#: udata_gouvlu/templates/faq/producer.html:4
+msgid "Découvrir l’OpenData en tant que producteur - FAQ"
+msgstr "Découvrir l’OpenData en tant que producteur - FAQ"
+
+#: udata_gouvlu/templates/faq/reuser.html:4
+msgid "Découvrir l’OpenData en tant que réutilisateur - FAQ"
+msgstr "Découvrir l’OpenData en tant que réutilisateur - FAQ"
+
+#: udata_gouvlu/templates/faq/system-integrator.html:4
+msgid "Découvrir l’OpenData en tant qu’intégrateur - FAQ"
+msgstr "Découvrir l’OpenData en tant qu’intégrateur - FAQ"
+
+#: udata_gouvlu/theme/theme.py:24
+msgid "Discover OpenData"
+msgstr "Découvrez l'OpenData"
+
+#: udata_gouvlu/theme/theme.py:25 udata_gouvlu/theme/theme.py:44
+msgid "As a citizen"
+msgstr "En tant que citoyen"
+
+#: udata_gouvlu/theme/theme.py:26 udata_gouvlu/theme/theme.py:45
+msgid "As a producer"
+msgstr "En tant que producteur"
+
+#: udata_gouvlu/theme/theme.py:27 udata_gouvlu/theme/theme.py:46
+msgid "As a reuser"
+msgstr "En tant que réutilisateur"
+
+#: udata_gouvlu/theme/theme.py:28 udata_gouvlu/theme/theme.py:47
+msgid "As a developer"
+msgstr "En tant que développeur"
+
+#: udata_gouvlu/theme/theme.py:30
+msgid "Data"
+msgstr "Données"
+
+#: udata_gouvlu/theme/theme.py:31 udata_gouvlu/theme/templates/footer.html:73
+msgid "Datasets"
+msgstr "Jeux de données"
+
+#: udata_gouvlu/theme/theme.py:32 udata_gouvlu/theme/templates/footer.html:74
+#: udata_gouvlu/theme/templates/dataset/card.html:44
+msgid "Reuses"
+msgstr "Réutilisations"
+
+#: udata_gouvlu/theme/theme.py:33 udata_gouvlu/theme/templates/header.html:58
+msgid "Organizations"
+msgstr "Organisations"
+
+#: udata_gouvlu/theme/theme.py:35
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: udata_gouvlu/theme/theme.py:36
+msgid "Events"
+msgstr "Événements"
+
+#: udata_gouvlu/theme/theme.py:51
+msgid "API"
+msgstr "API"
+
+#: udata_gouvlu/theme/theme.py:52
+msgid "Usage Guidelines for Open Data"
+msgstr "Guide d'utilisation des données ouvertes"
+
+#: udata_gouvlu/theme/theme.py:53
+msgid "Terms of use"
+msgstr "Conditions générales d'utilisation"
+
+#: udata_gouvlu/theme/templates/footer.html:5
+msgid "Open Data Guide"
+msgstr "Guide de l'Open Data"
+
+#: udata_gouvlu/theme/templates/footer.html:34
+msgid "Contact"
+msgstr "Contact"
+
+#: udata_gouvlu/theme/templates/footer.html:36
+msgid "New wind"
+msgstr ""
+
+#: udata_gouvlu/theme/templates/footer.html:65
+msgid "News"
+msgstr "Nouvelles"
+
+#: udata_gouvlu/theme/templates/footer.html:76
+#: udata_gouvlu/theme/templates/footer.html:82
+msgid "Feeds"
+msgstr "Flux"
+
+#: udata_gouvlu/theme/templates/footer.html:96
+msgid "An initiative by"
+msgstr "Une initiative de"
+
+#: udata_gouvlu/theme/templates/footer.html:105
+msgid "Back to top"
+msgstr "Haut de page"
+
+#: udata_gouvlu/theme/templates/header.html:4
+msgid ""
+"Internet Explorer 9 and below are not supported anymore. Please upgrade or "
+"change your browser to access the website."
+msgstr ""
+"Internet Explorer 9 et en dessous ne sont plus supportés. Mettez à jour ou "
+"changez de navigateur pour accéder à ce site."
+
+#: udata_gouvlu/theme/templates/header.html:4
+msgid "More information →"
+msgstr "Plus d'informations →"
+
+#: udata_gouvlu/theme/templates/header.html:7
+msgid "Front page"
+msgstr "Page d'acceuil"
+
+#: udata_gouvlu/theme/templates/header.html:14
+msgid "Browse by theme"
+msgstr "Parcourir par thèmes"
+
+#: udata_gouvlu/theme/templates/header.html:41
+msgid "Contribute!"
+msgstr "Contribuez !"
+
+#: udata_gouvlu/theme/templates/header.html:54
+msgid "My profile"
+msgstr "Mon profil"
+
+#: udata_gouvlu/theme/templates/header.html:73
+msgid "Administration"
+msgstr "Administration"
+
+#: udata_gouvlu/theme/templates/header.html:80
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: udata_gouvlu/theme/templates/header.html:87
+msgid "Sign In / Register"
+msgstr "Connexion / Inscription"
+
+#: udata_gouvlu/theme/templates/header.html:93
+#: udata_gouvlu/theme/templates/header.html:94
+msgid "Search"
+msgstr "Recherche"
+
+#: udata_gouvlu/theme/templates/header.html:111
+msgid "Language"
+msgstr "Language"
+
+#: udata_gouvlu/theme/templates/home.html:18
+msgid "Share, improve and reuse public data"
+msgstr "Partagez, améliorez et réutilisez les données publiques"
+
+#: udata_gouvlu/theme/templates/home.html:25
+msgid "Best reuse cases"
+msgstr "Meilleures réutilisations"
+
+#: udata_gouvlu/theme/templates/home.html:65
+#: udata_gouvlu/theme/templates/home.html:66
+msgid "Latest reuses"
+msgstr "Dernières réutilisations"
+
+#: udata_gouvlu/theme/templates/home.html:105
+msgid "News in data"
+msgstr "L'actualité en données"
+
+#: udata_gouvlu/theme/templates/home.html:123
+msgid "Featured datasets"
+msgstr "Jeux de données à la une"
+
+#: udata_gouvlu/theme/templates/home.html:124
+msgid "Latest datasets"
+msgstr "Derniers jeux de données"
+
+#: udata_gouvlu/theme/templates/home.html:160
+msgid "See more"
+msgstr "Voir plus"
+
+#: udata_gouvlu/theme/templates/home.html:179
+msgid "The blog"
+msgstr "Le blog"
+
+#: udata_gouvlu/theme/templates/home.html:198
+msgid "more"
+msgstr "plus"
+
+#: udata_gouvlu/theme/templates/home.html:212
+msgid "Latest forum discussions"
+msgstr "Dernières discussions du forum"
+
+#: udata_gouvlu/theme/templates/home.html:221
+msgid "Title"
+msgstr "Titre"
+
+#: udata_gouvlu/theme/templates/home.html:222
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: udata_gouvlu/theme/templates/home.html:223
+msgid "Created at"
+msgstr "Créé le"
+
+#: udata_gouvlu/theme/templates/home.html:224
+msgid "Replies"
+msgstr "Réponses"
+
+#: udata_gouvlu/theme/templates/home.html:225
+msgid "Views"
+msgstr "Vues"
+
+#: udata_gouvlu/theme/templates/home.html:226
+msgid "Likes"
+msgstr "Favoris"
+
+#: udata_gouvlu/theme/templates/raw.html:24
+msgid "Recent datasets"
+msgstr "Derniers jeux de données"
+
+#: udata_gouvlu/theme/templates/raw.html:28
+msgid "Recent reuses"
+msgstr "Dernières réutilisations"
+
+#: udata_gouvlu/theme/templates/raw.html:46
+msgid "Jump to navigation"
+msgstr "Navigation"
+
+#: udata_gouvlu/theme/templates/raw.html:47
+msgid "Jump to content"
+msgstr "Contenu"
+
+#: udata_gouvlu/theme/templates/terms.html:4
+#: udata_gouvlu/theme/templates/terms.html:5
+msgid "Terms"
+msgstr "Conditions générales d'utilisations"
+
+#: udata_gouvlu/theme/templates/terms.html:7
+msgid "terms"
+msgstr "conditions générales d'utilisations"
+
+#: udata_gouvlu/theme/templates/dataset/card.html:34
+msgid "Territorial coverage"
+msgstr "Couverture territoriale"
+
+#: udata_gouvlu/theme/templates/dataset/card.html:52
+#: udata_gouvlu/theme/templates/reuse/card.html:51
+msgid "Stars"
+msgstr "Etoiles"
+
+#: udata_gouvlu/theme/templates/dataset/card.html:64
+msgid "Temporal coverage"
+msgstr "Couverture temporelle"
+
+#: udata_gouvlu/theme/templates/dataset/card.html:76
+msgid "Territorial coverage granularity"
+msgstr "Granularité de la couverture territoriale"
+
+#: udata_gouvlu/theme/templates/dataset/card.html:88
+msgid "Frequency"
+msgstr "Fréquence"
+
+#: udata_gouvlu/theme/templates/dataset/display.html:3
+#: udata_gouvlu/theme/templates/reuse/display.html:3
+#, python-format
+msgid "Explore with %(certifier)s"
+msgstr "Explorer avec %(certifier)s"
+
+#: udata_gouvlu/theme/templates/macros/integrate.html:2
+msgid "Integrate"
+msgstr "Intégrer"
+
+#: udata_gouvlu/theme/templates/mail/base.html:45
+msgid "on your browser."
+msgstr "dans votre navigateur"
+
+#: udata_gouvlu/theme/templates/mail/base.html:48
+#, python-format
+msgid "View this email %(link)s"
+msgstr "Voir cet email %(link)s"
+
+#: udata_gouvlu/theme/templates/mail/base.html:81
+#, python-format
+msgid "Hi %(user)s"
+msgstr "Bonjour %(user)s"
+
+#: udata_gouvlu/theme/templates/mail/base.html:92
+msgid "See you soon on the platform"
+msgstr "A bientôt sur la plateforme"
+
+#: udata_gouvlu/theme/templates/mail/base.html:93
+#, python-format
+msgid "The %(site)s team"
+msgstr "L'équipe de %(site)s"
+
+#: udata_gouvlu/theme/templates/reuse/card.html:34
+msgid "Type"
+msgstr "Type"
+
+#: udata_gouvlu/theme/templates/reuse/card.html:42
+msgid "Number of datasets used"
+msgstr "Nombre de jeux de données utilisés"
+
+#: udata_gouvlu/theme/templates/snippets/publish-action-modal.html:18
+msgid "Publish a dataset"
+msgstr "Publiez un jeu de données"
+
+#: udata_gouvlu/theme/templates/snippets/publish-action-modal.html:21
+msgid "Contribute and add a new dataset to this site catalog."
+msgstr ""
+"Contribuer et ajouter un nouveau jeu de données au catalogue de ce site"
+
+#: udata_gouvlu/theme/templates/snippets/publish-action-modal.html:30
+msgid "Publish a reuse"
+msgstr "Publiez une réutilisation"
+
+#: udata_gouvlu/theme/templates/snippets/publish-action-modal.html:33
+msgid "Contribute and add a new reuse to this site catalog."
+msgstr ""
+"Contribuer et ajouter une nouvelle réutilisation au catalogue de ce site."
+
+#: udata_gouvlu/theme/templates/snippets/publish-action-modal.html:42
+msgid "Create or find your organization"
+msgstr "Créez ou trouvez votre organisation"
+
+#: udata_gouvlu/theme/templates/snippets/publish-action-modal.html:45
+msgid "You can create a new organization or find yours."
+msgstr "Vous pouvez créer une nouvelle organisation ou trouver la vôtre"

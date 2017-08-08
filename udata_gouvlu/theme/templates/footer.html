@@ -1,0 +1,110 @@
+{% cache cache_duration, 'footer', g.lang_code|default(config.DEFAULT_LANGUAGE)|string %}
+<footer role="contentinfo" class="page-footer">
+    <nav role="navigation" class="page-footernav">
+        <ul class="nav nav--primary" aria-labelledby="nav-4798">
+            <li id="nav-4798" role="heading" aria-level="3">{{ _('Open Data Guide') }}</li>
+            {% for item in nav.gouvlu_footer %}
+            <li class="nav-item">
+                <a href="{{ '' if item.items else item.url }}">{{ item.label }}</a>
+                {% if item.items %}
+                <ul>
+                   {% for subitem in item.items %}
+                   <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
+                   {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <ul class="nav nav--support">
+            {% for item in nav.gouvlu_footer_support %}
+            <li class="nav-item">
+                <a href="{{ '' if item.items else item.url }}">{{ item.label }}</a>
+                {% if item.items %}
+                <ul>
+                   {% for subitem in item.items %}
+                   <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
+                   {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <ul class="nav nav--social" aria-labelledby="nav-4992">
+            <li id="nav-4992" role="heading" aria-level="3">{{ _('Contact') }}</li>
+            <li class="nav-item">
+                <a href="https://twitter.com/opendatalu" title="Open Data Lëtzebuerg (@OpenDataLU) | Twitter - {{ _('New wind') }}"
+                  >
+                    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                        <use xlink:href="#icon-logo-twitter-bird" x="0" y="0" />
+                    </svg>
+                    <span>Twitter</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="https://github.com/opendatalu/">
+                    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                        <use xlink:href="#icon-logo-circle-github-2" x="0" y="0" />
+                    </svg>
+                    <span>Github</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="m&#x61;ilto:{{ config.CONTACT_EMAIL|obfuscate|safe }}">
+	                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+	                    <use xlink:href="#icon-email" x="0" y="0" />
+	                </svg>
+	                <span>{{ config.CONTACT_EMAIL|obfuscate|replace("%40", "&commat;")|safe }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/posts/">
+                    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                        <use xlink:href="#icon-newspaper" x="0" y="0" />
+                    </svg>
+                    <span>{{ _('News') }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                {% set rss_popup = ('''
+                    <a title="{0}" href="{1}"><span class="fa fa-rss"></span>{0}</a><br/>
+                    <a title="{2}" href="{3}"><span class="fa fa-rss"></span>{2}</a>
+                '''|string).format(
+                    _('Datasets'), url_for('datasets.recent_feed'),
+                    _('Reuses'), url_for('reuses.recent_feed'),
+                ) %}
+                 <a href="#" tabindex="-1" title="{{ _('Feeds') }}" class="feed-icon"
+                    data-toggle="popover" data-trigger="focus" data-placement="top"
+                    data-html="true" data-content="{{rss_popup|e}}">
+                    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                        <use xlink:href="#icon-logo-rss" x="0" y="0" />
+                    </svg>
+                    <span>{{ _('Feeds') }}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <p class="page-copyright">
+      <a class="renow" href="http://renow.lu" title="Renow, votre guide en matière de qualité web gouvernemental luxembourgeois">
+        <img src="//cdn.public.lu/pictures/logos/renow.png"
+          srcset="//cdn.public.lu/pictures/logos/renow-hdpi.png 1.5x,
+            //cdn.public.lu/pictures/logos/renow-xhdpi.png 2x,
+            //cdn.public.lu/pictures/logos/renow-xxhdpi.png 3x"
+          alt="Renow"/>
+      </a>
+	  <a href="http://www.digital-luxembourg.public.lu" class="digital">
+	    {{ _('An initiative by') }}
+	    <img src="//cdn.public.lu/pictures/logos/digital-letzebuerg.png"
+	      srcset="//cdn.public.lu/pictures/logos/digital-letzebuerg-hdpi.png 1.5x,
+	        //cdn.public.lu/pictures/logos/digital-letzebuerg-xhdpi.png 2x,
+	        //cdn.public.lu/pictures/logos/digital-letzebuerg-xxhdpi.png 3x"
+	      alt="Digital Lëtzebuerg" />
+	  </a>
+    </p>
+</footer>
+ <a href="#top" class="back" aria-label="{{ _('Back to top') }}" title="{{ _('Back to top') }}">
+    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#icon-arrow-up-12" x="0" y="0" />
+    </svg>
+</a>
+{% endcache %}

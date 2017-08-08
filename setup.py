@@ -96,7 +96,7 @@ setup(
     install_requires=[],
     entry_points={
         'udata.themes': [
-            'gouvlu = gouvlu'
+            'gouvlu = udata_gouvlu.theme'
         ],
         'udata.harvesters': [
             'statec = gouvlu.harvesters.statec:StatecBackend',
