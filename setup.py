@@ -84,14 +84,14 @@ long_description = '\n'.join((
 
 
 setup(
-    name='gouvlu',
+    name='udata-gouvlu',
     version='0.1.0',
     description='Official udata theme of the Open Data Portal of Luxembourg',
     long_description=long_description,
     url='https://data.public.lu/en/',
     author='DataPublicLu',
     author_email='weber.patrick@act.etat.lu',
-    packages=['gouvlu'],
+    packages=find_packages(),
     include_package_data=True,
     install_requires=[],
     entry_points={
@@ -99,11 +99,12 @@ setup(
             'gouvlu = udata_gouvlu.theme'
         ],
         'udata.harvesters': [
-            'statec = gouvlu.harvesters.statec:StatecBackend',
+            'statec = udata_gouvlu.harvesters.statec:StatecBackend',
         ]
     },
     license='AGPL',
     zip_safe=False,
+    use_2to3=True,
     keywords='udata, theme, gouvlu',
     classifiers=[
         'Development Status :: 3 - Alpha',

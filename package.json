@@ -1,0 +1,26 @@
+{
+  "name": "udata-gouvlu",
+  "version": "0.1.0",
+  "description": "data.public.lu - Luxembourg customization",
+  "author": "Patrick Weber",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -d -c --watch --progress",
+    "build": "webpack -p --progress --config webpack.config.prod.js"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "image-webpack-loader": "^1.6.3",
+    "imagemin": "^4.0.0",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.11"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5"
+  }
+}
