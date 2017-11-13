@@ -89,5 +89,5 @@ ENV/
 .ropeproject
 
 # Docker Stuff
-mongo-backup
-static
+/mongo-backup
+/static
