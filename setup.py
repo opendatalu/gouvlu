@@ -91,12 +91,12 @@ setup(
     url='https://data.public.lu/en/',
     author='DataPublicLu',
     author_email='weber.patrick@act.etat.lu',
-    packages=['gouvlu'],
+    packages=find_packages(),
     include_package_data=True,
     install_requires=[],
     entry_points={
         'udata.themes': [
-            'gouvlu = gouvlu'
+            'gouvlu = gouvlu.theme'
         ],
         'udata.harvesters': [
             'statec = gouvlu.harvesters.statec:StatecBackend',
