@@ -44,6 +44,7 @@ nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
+/reports
 
 # Translations
 *.mo
@@ -91,3 +92,7 @@ ENV/
 # Docker Stuff
 /mongo-backup
 /static
+
+# assets
+/node_modules
+/gouvlu/theme/static/
