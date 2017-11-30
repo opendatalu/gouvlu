@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 import io
+import os
 import re
-
-from os.path import join, dirname
 
 from setuptools import setup, find_packages
 
@@ -83,17 +81,36 @@ long_description = '\n'.join((
 ))
 
 
+def pip(filename):
+    '''Parse pip reqs file and transform it to setuptools requirements.'''
+    requirements = []
+    for line in open(os.path.join('requirements', filename)):
+        line = line.strip()
+        if not line or '://' in line or line.startswith('#'):
+            continue
+        requirements.append(line)
+    return requirements
+
+
+install_requires = pip('install.pip')
+tests_require = pip('test.pip')
+
+
 setup(
     name='gouvlu',
-    version='0.1.0',
-    description='Official udata theme of the Open Data Portal of Luxembourg',
+    version=__import__('gouvlu').__version__,
+    description=__import__('gouvlu').__description__,
     long_description=long_description,
     url='https://data.public.lu/en/',
     author='DataPublicLu',
     author_email='weber.patrick@act.etat.lu',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=[],
+    install_requires=install_requires,
+    tests_require=tests_require,
+    extras_require={
+        'test': tests_require,
+    },
     entry_points={
         'udata.themes': [
             'gouvlu = gouvlu.theme'
@@ -104,7 +121,7 @@ setup(
     },
     license='AGPL',
     zip_safe=False,
-    keywords='udata, theme, gouvlu',
+    keywords='udata theme gouvlu',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Programming Language :: Python',
