@@ -91,7 +91,7 @@ class StatecBackend(BaseBackend):
                 filetype='remote',
                 format='csv'
             )
-            if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:
+            if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:  # noqa
                 dataset.resources.append(new_resource)
             else:
                 pass
