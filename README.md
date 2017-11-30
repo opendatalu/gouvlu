@@ -71,4 +71,21 @@ Let's execute an entire build:
 inv
 ```
 
+## Releasing
+
+`gouvlu` uses [bumpr][] to perform release.
+Simply execute:
+
+```bash
+# Install bumpr if not already installed
+pip install bumpr
+# Dry run to preview changes
+bumpr -dv
+# Perform release
+bumpr
+```
+Bumpr will execute test, package everything, update changelog, handle tagging and push to upstream repository...
+You just have to wait for the build to succeed and your release is available.
+
 [nvm]: https://github.com/creationix/nvm#readme
+[bumpr]: https://bumpr.readthedocs.io/
