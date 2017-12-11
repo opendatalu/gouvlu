@@ -1,0 +1,138 @@
+{% from theme('macros/search.html') import site_search with context %}
+<span id="top"></span>
+
+<section class="header">
+    <div class="container">
+        {% cache cache_duration, 'header-menu', g.lang_code|default(config.DEFAULT_LANGUAGE)|string %}
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+                data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">{{ _('Toggle navigation') }}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('site.home') }}">
+                <img class="header-logo" src="{{ theme_static('img/logo-bloc-borderless.svg') }}" alt="{{ g.site.title }}" />
+            </a>
+            <p class="navbar-slogan">{{ _('The luxembourgish data platform') }}</p>
+        </div>
+        <nav class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                {% for item in current_theme.menu %}
+                <li {% if item.items %}class="dropdown dropdown-hover"{% endif %}>
+                    <a href="{{ item.url }}">{{ item.label }}</a>
+                    {% if item.items %}
+                    <ul class="dropdown-menu" role="menu">
+                        {% for subitem in item.items %}
+                        <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-middle">
+                <li class="dropdown">
+                    {# Topic chooser #}
+                    <a role="button" class="btn btn-link topic-chooser dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-bars hidden-sm"></span>
+                        {{ _('Browse by theme') }}
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
+                        {% for topic in g.featured_topics %}
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="{{ url_for('topics.display', topic=topic) }}">
+                                {{ topic.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>
+                    {{ site_search(class='navbar-form') }}
+                </li>
+            </ul>
+            {% endcache %}
+
+            <ul class="nav navbar-nav navbar-right navbar-top">
+                <li>
+                    <a href class="btn btn-link contribute" @click.prevent="$refs.publishActionModal.show" title="{{ _('Contribute') }}">
+                        {{ _('Contribute!') }}
+                    </a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="dropdown user">
+                    <a role="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                        <span class="username">{{ current_user.fullname }} </span>
+                        <img src="{{ current_user|avatar_url(30) }}" width="30" height="30"
+                            class="img-circle"
+                            alt="{{ current_user.fullname }}" />
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ url_for('users.show', user=current_user) }}">
+                                <span class="fa fa-fw fa-user"></span>
+                                {{ _('My profile') }}
+                            </a>
+                        </li>
+                        {% if current_user.organizations %}
+                        <li role="presentation" class="dropdown-header">{{ _('Organizations') }}</li>
+                        {% for org in current_user.organizations %}
+                        <li>
+                            <a href="{{ url_for('organizations.show', org=org) }}">
+                                <img src="{{ org.logo(20)|placeholder('organization') }}"
+                                    width="20" height="20" alt="{{ org.acronym or org.name }}"/>
+                                {{ org.acronym or org.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                        <li class="divider"></li>
+                        {% endif %}
+                        <li>
+                            <a href="{{ url_for('admin.index') }}">
+                                <span class="fa fa-fw fa-wrench"></span>
+                                {{ _('Administration') }}
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ url_for('security.logout') }}">
+                                <span class="fa fa-fw fa-sign-out"></span>
+                                {{ _('Logout') }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% else %}
+                <li>
+                    <a title="{{ _('Sign In / Register') }}" class="btn btn-link "
+                        href="{{ url_for('security.login', next=request.url) }}">
+                        <span class="fa fa-fw fa-sign-in"></span>
+                        {{ _('Sign In / Register') }}
+                    </a>
+                </li>
+                {% endif %}
+                {% if g.lang_code and request.url %}
+                <li class="dropdown language">
+                    <a role="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-fw fa-2x fa-globe"></span>
+                        {{ _('Language') }}
+                        <span class="fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for code, name in config['LANGUAGES'].items() %}
+                        <li>
+                            <a href="{{ request.url.replace('/{0}/'.format(g.lang_code),'/{0}/'.format(code)) }}">
+                                {{name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </div>
+</section>

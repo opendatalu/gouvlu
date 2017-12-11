@@ -1,0 +1,28 @@
+.popover {
+    border: none;
+    border-bottom: 1px solid @brand-primary;
+    border-radius: @border-radius-base;
+
+    .popover-title {
+        color: @brand-primary;
+        background-color: white;
+        border: none;
+    }
+
+
+    &.top .arrow:after {
+        border-top-color: @brand-primary;
+    }
+
+    &.bottom .arrow:after {
+        border-bottom-color: @brand-primary;
+    }
+
+    &.right .arrow:after {
+        border-right-color: @brand-primary;
+    }
+
+    &.left .arrow:after {
+        border-left-color: @brand-primary;
+    }
+}

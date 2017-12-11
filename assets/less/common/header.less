@@ -1,0 +1,197 @@
+.header {
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+
+    .container {
+        position: relative;
+    }
+
+
+    .navbar-header {
+        margin-bottom: 10px;
+
+        .navbar-brand {
+            height: 80px;
+            padding: 0;
+            max-width: 300px;
+
+            .header-logo {
+                height: 100%;
+            }
+
+            @media (max-width: @grid-float-breakpoint-max) {
+                height: 60px;
+                padding: 5px;
+            }
+
+        }
+        .navbar-slogan {
+            @spacing: 15px;
+            color: @gray-light;
+            float: left;
+            margin: 30px 0 0 @spacing;
+            padding-left: @spacing;
+            border-left: 1px solid @brand-primary;
+            width: 200px;
+            font-size: 22px;
+            line-height: 23px;
+
+            @media (max-width: @grid-float-breakpoint-max) {
+                @spacing: 5px;
+                margin: 10px 0 0 @spacing;
+                padding-left: @spacing;
+                font-size: 18px;
+                line-height: 21px;
+            }
+        }
+    }
+
+    .navbar-collapse {
+        float: left;
+        width: 100%;
+        clear: both;
+    }
+
+    @media (min-width: @screen-sm-min) {
+        .navbar-header {
+            margin-top: 65px;
+        }
+
+        .navbar-top {
+            position: absolute;
+            right: 0;
+            top: 15px;;
+        }
+
+        .navbar-middle {
+            margin-top: -50px;
+        }
+    }
+
+    .navbar-toggle {
+        margin-top: 15px;
+        border: 1px solid @brand-primary;
+        border-radius: @border-radius-base;
+
+        .icon-bar {
+            background-color: @brand-primary;
+        }
+    }
+
+    .btn-link {
+        padding: 1rem 2rem;
+        margin-left: 4px;
+        color: @text-color;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+
+        &:hover {
+            color: white;
+            background-color: @brand-primary;
+        }
+
+
+    }
+
+    .dropdown:not(.dropdown-hover) {
+        .dropdown-menu {
+            border-left: 1px solid @brand-primary;
+            border-top: none;
+
+            &:before {
+                border-bottom: 6px solid #fff;
+            }
+        }
+    }
+
+    .dropdown.open .btn-link {
+        color: white;
+        background-color: @brand-primary;
+    }
+
+    .contribute {
+        background-color: #fac61d;
+    }
+
+    .dropdown.user {
+        a {
+            padding-right: 5rem;
+            img {
+                position: absolute;
+                top: 50%;
+                margin-top: -15px;
+                right: 1rem;
+                left: auto;
+            }
+        }
+    }
+
+    .dropdown.language {
+        .fa.fa-fw {
+            float: left;
+            margin: -5px 0 0 0;
+            padding: 0;
+        }
+    }
+
+    .topic-chooser {
+        .fa {
+            color: @brand-primary;
+        }
+
+        &:hover .fa {
+            color: white;
+        }
+    }
+
+    .site-search {
+        padding: 0 0 0 15px;
+
+        .input-group {
+            .input-group-btn .fa {
+                font-size: 2rem;
+                padding: 0.4rem;
+            }
+
+            input.form-control {
+                font-size: 1.5rem;
+                padding: 1rem;
+                height: 42px;
+
+                @media (min-width: @screen-md-min) {
+                    width: 200px;
+                }
+
+                @media (min-width: @screen-lg-min) {
+                    width: 400px;
+                }
+            }
+
+        }
+
+        .btn {
+            color: white;
+            background-color: @brand-primary;
+        }
+
+        .dropdown-menu.suggestion {
+            border: none;
+
+            .search-header {
+                color: @brand-primary;
+            }
+
+            ul {
+                li a{
+                    color: @text-color;
+                }
+                li.active {
+                    color: #fff;
+                    background-color: @brand-primary;
+                }
+            }
+
+        }
+    }
+}

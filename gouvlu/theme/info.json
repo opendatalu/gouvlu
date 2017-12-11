@@ -9,5 +9,10 @@
     "version": "0.1.0",
     "doctype": "html5",
     "color": "#ffffff",
-    "safari-pinned-color": "#5bbad5"
+    "safari-pinned-color": "#5bbad5",
+    "social": {
+        "twitter": "https://twitter.com/opendatalu",
+        "github": "https://github.com/opendatalu/",
+        "mail": "info%40data.public.lu"
+    }
 }
