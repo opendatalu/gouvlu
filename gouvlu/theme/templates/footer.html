@@ -1,0 +1,110 @@
+{% cache cache_duration, 'footer', g.lang_code|default(config.DEFAULT_LANGUAGE)|string,
+    '-'.join((package_version('udata'), package_version('gouvlu')))
+%}
+<a href @click.prevent="$scrollTo('#top')" title="{{ _('Back to top') }}" class="top-button fa fa-4x fa-angle-up"></a>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+            <section class="col-xs-12 col-sm-4">
+                <h3>{{ _('Open Data Guide') }}</h3>
+                <ul>
+                    {% for item in nav.gouvlu_footer %}
+                    <li>
+                        <a href="{{ '' if item.items else item.url }}">{{ item.label }}</a>
+                        {% if item.items %}
+                        <ul>
+                            {% for subitem in item.items %}
+                            <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section class="col-xs-12 col-sm-4 social">
+                <h3>{{ _('Contact Us') }}</h3>
+                <ul>
+                    <li>
+                        <a href="{{ current_theme.info.social.twitter }}" title="Twitter">
+                            <span class="fa fa-fw fa-twitter"></span>
+                            Twitter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ current_theme.info.social.github }}" title="Github">
+                            <span class="fa fa-fw fa-github"></span>
+                            Github
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('posts.list') }}" title="{{ _('News') }}">
+                            <span class="fa fa-fw fa-newspaper-o"></span>
+                            {{ _('News') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="m&#x61;ilto:{{ config.CONTACT_EMAIL|obfuscate|safe }}">
+                            <span class="fa fa-fw fa-envelope"></span>
+                            {{ config.CONTACT_EMAIL }}
+                        </a>
+                    </li>
+                    <li>
+                        <span tabindex="-1" title="{{ _('Feeds') }}" class="feed-icon" role="button"
+                            v-popover popover-trigger="focus" popover-placement="top" popover-class="rss-popover">
+                            <span class="fa fa-fw fa-rss"></span>
+                            {{ _('Feeds') }}
+                            <span data-popover-content>
+                                <a title="{{ _('Datasets' )}}" href="{{ url_for('datasets.recent_feed') }}">
+                                    <span class="fa fa-rss"></span>
+                                    {{ _('Datasets') }}
+                                </a>
+                                <br/>
+                                <a title="{{ _('Reuses' )}}" href="{{ url_for('reuses.recent_feed') }}">
+                                    <span class="fa fa-rss"></span>
+                                    {{ _('Reuses') }}
+                                </a>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="col-xs-12 col-sm-4 text-right">
+                <img class="footer-logo img-responsive" src="{{ theme_static('img/logo-bloc.svg') }}" alt="data.gouv.lu logo" />
+                <ul class="versions">
+                    <li>
+                        <a href="https://github.com/opendatateam/udata/" title="{{ _('Open-source engine') }}">udata</a>
+                        <a href="https://pypi.python.org/pypi/udata/{{ package_version('udata') }}/" title="{{ _('Deployed version') }}">{{ package_version('udata') }}</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/opendatalu/udata-gouvlu/" title="{{ _('Data.public.lu extension') }}">gouvlu</a>
+                        <a href="https://pypi.python.org/pypi/gouvlu/{{ package_version('gouvlu') }}/" title="{{ _('Deployed version') }}">{{ package_version('gouvlu') }}</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="row credits">
+            <div class="col-xs-12">
+                <a href="http://www.digital-luxembourg.public.lu/" class="pull-right">
+                    {% set logo %}
+                    <img src="//cdn.public.lu/pictures/logos/digital-letzebuerg.png"
+                        srcset="//cdn.public.lu/pictures/logos/digital-letzebuerg-hdpi.png 1.5x,
+                                //cdn.public.lu/pictures/logos/digital-letzebuerg-xhdpi.png 2x,
+                                //cdn.public.lu/pictures/logos/digital-letzebuerg-xxhdpi.png 3x"
+                        alt="Digital Lëtzebuerg" />
+                    {% endset %}
+                    {{ _('An initiative by %(company)s', company=logo) }}
+                </a>
+                <a class="renow" href="http://renow.lu" title="Renow, votre guide en matière de qualité web gouvernemental luxembourgeois">
+                    <img src="{{ theme_static('img/renow.svg') }}" alt="Renow" />
+                </a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+{% endcache %}
