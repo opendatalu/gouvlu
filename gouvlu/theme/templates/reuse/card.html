@@ -1,0 +1,43 @@
+{% cache cache_duration, 'reuse-card', reuse.id|string, g.lang_code %}
+<a class="card reuse-card" href="{{ url_for('reuses.show', reuse=reuse) }}" title="{{ reuse.title }}">
+    <div class="card-image" >
+        <img alt="{{ reuse.title }}" src="{{ reuse.image|placeholder('reuse') }}" />
+    </div>
+
+    <h4 class="card-title">{{ reuse.title|truncate(100) }}</h4>
+    <ul class="card-metadata">
+        <li>
+            <div class="btn btn-xs" v-tooltip title="{{ _('Type') }}">
+                <span class="fa fa-file fa-fw"></span>
+                {{ reuse.type_label }}
+            </div>
+        </li>
+        <li>
+            <div class="btn btn-xs" v-tooltip title="{{ _('Number of datasets used') }}">
+                <span class="fa fa-cubes fa-fw"></span>
+                {{ reuse.datasets|length or 0 }}
+            </div>
+        </li>
+
+        <li>
+            <div class="btn btn-xs" v-tooltip title="{{ _('Stars') }}">
+                <span class="fa fa-star fa-fw"></span>
+                {{ reuse.metrics.followers or 0 }}
+            </div>
+        </li>
+    </ul>
+    <div class="card-body">{{ reuse.description|mdstrip(180) }}</div>
+
+    <div class="author">
+        <div class="avatar">
+            <img src="{{ reuse|owner_avatar_url(20) }}" class="avatar"
+            alt="{{ reuse|owner_name }}" width="20" height="20"/>
+        </div>
+        <span class="user">{{ reuse|owner_name }}</span>
+        <span class="date">{{ reuse.created_at|dateformat('long') }}</span>
+    </div>
+    <footer>
+
+    </footer>
+</a>
+{% endcache %}

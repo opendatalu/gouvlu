@@ -1,0 +1,115 @@
+.card {
+    display: block;
+    min-height: 145px;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+
+    &:hover {
+        border: 1px solid @brand-primary;
+    }
+
+    .card-body {
+        height: 105px;
+
+        font-size: 12px;
+
+        h4 {
+            font-size: 13px;
+            line-height: 15px;
+            font-weight: 700;
+        }
+    }
+
+    footer {
+        padding: 0;
+        width: auto;
+        bottom: 0;
+        overflow: hidden;
+        max-width: 90%;
+
+        ul {
+            display: inline-flex;
+            .btn {
+                color: @brand-primary;
+                font-size: 12px;
+
+
+                .fa {
+                    color: darken(@brand-primary, 5%);
+                }
+            }
+        }
+    }
+
+    &.dataset-card {
+        border-bottom: 2px solid @brand-primary;
+    }
+
+
+    &.reuse-card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        height: 300px;
+        @margin: 8px;
+
+        &:hover {
+            .card-image {
+              filter: contrast(100%);
+            }
+        }
+
+        .card-image {
+            width: 100%;
+            height: 40%;
+            max-height: 40%;
+            overflow: hidden;
+
+            img {
+                object-fit: cover;
+                max-width: 100%;
+            }
+        }
+
+        .card-title {
+            color: @text-color;
+            font-size: 13px;
+            line-height: 15px;
+            font-weight: 700;
+            margin: @margin;
+        }
+
+        .card-metadata {
+            list-style: none;
+            display: inline-flex;
+            padding: 0;
+            margin: 0;
+            color: @brand-primary;
+
+            .btn {
+                color: @brand-primary;
+                font-size: 12px;
+                padding: 1px 5px;
+
+                .fa {
+                    color: darken(@brand-primary, 5%);
+                }
+            }
+        }
+
+        .card-body {
+            padding: @margin;
+        }
+
+        .author {
+            position: static;
+            margin: @margin;
+        }
+
+        footer {
+            padding: @margin;
+        }
+    }
+}
