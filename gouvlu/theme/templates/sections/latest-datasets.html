@@ -1,0 +1,28 @@
+<section class="home-section">
+    <div class="container">
+        {# Dataset tabs #}
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="section-title">{{ _('Latest datasets') }}</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for dataset in recent_datasets[:6] %}
+            <div class="col-md-4 col-sm-6">
+                {% include theme('dataset/card.html') %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            <p class="col-xs-12 text-center">
+                <a href="{{ url_for('datasets.list', sort='-created') }}" class="btn btn-link">
+                    <span class="fa fa-fw fa-list" ></span>
+                    {{ _('See more') }}
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+{# End datasets section #}
