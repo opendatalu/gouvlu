@@ -1,0 +1,23 @@
+{% if last_post %}
+{% set post = last_post %}
+<section class="last-post home-section">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ _('News in data') }}</h3>
+      </div>
+      <div class="panel-body">
+        <a href="{{ url_for('posts.show', post=post) }}" title="{{ post.name }}" class="media">
+          <div class="media-left">
+            <img src="{{ post.image|placeholder('post') }}" alt="{{ post.name }}">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{{ post.name }}</h4>
+            <p>{{(post.headline or post.content)|mdstrip(280)}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,13 @@
+{% extends "home.html" %}
+
+{% set body_class = 'home' %}
+
+{% block content %}
+{% cache cache_duration, 'home', g.lang_code %}
+{% include theme("sections/featured-reuses.html") %}
+{% include theme("sections/featured-datasets.html") %}
+{% include theme("sections/last-post.html") %}
+{% include theme("sections/latest-reuses.html") %}
+{% include theme("sections/latest-datasets.html") %}
+{% endcache %}
+{% endblock %}

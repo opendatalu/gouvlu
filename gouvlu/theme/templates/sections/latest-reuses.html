@@ -1,0 +1,26 @@
+<!-- Latest reuses -->
+<section class="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="section-title">{{ _('Latest reuses') }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            {% for reuse in recent_reuses[:3] %}
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                {% include theme('reuse/card.html') %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <p class="col-xs-12 text-center">
+                <a href="{{ url_for('reuses.list', sort='-created') }}" class="btn btn-link">
+                    <span class="fa fa-fw fa-list" ></span>
+                    {{ _('See more') }}
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+<!-- /Latest reuse -->

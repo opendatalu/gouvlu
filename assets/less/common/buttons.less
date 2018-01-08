@@ -7,7 +7,6 @@
 .btn-info,
 .btn-warning,
 .btn-danger {
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
   @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
   .box-shadow(@shadow);
 
@@ -29,22 +28,32 @@
 }
 
 // Mixin for generating new styles
-.btn-styles(@btn-color: #555) {
-  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
+.btn-styles(@btn-bg: #555, @btn-color: @text-color, @btn-border: #555) {
   .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
-  background-repeat: repeat-x;
-  border-color: darken(@btn-color, 14%);
+  color: @btn-color;
+  // background-repeat: repeat-x;
+  border-color: @btn-border;
+  background-color: @btn-bg;
+  // border-color: darken(@btn-bg, 14%);
 
   &:hover,
   &:focus  {
-    background-color: darken(@btn-color, 12%);
-    background-position: 0 -15px;
+    color: @btn-color;
+    background-color: darken(@btn-bg, 5%);
+    border-color: darken(@btn-border, 6%);
+    // background-position: 0 -15px;
   }
 
   &:active,
   &.active {
-    background-color: darken(@btn-color, 12%);
-    border-color: darken(@btn-color, 14%);
+    color: @btn-color;
+    background-color: darken(@btn-bg, 12%);
+    border-color: darken(@btn-border, 14%);
+    &:hover {
+      color: @btn-color;
+      background-color: darken(@btn-bg, 14%);
+      border-color: darken(@btn-border, 16%);
+    }
   }
 
   &.disabled,
@@ -56,8 +65,9 @@
     &.focus,
     &:active,
     &.active {
-      background-color: darken(@btn-color, 12%);
-      background-image: none;
+      color: @btn-color;
+      background-color: darken(@btn-bg, 12%);
+      border-color: darken(@btn-border, 14%);
     }
   }
 }
@@ -74,9 +84,20 @@
 }
 
 // Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
-.btn-primary { .btn-styles(@btn-primary-bg); }
-.btn-success { .btn-styles(@btn-success-bg); }
-.btn-info    { .btn-styles(@btn-info-bg); }
-.btn-warning { .btn-styles(@btn-warning-bg); }
-.btn-danger  { .btn-styles(@btn-danger-bg); }
+.btn-default { .btn-styles(@btn-default-bg, @btn-default-color, @btn-default-border); }
+.btn-primary { .btn-styles(@btn-primary-bg, @btn-primary-color, @btn-primary-border); }
+.btn-success { .btn-styles(@btn-success-bg, @btn-success-color, @btn-success-border); }
+.btn-info    { .btn-styles(@btn-info-bg, @btn-info-color, @btn-info-border); }
+.btn-warning { .btn-styles(@btn-warning-bg, @btn-warning-color, @btn-warning-border); }
+.btn-danger  { .btn-styles(@btn-danger-bg, @btn-danger-color, @btn-danger-border); }
+
+
+.btn-link {
+  color: @brand-primary;
+  font-weight: bold;
+
+  &:hover {
+    color: darken(@brand-primary, 10%);
+    text-decoration: none;
+  }
+}

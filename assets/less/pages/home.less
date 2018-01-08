@@ -1,0 +1,42 @@
+body.home {
+    .home-section {
+        padding: 20px 0;
+
+        .section-title {
+            text-align: center;
+            font-size: 20px;
+            margin: 10px 0 30px;
+        }
+
+        &.last-post {
+
+            .panel {
+                box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+            }
+
+            a {
+                color: @text-color;
+                &:active,
+                &:hover {
+                    color: @brand-primary;
+                    text-decoration: none;
+                }
+            }
+
+            .media-heading {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .media-left {
+                width: 33%;
+                img {
+                    object-fit: cover;
+                    max-width: 100%;
+                }
+            }
+
+        }
+    }
+
+}
