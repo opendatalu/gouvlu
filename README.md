@@ -16,6 +16,13 @@ Then, define the installed theme as current in you `udata.cfg`:
 THEME = 'gouvlu'
 ```
 
+### configuration parameters
+
+Some features are optionnal and can be enabled with the following `udata.cfg` parameters
+
+- `GOUVLU_GOVBAR = True/False`: Toggle the govbar
+
+
 ## Development
 
 There is a `docker-compose` configuration to get started fast.
