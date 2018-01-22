@@ -4,8 +4,12 @@
  * Overrides some bootstrap variables used by bootstrap mixins
  */
 
+// Main colors
 @brand-primary:             #b92a23;
+@brand-secondary:           #236ab1;
 @body-bg:                   #fbfbfb;
+@primary-bg:                #fff;
+
 @font-family-sans-serif:    titillium, sans-serif;
 @font-family-serif:         @font-family-sans-serif;
 @font-family-base:          @font-family-sans-serif;
@@ -17,8 +21,14 @@
 
 
 @btn-primary-color:              @brand-primary;
-@btn-primary-bg:                 #fff;
+@btn-primary-bg:                 @primary-bg;
 @btn-primary-border:             lighten(@btn-primary-color, 5%);
 
-
+// Panels
 @panel-border-radius: 0;
+
+// Cards
+@reuse-card-height: 300px;
+
+// Shadowed reactive items border color
+@shadow-border-color: lighten(@brand-secondary, 35%);
