@@ -1,7 +1,7 @@
 
 {% extends "raw.html" %}
 
-{% block raw_head %}
+{% block extra_head %}
 {{ super() }}
 <link rel="shortcut icon" href="{{ theme_static('img/favicon/default.png') }}">
 <link rel="apple-touch-icon" sizes="57x57" href="{{ theme_static('img/favicon/57x57.png') }}">
@@ -22,4 +22,13 @@
 <meta name="msapplication-TileImage" content="{{ theme_static('img/favicon/144x144.png') }}">
 <meta name="msapplication-TileColor" content="{{ current_theme.info.color }}">
 <meta name="theme-color" content="{{ current_theme.info.color }}">
+{% endblock %}
+
+
+{% block extra_js %}
+{{ super() }}
+{% if config.GOUVLU_GOVBAR %}
+<script src="//cdn.public.lu/skizz/govbar/2-2-0/govbar.js" data-govbar="{ }"></script>
+<script>govbar();</script>
+{% endif %}
 {% endblock %}
