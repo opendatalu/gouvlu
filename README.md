@@ -1,5 +1,7 @@
 # gouvlu
 
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/udata-gouvlu/localized.svg)](https://crowdin.com/project/udata-gouvlu)
+
 Official udata theme of the Open Data Portal of Luxembourg
 
 ## Usage
@@ -77,6 +79,15 @@ Let's execute an entire build:
 ```bash
 inv
 ```
+
+## Translations
+
+This project is [translated on crowdin](https://crowdin.com/project/udata-gouvlu).
+
+To update the source string, you need to extract them with the `inv i18n` command and push the result on this repository.
+Crowding will detect the new string as soon as they are available on the `master` branch.
+
+Crowdin will submit a pull-request each time some translation is submitted by the contributors.
 
 ## Releasing
 
