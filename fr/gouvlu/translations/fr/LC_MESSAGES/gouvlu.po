@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-22 17:58+0100\n"
-"PO-Revision-Date: 2018-01-26 05:37-0500\n"
+"PO-Revision-Date: 2018-01-26 05:43-0500\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -19,69 +19,69 @@ msgstr ""
 
 #: gouvlu/theme/__init__.py:19
 msgid "Data"
-msgstr ""
+msgstr "Données"
 
 #: gouvlu/theme/__init__.py:20 gouvlu/theme/templates/footer.html:60
 #: gouvlu/theme/templates/footer.html:62
 msgid "Datasets"
-msgstr ""
+msgstr "Jeux de données"
 
 #: gouvlu/theme/__init__.py:21 gouvlu/theme/templates/dataset/card.html:25
 #: gouvlu/theme/templates/footer.html:65 gouvlu/theme/templates/footer.html:67
 msgid "Reuses"
-msgstr ""
+msgstr "Réutilisations"
 
 #: gouvlu/theme/__init__.py:22 gouvlu/theme/templates/header.html:80
 msgid "Organizations"
-msgstr ""
+msgstr "Organisations"
 
 #: gouvlu/theme/__init__.py:24
 msgid "Dashboard"
-msgstr ""
+msgstr "Tableau de bord"
 
 #: gouvlu/theme/__init__.py:25
 msgid "Events"
-msgstr ""
+msgstr "Événements"
 
 #: gouvlu/theme/__init__.py:26
 msgid "Game of code"
-msgstr ""
+msgstr "Game of Code"
 
 #: gouvlu/theme/__init__.py:33
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: gouvlu/theme/__init__.py:34
 msgid "Terms of use"
-msgstr ""
+msgstr "Conditions générales d'utilisation"
 
 #: gouvlu/theme/templates/footer.html:4
 msgid "Back to top"
-msgstr ""
+msgstr "Haut de page"
 
 #: gouvlu/theme/templates/footer.html:10
 msgid "Open Data Guide"
-msgstr ""
+msgstr "Guide de l’Open Data"
 
 #: gouvlu/theme/templates/footer.html:28
 msgid "Contact Us"
-msgstr ""
+msgstr "Contactez-nous"
 
 #: gouvlu/theme/templates/footer.html:43 gouvlu/theme/templates/footer.html:45
 msgid "News"
-msgstr ""
+msgstr "Actualités"
 
 #: gouvlu/theme/templates/footer.html:55 gouvlu/theme/templates/footer.html:58
 msgid "Feeds"
-msgstr ""
+msgstr "Flux"
 
 #: gouvlu/theme/templates/footer.html:79
 msgid "Open-source engine"
-msgstr ""
+msgstr "Moteur open-source"
 
 #: gouvlu/theme/templates/footer.html:80 gouvlu/theme/templates/footer.html:84
 msgid "Deployed version"
-msgstr ""
+msgstr "Version déployée"
 
 #: gouvlu/theme/templates/footer.html:83
 msgid "Data.public.lu extension"
@@ -94,95 +94,95 @@ msgstr ""
 
 #: gouvlu/theme/templates/header.html:10
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Navigation"
 
 #: gouvlu/theme/templates/header.html:18
 msgid "The luxembourgish data platform"
-msgstr ""
+msgstr "La plate-forme de données luxembourgeoise"
 
 #: gouvlu/theme/templates/header.html:40
 msgid "Browse by theme"
-msgstr ""
+msgstr "Naviguer par thème"
 
 #: gouvlu/theme/templates/header.html:60
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuer"
 
 #: gouvlu/theme/templates/header.html:61
 msgid "Contribute!"
-msgstr ""
+msgstr "Contribuez !"
 
 #: gouvlu/theme/templates/header.html:76
 msgid "My profile"
-msgstr ""
+msgstr "Mon profil"
 
 #: gouvlu/theme/templates/header.html:95
 msgid "Administration"
-msgstr ""
+msgstr "Administration"
 
 #: gouvlu/theme/templates/header.html:102
 msgid "Logout"
-msgstr ""
+msgstr "Se déconnecter"
 
 #: gouvlu/theme/templates/header.html:109 gouvlu/theme/templates/header.html:112
 msgid "Sign In / Register"
-msgstr ""
+msgstr "Connexion / Inscription"
 
 #: gouvlu/theme/templates/header.html:120
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: gouvlu/theme/templates/dataset/card.html:32
 #: gouvlu/theme/templates/reuse/card.html:23
 msgid "Stars"
-msgstr ""
+msgstr "Favoris"
 
 #: gouvlu/theme/templates/dataset/card.html:42
 msgid "Territorial coverage"
-msgstr ""
+msgstr "Couverture territoriale"
 
 #: gouvlu/theme/templates/dataset/card.html:52
 msgid "Territorial coverage granularity"
-msgstr ""
+msgstr "Granularité de la couverture territoriale"
 
 #: gouvlu/theme/templates/dataset/card.html:62
 msgid "Temporal coverage"
-msgstr ""
+msgstr "Couverture temporelle"
 
 #: gouvlu/theme/templates/dataset/card.html:72
 msgid "Frequency"
-msgstr ""
+msgstr "Fréquence"
 
 #: gouvlu/theme/templates/reuse/card.html:10
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: gouvlu/theme/templates/reuse/card.html:16
 msgid "Number of datasets used"
-msgstr ""
+msgstr "Nombre de jeux de données utilisés"
 
 #: gouvlu/theme/templates/sections/featured-datasets.html:5
 msgid "Featured datasets"
-msgstr ""
+msgstr "Jeux de données à la une"
 
 #: gouvlu/theme/templates/sections/featured-reuses.html:6
 msgid "Featured reuses"
-msgstr ""
+msgstr "Réutilisations à la une"
 
 #: gouvlu/theme/templates/sections/last-post.html:7
 msgid "News in data"
-msgstr ""
+msgstr "L'actualité en données"
 
 #: gouvlu/theme/templates/sections/latest-datasets.html:6
 msgid "Latest datasets"
-msgstr ""
+msgstr "Derniers jeux de données"
 
 #: gouvlu/theme/templates/sections/latest-datasets.html:22
 #: gouvlu/theme/templates/sections/latest-reuses.html:20
 msgid "See more"
-msgstr ""
+msgstr "Voir plus"
 
 #: gouvlu/theme/templates/sections/latest-reuses.html:6
 msgid "Latest reuses"
-msgstr ""
+msgstr "Dernières réutilisations"
 
