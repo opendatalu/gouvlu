@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-22 17:58+0100\n"
-"PO-Revision-Date: 2018-01-26 05:43-0500\n"
+"PO-Revision-Date: 2018-01-26 05:50-0500\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -85,12 +85,12 @@ msgstr "Version déployée"
 
 #: gouvlu/theme/templates/footer.html:83
 msgid "Data.public.lu extension"
-msgstr ""
+msgstr "Extension Data.public.lu"
 
 #: gouvlu/theme/templates/footer.html:100
 #, python-format
 msgid "An initiative by %(company)s"
-msgstr ""
+msgstr "Une initiative de %(company)s"
 
 #: gouvlu/theme/templates/header.html:10
 msgid "Toggle navigation"
