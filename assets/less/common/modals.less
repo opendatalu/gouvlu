@@ -1,0 +1,32 @@
+.modal {
+    @bg-color: lighten(@brand-secondary, 45%);
+
+    .modal-content {
+        border-radius: @border-radius-base;
+        background-color: @bg-color;
+    }
+
+    .modal-header {
+        color: white;
+        background-color: @brand-secondary;
+        background: linear-gradient(to right, @brand-secondary, @bg-color);
+
+        .close {
+            color: @brand-primary;
+        }
+    }
+
+    .modal-footer {
+        background-color: @brand-secondary;
+        background: linear-gradient(to right, @bg-color, @brand-secondary);
+
+        .btn-default {
+            color: white;
+            background-color: @brand-secondary;
+
+            &:hover {
+                background-color: @brand-primary;
+            }
+        }
+    }
+}
