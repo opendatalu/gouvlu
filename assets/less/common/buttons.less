@@ -7,21 +7,6 @@
 .btn-info,
 .btn-warning,
 .btn-danger {
-  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
-  .box-shadow(@shadow);
-
-  // Reset the shadow
-  &:active,
-  &.active {
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
-  }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    .box-shadow(none);
-  }
-
   .badge {
     text-shadow: none;
   }
@@ -100,4 +85,33 @@
     color: darken(@brand-primary, 10%);
     text-decoration: none;
   }
+}
+
+.btn-primary[disabled] {
+    background-color: white;
+    color: @gray;
+    border-color: @gray-lighter;
+}
+
+
+.btn-left.btn-sm {
+    border: 0;
+
+    span:first-of-type {
+        @size: 2 * @padding-base-vertical + @line-height-computed;
+        width: @size;
+        height: @size;
+        line-height: @size;
+        border-radius: @btn-border-radius-base 0 0 @btn-border-radius-base;
+        color: white;
+    }
+
+    &.btn-primary {
+        color: @primary-bg;
+        background-color: lighten(@brand-secondary, 20%);
+
+        &:hover {
+            background-color: lighten(@brand-primary, 20%);
+        }
+    }
 }

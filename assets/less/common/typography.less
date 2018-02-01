@@ -45,3 +45,42 @@
     font-weight: 600;
     font-style: italic
 }
+
+.markdown {
+    // Lists
+    ul {
+        list-style-type: none;
+
+        li:before {
+            content: "■";
+            line-height: 1.2;
+        }
+    }
+
+    ol, ul {
+        margin: 1.5rem 0;
+        padding-left: 2rem;
+
+        li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+
+            &:before {
+                color: @brand-primary;
+                position: absolute;
+                right: 100%;
+                margin-right: -1rem;
+            }
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    pre {
+        border: 1px solid lighten(@brand-primary, 45%);
+        border-radius: 0;
+    }
+}
