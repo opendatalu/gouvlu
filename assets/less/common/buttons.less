@@ -109,13 +109,27 @@
 .btn-left.btn-sm {
     border: 0;
 
-    span:first-of-type {
-        @size: 2 * @padding-base-vertical + @line-height-computed;
-        width: @size;
-        height: @size;
-        line-height: @size;
-        border-radius: @btn-border-radius-base 0 0 @btn-border-radius-base;
-        color: white;
+    .sizing(@vpadding; @line-height) {
+        span:first-of-type {
+            @size: 2 * @vpadding + @line-height;
+            width: @size;
+            height: @size;
+            line-height: @size;
+            border-radius: @btn-border-radius-base 0 0 @btn-border-radius-base;
+            color: white;
+        }
+    }
+
+    &.btn-lg {
+        .sizing(@padding-large-vertical; @line-height-large-computed)
+    }
+
+    &.btn-sm {
+        .sizing(@padding-small-vertical; @line-height-small-computed)
+    }
+
+    &.btn-xs {
+        .sizing(@padding-xs-vertical; @line-height-small-computed)
     }
 
     &.btn-primary {
