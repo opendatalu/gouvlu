@@ -1,0 +1,35 @@
+.advanced-search-panel {
+    .panel-heading {
+        background: linear-gradient(to right, @brand-primary, @brand-secondary);
+    }
+
+    .panel-title {
+        color: white;
+        font-size: 14px
+    }
+
+    .list-group-item {
+        font-size: 12px;
+        .badge {
+            background: linear-gradient(to right, @brand-tertiary, @brand-primary);
+            font-size: 11px;
+        }
+    }
+}
+
+.search-toolbar {
+    .dropdown.pull-right {
+        .dropdown-menu {
+            left: auto;
+            right: 0px;
+            top: calc(100% + 5px);
+            transform: none;
+
+            &:before {
+                left: auto;
+                right: 0;
+                margin-right: 5px;
+            }
+        }
+    }
+}
