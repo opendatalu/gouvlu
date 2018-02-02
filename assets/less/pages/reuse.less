@@ -1,0 +1,52 @@
+.reuse-display {
+    .reuse-section.community-section {
+        background-color: @community-background;
+
+        @margin-top: 40px;
+        padding-bottom: 20px;
+
+        .page-header {
+            padding-bottom: 9px;
+            margin: @margin-top 0 @margin-top/2;
+            border-bottom: none;
+        }
+
+        aside {
+            margin-top: @margin-top;
+        }
+
+        .main-toolbar .btn-toolbar .btn {
+            margin-bottom: 5px;
+        }
+    }
+
+    .reuse-image {
+        text-align: center;
+    }
+
+    .panel-transparent {
+        // .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+        background-color: white;
+        border: 1px solid @panel-default-border;
+        .shadow();
+    }
+
+    .source-section {
+        > header {
+            @size: 80px;
+            background-color: @brand-secondary;
+            background: linear-gradient(to left, @brand-primary, @brand-secondary);
+            margin-top: 0;
+            margin-bottom: 20px;
+            min-height: 80px;
+
+            .page-header {
+                color: #fff;
+                border: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    .resources-list-style();
+}

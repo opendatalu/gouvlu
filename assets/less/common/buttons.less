@@ -76,6 +76,18 @@
 .btn-warning { .btn-styles(@btn-warning-bg, @btn-warning-color, @btn-warning-border); }
 .btn-danger  { .btn-styles(@btn-danger-bg, @btn-danger-color, @btn-danger-border); }
 
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
+}
+.btn-sm {
+  // line-height: ensure proper height of button next to small input
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+}
+.btn-xs {
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+}
+
 
 .btn-link {
   color: @brand-primary;
@@ -97,13 +109,27 @@
 .btn-left.btn-sm {
     border: 0;
 
-    span:first-of-type {
-        @size: 2 * @padding-base-vertical + @line-height-computed;
-        width: @size;
-        height: @size;
-        line-height: @size;
-        border-radius: @btn-border-radius-base 0 0 @btn-border-radius-base;
-        color: white;
+    .sizing(@vpadding; @line-height) {
+        span:first-of-type {
+            @size: 2 * @vpadding + @line-height;
+            width: @size;
+            height: @size;
+            line-height: @size;
+            border-radius: @btn-border-radius-base 0 0 @btn-border-radius-base;
+            color: white;
+        }
+    }
+
+    &.btn-lg {
+        .sizing(@padding-large-vertical; @line-height-large-computed)
+    }
+
+    &.btn-sm {
+        .sizing(@padding-small-vertical; @line-height-small-computed)
+    }
+
+    &.btn-xs {
+        .sizing(@padding-xs-vertical; @line-height-small-computed)
     }
 
     &.btn-primary {
