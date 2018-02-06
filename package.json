@@ -27,6 +27,7 @@
     "webpack": "^3.9.0"
   },
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "slideout": "^1.0.1"
   }
 }
