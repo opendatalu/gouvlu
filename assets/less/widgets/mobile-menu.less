@@ -1,0 +1,142 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.slideout-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: @mobile-menu-width;
+    min-height: 100vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    z-index: 0;
+    display: none;
+
+    .slideout-open & {
+        display: block;
+    }
+
+    &.slideout-menu-left {
+        left: 0;
+    }
+
+    &.slideout-menu-right {
+        right: 0;
+    }
+}
+
+.slideout-panel {
+    position: relative;
+    z-index: 1;
+    will-change: transform;
+    background-color: #FFF;
+    /* A background-color is required */
+    min-height: 100vh;
+
+    &:before {
+        content: '';
+        display: block;
+        background-color: rgba(0,0,0,0);
+        transition: background-color 0.5s ease-in-out;
+
+        .slideout-open & {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,.5);
+            z-index: 99;
+        }
+    }
+}
+
+.slideout-open,
+.slideout-open .slideout-panel,
+.slideout-open body {
+    overflow: hidden;
+}
+
+.mobile-menu {
+    padding: 5px;
+
+    header {
+        text-align: center;
+
+        a {
+            color: @gray-light;
+        }
+    }
+
+    .site-search {
+        margin: 15px 0;
+
+        .btn[type=submit] {
+            color: white;
+            background-color: @brand-primary;
+        }
+
+        .suggestion {
+            width: 100%;
+        }
+    }
+
+    .btn-block {
+        font-weight: bold;
+    }
+
+    ul.menu {
+        @padding: 12px;
+        @duration: 0.2s;
+        margin-top: @padding;
+
+        li {
+            font-size: 14px;
+            padding: @padding;
+
+            &:last-of-type {
+                border-bottom: none;
+            }
+
+            img {
+                vertical-align: middle;
+            }
+
+            .fa-angle-right {
+                transition: all @duration ease-in-out;
+            }
+
+            &.open {
+                padding-bottom: 0;
+
+                ul.submenu {
+                    margin-top: @padding / 2;
+                    visibility: visible;
+                    max-height: 500px;
+                }
+
+                .fa-angle-right {
+                    transform: rotate(90deg);
+                }
+            }
+
+            &.divider {
+                border-top: 1px solid @brand-primary;
+                height: 0;
+                padding: 0;
+            }
+        }
+
+        ul.submenu {
+            transition: all @duration ease-in-out;
+            max-height: 0;
+            visibility: hidden;
+            overflow: hidden;
+
+            li {
+                margin-left: 20px;
+            }
+        }
+    }
+}

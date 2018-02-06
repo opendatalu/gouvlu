@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<nav id="menu" class="mobile-menu slideout-menu">
+  {% include theme('mobile-menu.html') %}
+</nav>
+
+<main id="panel">
+  {{ super() }}
+</main>
+
+{% endblock %}
+
+{% block extra_js %}
+{{ super() }}
+<script src="{{ theme_static('theme.js') }}"></script>
+{% endblock %}
