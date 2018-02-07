@@ -1,0 +1,33 @@
+@import 'variables';
+
+.skin-blue {
+    .main-header {
+        .logo {
+            background-color: @brand-primary;
+
+            &:hover {
+                background: darken(@brand-primary, 10%);
+            }
+
+            @media screen and (max-width: @grid-float-breakpoint-max) {
+                background: linear-gradient(to right, @brand-primary, @brand-secondary);
+            }
+        }
+
+        .navbar {
+            background: linear-gradient(to right, @brand-primary, @brand-secondary);
+
+            .sidebar-toggle:hover {
+                background: rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+    .sidebar-menu > li {
+        &.active, &:hover {
+            > a {
+                border-left-color: @brand-primary;
+            }
+        }
+    }
+}
