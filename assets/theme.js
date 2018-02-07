@@ -10,7 +10,7 @@ const slideout = new Slideout({
     panel: document.getElementById('panel'),
     menu: document.getElementById('menu'),
     side: 'right',
-    padding: 280, // Should match less @mobile-menu-width
+    padding: 280,  // Should match less @mobile-menu-width
     tolerance: 70
 });
 
@@ -51,3 +51,20 @@ Array.prototype.forEach.call(document.querySelectorAll('.mobile-menu a:not([href
         e.stopPropagation();
     });
 });
+
+
+// Handle govbar breaking menu
+// Make it follow the same transition
+const govbar = document.querySelector('#govbar');
+if (govbar) {
+    slideout
+        .on('beforeopen', function() {
+            govbar.classList.add('menu-open', 'overlay');
+        })
+        .on('beforeclose', function() {
+            govbar.classList.remove('menu-open');
+        })
+        .on('close', function() {
+            govbar.classList.remove('overlay');
+        });
+}
