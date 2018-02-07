@@ -48,7 +48,7 @@ def info(text, *args, **kwargs):
 
 def success(text):
     '''Display a success message'''
-    print(' '.join((green('✔'), white(text))))
+    print(' '.join((green('OK'), white(text))))
     sys.stdout.flush()
 
 
