@@ -1,3 +1,5 @@
 files:
   - source: /gouvlu/translations/gouvlu.pot
     translation: /gouvlu/translations/%two_letters_code%/LC_MESSAGES/gouvlu.po
+  - source: /gouvlu/theme/translations/gouvlu.pot
+    translation: /gouvlu/theme/translations/%two_letters_code%/LC_MESSAGES/gouvlu.po
