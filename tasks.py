@@ -15,6 +15,8 @@ I18N_ROOT = 'gouvlu/translations'
 
 I18N_DOMAIN = 'gouvlu'
 
+THEME_ROOT = os.path.join(ROOT, 'gouvlu', 'theme')
+
 CLEAN_PATTERNS = [
     'build', 'dist', '**/*.pyc', '**/*.mo', 'reports', 'gouvlu/theme/static'
 ]
@@ -48,7 +50,7 @@ def info(text, *args, **kwargs):
 
 def success(text):
     '''Display a success message'''
-    print(' '.join((green('✔'), white(text))))
+    print(' '.join((green('OK'), white(text))))
     sys.stdout.flush()
 
 
@@ -136,6 +138,9 @@ def qa(ctx):
 def i18n(ctx):
     '''Extract translatable strings'''
     header(i18n.__doc__)
+
+    # Plugin translations (harvesters, views...)
+    info('Extract plugin translations')
     with ctx.cd(ROOT):
         ctx.run('mkdir -p {}'.format(I18N_ROOT))
         ctx.run('python setup.py extract_messages')
@@ -143,8 +148,19 @@ def i18n(ctx):
             pofile = os.path.join(I18N_ROOT, lang, 'LC_MESSAGES', '{}.po'.format(I18N_DOMAIN))
             if not os.path.exists(pofile):
                 ctx.run('python setup.py init_catalog -l {}'.format(lang))
-            else:
-                ctx.run('python setup.py update_catalog -l {}'.format(lang))
+
+    # Theme translations
+    info('Extract theme translations')
+    with ctx.cd(THEME_ROOT):
+        ctx.run('mkdir -p translations')
+        ctx.run('pybabel extract -F babel.cfg -o translations/{0}.pot .'.format(I18N_DOMAIN))
+        for lang in LANGUAGES:
+            translation = os.path.join(THEME_ROOT, 'translations',
+                                       lang, 'LC_MESSAGES', '{0}.po'.format(I18N_DOMAIN))
+            cmd = 'pybabel init -D {domain} -i translations/{domain}.pot -d translations -l {lang}'
+            if not os.path.exists(translation):
+                ctx.run(cmd.format(lang=lang, domain=I18N_DOMAIN))
+
     success('Updated translations')
 
 
@@ -152,8 +168,15 @@ def i18n(ctx):
 def i18nc(ctx):
     '''Compile translations'''
     header(i18nc.__doc__)
+    # Plugin translations (harvesters, views...)
+    info('Compile plugin translations')
     with ctx.cd(ROOT):
         ctx.run('python setup.py compile_catalog')
+
+    # Theme translations
+    info('Compile theme translations')
+    with ctx.cd(THEME_ROOT):
+        ctx.run('pybabel compile -D {0} -d translations --statistics'.format(I18N_DOMAIN))
 
 
 @task
