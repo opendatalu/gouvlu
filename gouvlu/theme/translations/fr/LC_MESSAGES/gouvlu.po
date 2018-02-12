@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-08 11:23+0100\n"
-"PO-Revision-Date: 2018-02-12 06:51-0500\n"
+"PO-Revision-Date: 2018-02-12 07:01-0500\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -19,177 +19,177 @@ msgstr ""
 
 #: __init__.py:19
 msgid "Data"
-msgstr ""
+msgstr "Données"
 
 #: __init__.py:20 templates/footer.html:60 templates/footer.html:62
 msgid "Datasets"
-msgstr ""
+msgstr "Jeux de données"
 
 #: __init__.py:21 templates/dataset/card.html:25 templates/footer.html:65
 #: templates/footer.html:67
 msgid "Reuses"
-msgstr ""
+msgstr "Réutilisations"
 
 #: __init__.py:22 templates/header.html:80 templates/mobile-menu.html:69
 msgid "Organizations"
-msgstr ""
+msgstr "Organisations"
 
 #: __init__.py:24
 msgid "Dashboard"
-msgstr ""
+msgstr "Tableau de bord"
 
 #: __init__.py:25
 msgid "Events"
-msgstr ""
+msgstr "Événements"
 
 #: __init__.py:26
 msgid "Game of code"
-msgstr ""
+msgstr "Game of Code"
 
 #: __init__.py:33
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: __init__.py:34
 msgid "Terms of use"
-msgstr ""
+msgstr "Conditions générales d'utilisation"
 
 #: templates/footer.html:4
 msgid "Back to top"
-msgstr ""
+msgstr "Haut de page"
 
 #: templates/footer.html:10
 msgid "Open Data Guide"
-msgstr ""
+msgstr "Guide de l’Open Data"
 
 #: templates/footer.html:28
 msgid "Contact Us"
-msgstr ""
+msgstr "Contactez-nous"
 
 #: templates/footer.html:43 templates/footer.html:45
 msgid "News"
-msgstr ""
+msgstr "Actualités"
 
 #: templates/footer.html:55 templates/footer.html:58
 msgid "Feeds"
-msgstr ""
+msgstr "Flux"
 
 #: templates/footer.html:79
 msgid "Open-source engine"
-msgstr ""
+msgstr "Moteur open-source"
 
 #: templates/footer.html:80 templates/footer.html:84
 msgid "Deployed version"
-msgstr ""
+msgstr "Version déployée"
 
 #: templates/footer.html:83
 msgid "Data.public.lu extension"
-msgstr ""
+msgstr "Extension Data.public.lu"
 
 #: templates/footer.html:100
 #, python-format
 msgid "An initiative by %(company)s"
-msgstr ""
+msgstr "Une initiative de %(company)s"
 
 #: templates/header.html:10
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Navigation"
 
 #: templates/header.html:18 templates/mobile-menu.html:6
 msgid "The luxembourgish data platform"
-msgstr ""
+msgstr "La plate-forme de données luxembourgeoise"
 
 #: templates/header.html:40 templates/mobile-menu.html:39
 msgid "Browse by theme"
-msgstr ""
+msgstr "Naviguer par thème"
 
 #: templates/header.html:60 templates/mobile-menu.html:12
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuer"
 
 #: templates/header.html:61 templates/mobile-menu.html:13
 msgid "Contribute!"
-msgstr ""
+msgstr "Contribuez !"
 
 #: templates/header.html:76 templates/mobile-menu.html:65
 msgid "My profile"
-msgstr ""
+msgstr "Mon profil"
 
 #: templates/header.html:95 templates/mobile-menu.html:84
 msgid "Administration"
-msgstr ""
+msgstr "Administration"
 
 #: templates/header.html:102 templates/mobile-menu.html:91
 msgid "Logout"
-msgstr ""
+msgstr "Se déconnecter"
 
 #: templates/header.html:109 templates/header.html:112
 #: templates/mobile-menu.html:98 templates/mobile-menu.html:100
 msgid "Sign In / Register"
-msgstr ""
+msgstr "Connexion / Inscription"
 
 #: templates/header.html:120 templates/mobile-menu.html:111
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: templates/dataset/card.html:32 templates/reuse/card.html:23
 msgid "Stars"
-msgstr ""
+msgstr "Favoris"
 
 #: templates/dataset/card.html:42
 msgid "Territorial coverage"
-msgstr ""
+msgstr "Couverture territoriale"
 
 #: templates/dataset/card.html:52
 msgid "Territorial coverage granularity"
-msgstr ""
+msgstr "Granularité de la couverture territoriale"
 
 #: templates/dataset/card.html:62
 msgid "Temporal coverage"
-msgstr ""
+msgstr "Couverture temporelle"
 
 #: templates/dataset/card.html:72
 msgid "Frequency"
-msgstr ""
+msgstr "Fréquence"
 
 #: templates/organization/sidebar-producer.html:3
 msgid "The identity of this public service public is certified by Data.public.lu"
-msgstr ""
+msgstr "L'identité de ce service public est certifiée par Data.public.lu"
 
 #: templates/organization/sidebar-producer.html:4
 msgid "Certified public service"
-msgstr ""
+msgstr "Service public certifié"
 
 #: templates/reuse/card.html:10
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: templates/reuse/card.html:16
 msgid "Number of datasets used"
-msgstr ""
+msgstr "Nombre de jeux de données utilisés"
 
 #: templates/sections/featured-datasets.html:5
 msgid "Featured datasets"
-msgstr ""
+msgstr "Jeux de données à la une"
 
 #: templates/sections/featured-reuses.html:6
 msgid "Featured reuses"
-msgstr ""
+msgstr "Réutilisations à la une"
 
 #: templates/sections/last-post.html:7
 msgid "News in data"
-msgstr ""
+msgstr "L'actualité en données"
 
 #: templates/sections/latest-datasets.html:6
 msgid "Latest datasets"
-msgstr ""
+msgstr "Derniers jeux de données"
 
 #: templates/sections/latest-datasets.html:22
 #: templates/sections/latest-reuses.html:20
 msgid "See more"
-msgstr ""
+msgstr "Voir plus"
 
 #: templates/sections/latest-reuses.html:6
 msgid "Latest reuses"
-msgstr ""
+msgstr "Dernières réutilisations"
 
