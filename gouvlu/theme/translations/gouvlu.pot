@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-08 11:23+0100\n"
+"POT-Creation-Date: 2018-02-21 16:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,6 +51,22 @@ msgid "API"
 msgstr ""
 
 #: __init__.py:34
+msgid "FAQ"
+msgstr ""
+
+#: __init__.py:35
+msgid "Usage Guidelines for Open Data"
+msgstr ""
+
+#: __init__.py:36
+msgid "Publishing Guidelines for Open Data"
+msgstr ""
+
+#: __init__.py:37
+msgid "Open Data Strategy"
+msgstr ""
+
+#: __init__.py:38
 msgid "Terms of use"
 msgstr ""
 
@@ -130,6 +146,14 @@ msgstr ""
 
 #: templates/header.html:120 templates/mobile-menu.html:111
 msgid "Language"
+msgstr ""
+
+#: templates/terms.html:4 templates/terms.html:5
+msgid "Terms"
+msgstr ""
+
+#: templates/terms.html:7
+msgid "terms"
 msgstr ""
 
 #: templates/dataset/card.html:32 templates/reuse/card.html:23
