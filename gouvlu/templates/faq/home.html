@@ -1,0 +1,100 @@
+{% extends theme('faq/base.html') %}
+
+{% set meta = {
+    'title': _('Découvrir l’OpenData - FAQ'),
+    'description': _('Questions fréquemment posées sur la plateforme data.gouv.fr'),
+    'keywords': ['Découvrir', 'OpenData', 'FAQ', 'Questions fréquemment posées'],
+} %}
+
+{% block main_content %}
+<div class="faq-home">
+    <div class="row">
+        <div class="col-xs-12 markdown">
+            <h1>Découvrir l’OpenData</h1>
+        </div>
+    </div>
+
+    <div class="faq-sections">
+        <div class="faq-section">
+            <a class="thumbnail" href="{{ url_for('gouvlu.faq', section='citizen') }}">
+                <div class="caption">
+                <h3>Citoyen</h3>
+                <p>Les fondamentaux de l'opendata pour les citoyens</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="faq-section">
+            <a class="thumbnail" href="{{ url_for('gouvlu.faq', section='producer') }}">
+                <div class="caption">
+                <h3>Producteur</h3>
+                <p>Que faut-il savoir avant de publier des données ?</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="faq-section">
+            <a class="thumbnail" href="{{ url_for('gouvlu.faq', section='reuser') }}">
+                <div class="caption">
+                <h3>Réutilisateur</h3>
+                <p>Que faire avec les données ? Avec quels outils ?</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="faq-section">
+            <a class="thumbnail" href="{{ url_for('gouvlu.faq', section='developer') }}">
+                <div class="caption">
+                <h3>Développeur</h3>
+                <p>Comment intéragir avec la plateforme ? Avec quelles API ?</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="faq-section">
+            <a class="thumbnail" href="{{ url_for('gouvlu.faq', section='system-integrator') }}">
+                <div class="caption">
+                <h3>Intégrateur</h3>
+                <p>Quelles sont les intégrations tierces rendues possibles ?</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<div class="faq-content markdown row">
+    <div class="col-xs-12">
+        <p>Le projet Open Data du gouvernement luxembourgeois fait partie de l'initiative Digital Lëtzebuerg, qui a pour mission d’accompagner l’ouverture des données publiques de l’Etat et des administrations. À ce titre, elle met en oeuvre et anime la plateforme ouverte des données publiques data.public.lu qui héberge les jeux de données et recense leurs réutilisations.
+        </p>
+        <h3>A quoi servent les données ouvertes ?</h3>
+        <p>L’ouverture des données (Open Data) vise à encourager la réutilisation des données au-delà de leur utilisation première par l’administration. En utilisant, directement ou via des applications, des données publiées sur la plateforme data.public.lu, on peut par exemple :
+        </p>
+        <ul>
+            <li>répondre à des questions,</li>
+            <li>prendre des décisions, pour soi, sa commune, son association ou son entreprise,</li>
+            <li>bénéficier de services utiles au quotidien : pour se déplacer, éviter le gaspillage alimentaire, connaître les services publics à proximité de son domicile,</li>
+            <li>encourager la transparence démocratique des institutions et des élus, par exemple : connaître l’utilisation de la réserve parlementaire, les budgets de l’Etat et des collectivités, les titres de presse aidés par l’Etat.</li>
+        </ul>
+        <p>Data.public.lu s’adresse :
+        </p>
+        <ul>
+            <li>aux producteurs de données qui souhaitent les publier dans des formats ouverts et réutilisables,</li>
+            <li>aux réutilisateurs qui peuvent référencer leurs réalisations, qu’il s’agisse d’un article, d’une visualisation de données ou d’une application,</li>
+            <li>mais aussi à tout citoyen, association ou entreprise, qui peut ainsi découvrir et utiliser des données.</li>
+        </ul>
+    
+        <h3>Comment faire partie de la communauté data.public.lu ? </h3>
+        <p>En consultant <a href="/posts/">le blog du portail</a> vous pourrez vous inscrire aux différents évènements (Hackathons, OpenData Camps, Conférences) organisés.</p>
+        <p>Nous vous invitons par ailleurs à suivre notre compte Twitter <a href="https://twitter.com/opendatalu">@OpenDataLu</a> (actualité de la plateforme, annonce des nouveaux jeux de données).</p>
+        <p>L’équipe de cette plateforme est par ailleurs joignable par mail : <a href="m&#x61;ilto:{{ config.CONTACT_EMAIL|obfuscate|safe }}">{{ config.CONTACT_EMAIL }}</a>.</p>
+    </div>
+    <div class="col-xs-12 text-center edit-link">
+        <a href="{{ url_pattern.format(page_name=page_name) }}" target="_blank" class="btn btn-primary">
+            <i class="fa fa-pencil"></i>
+            Proposer une amélioration
+        </a>
+    </div>
+</div>
+
+{% endblock %}
