@@ -35,7 +35,7 @@ def publishing():
 
 @blueprint.route('/strategy/')
 def strategy():
-    return theme.render('usage.html')
+    return theme.render('strategy.html')
 
 
 @sitemap.register_generator
