@@ -26,7 +26,7 @@ services:
 
   udata:
     image: udata/udata
-    command: serve --host 0.0.0.0 --debug --reload
+    command: serve --host 0.0.0.0 --debugger --reload
     links:
       - mongodb:mongodb
       - redis:redis
