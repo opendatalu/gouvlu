@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-21 16:39+0100\n"
-"PO-Revision-Date: 2018-02-26 05:13-0500\n"
+"PO-Revision-Date: 2018-02-26 06:02-0500\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -19,31 +19,31 @@ msgstr ""
 
 #: gouvlu/templates/publishing.html:5
 msgid "Luxembourg's open data publication guidelines"
-msgstr ""
+msgstr "Guide de publication des données ouvertes du Luxembourg"
 
 #: gouvlu/templates/publishing.html:8
 msgid "guidelines"
-msgstr ""
+msgstr "guide"
 
 #: gouvlu/templates/publishing.html:9
 msgid "publication"
-msgstr ""
+msgstr "publication"
 
 #: gouvlu/templates/strategy.html:4
 msgid "Luxembourg's Open Data Strategy"
-msgstr ""
+msgstr "Stratégie des données ouvertes du Luxembourg"
 
 #: gouvlu/templates/strategy.html:7
 msgid "strategy"
-msgstr ""
+msgstr "stratégie"
 
 #: gouvlu/templates/usage.html:4
 msgid "Data usage guide"
-msgstr ""
+msgstr "Guide d'utilisation des données"
 
 #: gouvlu/templates/usage.html:7
 msgid "usage"
-msgstr ""
+msgstr "utilisation"
 
 #: gouvlu/templates/faq/citizen.html:4
 msgid "Découvrir l’OpenData en tant que citoyen - FAQ"
