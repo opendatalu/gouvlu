@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-08 11:23+0100\n"
-"PO-Revision-Date: 2018-02-12 06:48-0500\n"
+"POT-Creation-Date: 2018-02-21 16:39+0100\n"
+"PO-Revision-Date: 2018-02-26 05:13-0500\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -16,4 +16,62 @@ msgstr ""
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /master/gouvlu/translations/gouvlu.pot\n"
 "Language: fr_FR\n"
+
+#: gouvlu/templates/publishing.html:5
+msgid "Luxembourg's open data publication guidelines"
+msgstr ""
+
+#: gouvlu/templates/publishing.html:8
+msgid "guidelines"
+msgstr ""
+
+#: gouvlu/templates/publishing.html:9
+msgid "publication"
+msgstr ""
+
+#: gouvlu/templates/strategy.html:4
+msgid "Luxembourg's Open Data Strategy"
+msgstr ""
+
+#: gouvlu/templates/strategy.html:7
+msgid "strategy"
+msgstr ""
+
+#: gouvlu/templates/usage.html:4
+msgid "Data usage guide"
+msgstr ""
+
+#: gouvlu/templates/usage.html:7
+msgid "usage"
+msgstr ""
+
+#: gouvlu/templates/faq/citizen.html:4
+msgid "Découvrir l’OpenData en tant que citoyen - FAQ"
+msgstr ""
+
+#: gouvlu/templates/faq/citizen.html:5 gouvlu/templates/faq/developer.html:5
+#: gouvlu/templates/faq/home.html:5 gouvlu/templates/faq/producer.html:5
+#: gouvlu/templates/faq/reuser.html:5 gouvlu/templates/faq/system-integrator.html:5
+msgid "Questions fréquemment posées sur la plateforme data.gouv.fr"
+msgstr ""
+
+#: gouvlu/templates/faq/developer.html:4
+msgid "Découvrir l’OpenData en tant que développeur - FAQ"
+msgstr ""
+
+#: gouvlu/templates/faq/home.html:4
+msgid "Découvrir l’OpenData - FAQ"
+msgstr ""
+
+#: gouvlu/templates/faq/producer.html:4
+msgid "Découvrir l’OpenData en tant que producteur - FAQ"
+msgstr ""
+
+#: gouvlu/templates/faq/reuser.html:4
+msgid "Découvrir l’OpenData en tant que réutilisateur - FAQ"
+msgstr ""
+
+#: gouvlu/templates/faq/system-integrator.html:4
+msgid "Découvrir l’OpenData en tant qu’intégrateur - FAQ"
+msgstr ""
 
