@@ -1,35 +1,36 @@
 .card {
-    display: block;
     min-height: 145px;
     border-radius: 0.25rem;
     .shadow();
+
+    border: 1px solid @gray-lighter;
+    margin-bottom: 10px;
+    zoom: 1;
+
+    @padding: 8px;
+    padding: 8px;
 
     &:hover {
         border: 1px solid @brand-primary;
     }
 
-    .card-body {
-        height: 105px;
-
-        font-size: 12px;
-
-        h4 {
-            font-size: 13px;
-            line-height: 15px;
-            font-weight: 700;
-        }
+    .card-title, h4 {
+        font-size: 15px;
     }
 
-    footer {
-        padding: 0;
-        width: auto;
-        bottom: 0;
-        overflow: hidden;
-        max-width: 90%;
+
+    .card-body {
+        color: @text-color;
+    }
+
+    .card-footer {
+        margin-bottom: -@padding;
 
         ul {
-            display: inline-flex;
-            .btn {
+            margin: 0;
+            padding: 0;
+
+            li {
                 color: @brand-primary;
                 font-size: 12px;
 
@@ -43,17 +44,27 @@
 
     &.dataset-card {
         border-bottom: 2px solid @brand-primary;
+
+        &:hover {
+            border-color: @brand-primary;
+        }
     }
 
 
-    &.reuse-card {
+    &.reuse-card.card--with-cover {
         display: flex;
         flex-direction: column;
         overflow: hidden;
         padding: 0;
-        position: relative;
         height: @reuse-card-height;
-        @margin: 8px;
+
+        > * {
+            width: 100%;
+        }
+
+        .card-list.card-list--columned & {
+            height: @reuse-card-height;
+        }
 
         &:hover {
             .card-image {
@@ -75,10 +86,12 @@
 
         .card-title {
             color: @text-color;
-            font-size: 13px;
             line-height: 15px;
-            font-weight: 700;
-            margin: @margin;
+            padding: @padding;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .card-metadata {
@@ -100,16 +113,56 @@
         }
 
         .card-body {
-            padding: @margin;
+            flex: 1 0;
+            padding: @padding;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .author {
-            position: static;
-            margin: @margin;
+            @avatar-size: 25px;
+            width: 100%;
+            padding: @padding;
+            display: flex;
+            height: @avatar-size + 2 * @padding - 1;
+            line-height: 14px;
+
+            .avatar {
+                display: inline;
+            }
+
+            .author-body {
+                flex: 1 0;
+                display: block;
+                margin-left: @padding;
+                position: relative;
+                width: calc(100% - (@avatar-size + 2 *  @padding));
+
+                > * {
+                    display: block;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .user {
+                    font-size: 12px;
+                    font-weight: bold;
+                    line-height: 14px;
+                }
+
+                .date {
+                    font-size: 10px;
+                    line-height: 11px;
+                }
+            }
+
+
         }
 
         footer {
-            padding: @margin;
+            padding: @padding
         }
     }
 }
