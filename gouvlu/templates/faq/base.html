@@ -1,0 +1,22 @@
+{% extends theme('layouts/1-column.html') %}
+
+{% block main_content %}
+<div class="row faq-content">
+    <div class="col-xs-12 back-link">
+        <a href="{{ url_for('gouvlu.faq') }}">← Retour à l’accueil de la FAQ</a>
+    </div>
+    <div class="col-xs-12 markdown">
+        {% block faq_content %}{% endblock %}
+    </div>
+    <div class="col-xs-12 text-center edit-link">
+        <a href="{{ url_pattern.format(page_name=page_name) }}"
+            target="_blank" class="btn btn-primary">
+            <i class="fa fa-pencil"></i>
+            Proposer une amélioration
+        </a>
+    </div>
+    <div class="col-xs-12 back-link">
+        <a href="{{ url_for('gouvlu.faq') }}">← Retour à l’accueil de la FAQ</a>
+    </div>
+</div>
+{% endblock %}

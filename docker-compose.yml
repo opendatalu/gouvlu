@@ -32,7 +32,7 @@ services:
       - redis:redis
       - elasticsearch:elasticsearch
     volumes:
-      - ./udata.cfg:/udata/udata.cfg
+      - ./docker/udata.cfg:/udata/udata.cfg
       - .:/src/gouvlu
       - ./static:/udata/fs
     ports:
