@@ -2,33 +2,33 @@
 from __future__ import unicode_literals
 
 import pytest
-import sys
 
 from flask import url_for
 
-from udata import frontend, api
+from udata.core.dataset.factories import DatasetFactory
+from udata.core.reuse.factories import ReuseFactory
 
-pytestmark = pytest.mark.usefixtures('clean_db')
-
-
-@pytest.fixture(autouse=True)
-def unload_theme():
-    '''
-    As setuptools entrypoint is loaded only once,
-    this fixture ensure theme is reloaded.
-    '''
-    yield
-    if 'gouvlu.theme' in sys.modules:
-        del sys.modules['gouvlu.theme']
+pytestmark = [
+    pytest.mark.usefixtures('clean_db'),
+    # Right now the theme doesn't work without the gouvlu plugin
+    pytest.mark.options(THEME='gouvlu', PLUGINS=['gouvlu']),
+    pytest.mark.frontend,
+]
 
 
-@pytest.fixture
-def app(app):
-    '''Initialize frontend requirements'''
-    api.init_app(app)
-    frontend.init_app(app)
-    return app
-
-
-def test_render_home(client, app):
+def test_render_home(client):
     assert client.get(url_for('site.home')).status_code == 200
+
+
+def test_render_terms(client):
+    assert client.get(url_for('site.terms')).status_code == 200
+
+
+def test_render_dataset(client):
+    dataset = DatasetFactory(visible=True)
+    assert client.get(url_for('datasets.show', dataset=dataset)).status_code == 200
+
+
+def test_render_reuse(client):
+    reuse = ReuseFactory(visible=True)
+    assert client.get(url_for('reuses.show', reuse=reuse)).status_code == 200

@@ -117,7 +117,10 @@ setup(
         ],
         'udata.harvesters': [
             'statec = gouvlu.harvesters.statec:StatecBackend',
-        ]
+        ],
+        'udata.views': [
+            'gouvlu = gouvlu.views',
+        ],
     },
     license='AGPL',
     zip_safe=False,
