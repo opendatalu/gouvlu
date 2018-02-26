@@ -10,7 +10,10 @@ from udata.harvest.tests.factories import HarvestSourceFactory
 
 log = logging.getLogger(__name__)
 
-pytestmark = pytest.mark.usefixtures('clean_db')
+pytestmark = [
+    pytest.mark.usefixtures('clean_db'),
+    pytest.mark.options(plugins=['statec']),
+]
 
 
 STATEC_URL = 'http://somwhere.com/statec/url'

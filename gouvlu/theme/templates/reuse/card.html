@@ -1,5 +1,5 @@
 {% cache cache_duration, 'reuse-card', reuse.id|string, g.lang_code %}
-<a class="card reuse-card" href="{{ url_for('reuses.show', reuse=reuse) }}" title="{{ reuse.title }}">
+<a class="card reuse-card card--with-cover" href="{{ url_for('reuses.show', reuse=reuse) }}" title="{{ reuse.title }}">
     <div class="card-image" >
         <img alt="{{ reuse.title }}" src="{{ reuse.image|placeholder('reuse') }}" />
     </div>
@@ -31,13 +31,12 @@
     <div class="author">
         <div class="avatar">
             <img src="{{ reuse|owner_avatar_url(20) }}" class="avatar"
-            alt="{{ reuse|owner_name }}" width="20" height="20"/>
+                alt="{{ reuse|owner_name }}" width="25" height="25"/>
         </div>
-        <span class="user">{{ reuse|owner_name }}</span>
-        <span class="date">{{ reuse.created_at|dateformat('long') }}</span>
+        <div class="author-body">
+            <span class="user">{{ reuse|owner_name }}</span>
+            <span class="date">{{ reuse.created_at|dateformat('long') }}</span>
+        </div>
     </div>
-    <footer>
-
-    </footer>
 </a>
 {% endcache %}

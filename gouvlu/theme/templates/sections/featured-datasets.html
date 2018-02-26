@@ -6,9 +6,9 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="card-list card-list--columned">
             {% for dataset in current_site.settings.home_datasets[:4] %}
-            <div class="col-xss-12 col-sm-6">
+            <div class="col-xs-12 col-sm-6">
                 {% include theme('dataset/card.html') %}
             </div>
             {% endfor %}
