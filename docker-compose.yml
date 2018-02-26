@@ -27,6 +27,10 @@ services:
   udata:
     image: udata/udata
     command: serve --host 0.0.0.0 --debug --reload
+    environment:
+      - http_proxy
+      - https_proxy
+      - no_proxy=127.0.0.1,localhost
     links:
       - mongodb:mongodb
       - redis:redis
