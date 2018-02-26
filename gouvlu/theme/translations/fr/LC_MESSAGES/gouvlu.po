@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-08 11:23+0100\n"
-"PO-Revision-Date: 2018-02-12 07:01-0500\n"
+"POT-Creation-Date: 2018-02-21 16:39+0100\n"
+"PO-Revision-Date: 2018-02-26 06:02-0500\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,22 @@ msgid "API"
 msgstr "API"
 
 #: __init__.py:34
+msgid "FAQ"
+msgstr "Questions fréquentes"
+
+#: __init__.py:35
+msgid "Usage Guidelines for Open Data"
+msgstr "Guide d'utilisation des données ouvertes"
+
+#: __init__.py:36
+msgid "Publishing Guidelines for Open Data"
+msgstr "Guide de publication des données ouvertes"
+
+#: __init__.py:37
+msgid "Open Data Strategy"
+msgstr "Stratégie des données ouvertes"
+
+#: __init__.py:38
 msgid "Terms of use"
 msgstr "Conditions générales d'utilisation"
 
@@ -131,6 +147,14 @@ msgstr "Connexion / Inscription"
 #: templates/header.html:120 templates/mobile-menu.html:111
 msgid "Language"
 msgstr "Langue"
+
+#: templates/terms.html:4 templates/terms.html:5
+msgid "Terms"
+msgstr "Conditions générales d'utilisations"
+
+#: templates/terms.html:7
+msgid "terms"
+msgstr "conditions générales d'utilisations"
 
 #: templates/dataset/card.html:32 templates/reuse/card.html:23
 msgid "Stars"
