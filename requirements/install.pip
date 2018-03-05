@@ -1,2 +1,2 @@
-udata>=1.3.0.dev6775
+udata==1.3.0.dev6775
 feedparser
