@@ -1,0 +1,17 @@
+{% extends "topic/display.html" %}
+
+{% from theme('sections/datasets.html') import datasets_section with context %}
+{% from theme('sections/reuses.html') import reuses_section with context %}
+
+{% block main_content %}
+{% cache cache_duration, 'topic', topic.id|string, g.lang_code %}
+{{ reuses_section(_('Featured reuses'), topic.reuses) }}
+{{ datasets_section(_('Featured datasets'), datasets) }}
+{{ reuses_section(_('Latest reuses'), featured_reuses,
+    more=url_for('topics.reuses', topic=topic, sort='-created')
+) }}
+{{ datasets_section(_('Latest datasets'), recent_datasets, nb=6,
+    more=url_for('topics.datasets', topic=topic, sort='-created')
+) }}
+{% endcache %}
+{% endblock %}
