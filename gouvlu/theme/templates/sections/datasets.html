@@ -1,28 +1,33 @@
-<section class="home-section">
+{% macro datasets_section(title, datasets, nb=3, more=None, class='col-xs-12 col-sm-6 col-md-4') %}
+{% if datasets %}
+<section  class="home-section">
     <div class="container">
-        {# Dataset tabs #}
         <div class="row">
             <div class="col-xs-12">
-                <h3 class="section-title">{{ _('Latest datasets') }}</h3>
+                <h3 class="section-title">{{ title }}</h3>
             </div>
         </div>
 
         <div class="card-list card-list--columned">
-            {% for dataset in recent_datasets[:6] %}
-            <div class="col-md-4 col-sm-6">
+            {% for dataset in datasets[:nb] %}
+            <div class="{{ class }}">
                 {% include theme('dataset/card.html') %}
             </div>
             {% endfor %}
         </div>
 
+        {% if more %}
         <div class="row">
             <p class="col-xs-12 text-center">
-                <a href="{{ url_for('datasets.list', sort='-created') }}" class="btn btn-link">
+                <a href="{{ more }}" class="btn btn-link">
                     <span class="fa fa-fw fa-list" ></span>
                     {{ _('See more') }}
                 </a>
             </p>
         </div>
+        {% endif %}
     </div>
 </section>
 {# End datasets section #}
+{% endif %}
+{% endmacro %}

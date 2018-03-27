@@ -1,13 +1,22 @@
 {% extends "home.html" %}
 
+{% from theme('sections/datasets.html') import datasets_section with context %}
+{% from theme('sections/reuses.html') import reuses_section with context %}
+
 {% set body_class = 'home' %}
 
 {% block content %}
 {% cache cache_duration, 'home', g.lang_code %}
-{% include theme("sections/featured-reuses.html") %}
-{% include theme("sections/featured-datasets.html") %}
+{{ reuses_section(_('Featured reuses'), current_site.settings.home_reuses) }}
+{{ datasets_section(_('Featured datasets'), current_site.settings.home_datasets,
+    nb=4, class='col-xs-12 col-sm-6'
+) }}
 {% include theme("sections/last-post.html") %}
-{% include theme("sections/latest-reuses.html") %}
-{% include theme("sections/latest-datasets.html") %}
+{{ reuses_section(_('Latest reuses'), recent_reuses,
+    more=url_for('reuses.list', sort='-created')
+) }}
+{{ datasets_section(_('Latest datasets'), recent_datasets, nb=6,
+    more=url_for('datasets.list', sort='-created')
+) }}
 {% endcache %}
 {% endblock %}
