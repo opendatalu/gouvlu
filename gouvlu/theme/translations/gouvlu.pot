@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-21 16:39+0100\n"
+"POT-Creation-Date: 2018-04-04 10:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,7 @@ msgstr ""
 msgid "Datasets"
 msgstr ""
 
-#: __init__.py:21 templates/dataset/card.html:25 templates/footer.html:65
-#: templates/footer.html:67
+#: __init__.py:21 templates/footer.html:65 templates/footer.html:67
 msgid "Reuses"
 msgstr ""
 
@@ -111,8 +110,10 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/header.html:18 templates/mobile-menu.html:6
-msgid "The luxembourgish data platform"
+#: templates/header.html:18
+msgid ""
+"The luxembourgish\n"
+" data platform"
 msgstr ""
 
 #: templates/header.html:40 templates/mobile-menu.html:39
@@ -148,32 +149,32 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: templates/home.html:10 templates/topic/display.html:8
+msgid "Featured reuses"
+msgstr ""
+
+#: templates/home.html:11 templates/topic/display.html:9
+msgid "Featured datasets"
+msgstr ""
+
+#: templates/home.html:15 templates/topic/display.html:10
+msgid "Latest reuses"
+msgstr ""
+
+#: templates/home.html:18 templates/topic/display.html:13
+msgid "Latest datasets"
+msgstr ""
+
+#: templates/mobile-menu.html:6
+msgid "The luxembourgish data platform"
+msgstr ""
+
 #: templates/terms.html:4 templates/terms.html:5
 msgid "Terms"
 msgstr ""
 
 #: templates/terms.html:7
 msgid "terms"
-msgstr ""
-
-#: templates/dataset/card.html:32 templates/reuse/card.html:23
-msgid "Stars"
-msgstr ""
-
-#: templates/dataset/card.html:42
-msgid "Territorial coverage"
-msgstr ""
-
-#: templates/dataset/card.html:52
-msgid "Territorial coverage granularity"
-msgstr ""
-
-#: templates/dataset/card.html:62
-msgid "Temporal coverage"
-msgstr ""
-
-#: templates/dataset/card.html:72
-msgid "Frequency"
 msgstr ""
 
 #: templates/organization/sidebar-producer.html:3
@@ -192,28 +193,15 @@ msgstr ""
 msgid "Number of datasets used"
 msgstr ""
 
-#: templates/sections/featured-datasets.html:5
-msgid "Featured datasets"
+#: templates/reuse/card.html:23
+msgid "Stars"
 msgstr ""
 
-#: templates/sections/featured-reuses.html:6
-msgid "Featured reuses"
+#: templates/sections/datasets.html:24 templates/sections/reuses.html:23
+msgid "See more"
 msgstr ""
 
 #: templates/sections/last-post.html:7
 msgid "News in data"
-msgstr ""
-
-#: templates/sections/latest-datasets.html:6
-msgid "Latest datasets"
-msgstr ""
-
-#: templates/sections/latest-datasets.html:22
-#: templates/sections/latest-reuses.html:20
-msgid "See more"
-msgstr ""
-
-#: templates/sections/latest-reuses.html:6
-msgid "Latest reuses"
 msgstr ""
 
