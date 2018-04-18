@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-21 16:39+0100\n"
-"PO-Revision-Date: 2018-02-26 06:02-0500\n"
+"POT-Creation-Date: 2018-04-04 10:59+0200\n"
+"PO-Revision-Date: 2018-04-18 09:27-0400\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -25,8 +25,7 @@ msgstr "Données"
 msgid "Datasets"
 msgstr "Jeux de données"
 
-#: __init__.py:21 templates/dataset/card.html:25 templates/footer.html:65
-#: templates/footer.html:67
+#: __init__.py:21 templates/footer.html:65 templates/footer.html:67
 msgid "Reuses"
 msgstr "Réutilisations"
 
@@ -111,9 +110,10 @@ msgstr "Une initiative de %(company)s"
 msgid "Toggle navigation"
 msgstr "Navigation"
 
-#: templates/header.html:18 templates/mobile-menu.html:6
-msgid "The luxembourgish\n data platform"
-msgstr "La plate-forme de\n données luxembourgeoise"
+#: templates/header.html:18
+msgid "The luxembourgish\n"
+" data platform"
+msgstr ""
 
 #: templates/header.html:40 templates/mobile-menu.html:39
 msgid "Browse by theme"
@@ -148,6 +148,26 @@ msgstr "Connexion / Inscription"
 msgid "Language"
 msgstr "Langue"
 
+#: templates/home.html:10 templates/topic/display.html:8
+msgid "Featured reuses"
+msgstr "Réutilisations à la une"
+
+#: templates/home.html:11 templates/topic/display.html:9
+msgid "Featured datasets"
+msgstr "Jeux de données à la une"
+
+#: templates/home.html:15 templates/topic/display.html:10
+msgid "Latest reuses"
+msgstr "Dernières réutilisations"
+
+#: templates/home.html:18 templates/topic/display.html:13
+msgid "Latest datasets"
+msgstr "Derniers jeux de données"
+
+#: templates/mobile-menu.html:6
+msgid "The luxembourgish data platform"
+msgstr "La plate-forme de données luxembourgeoise"
+
 #: templates/terms.html:4 templates/terms.html:5
 msgid "Terms"
 msgstr "Conditions générales d'utilisations"
@@ -155,26 +175,6 @@ msgstr "Conditions générales d'utilisations"
 #: templates/terms.html:7
 msgid "terms"
 msgstr "conditions générales d'utilisations"
-
-#: templates/dataset/card.html:32 templates/reuse/card.html:23
-msgid "Stars"
-msgstr "Favoris"
-
-#: templates/dataset/card.html:42
-msgid "Territorial coverage"
-msgstr "Couverture territoriale"
-
-#: templates/dataset/card.html:52
-msgid "Territorial coverage granularity"
-msgstr "Granularité de la couverture territoriale"
-
-#: templates/dataset/card.html:62
-msgid "Temporal coverage"
-msgstr "Couverture temporelle"
-
-#: templates/dataset/card.html:72
-msgid "Frequency"
-msgstr "Fréquence"
 
 #: templates/organization/sidebar-producer.html:3
 msgid "The identity of this public service public is certified by Data.public.lu"
@@ -192,28 +192,15 @@ msgstr "Type"
 msgid "Number of datasets used"
 msgstr "Nombre de jeux de données utilisés"
 
-#: templates/sections/featured-datasets.html:5
-msgid "Featured datasets"
-msgstr "Jeux de données à la une"
+#: templates/reuse/card.html:23
+msgid "Stars"
+msgstr "Favoris"
 
-#: templates/sections/featured-reuses.html:6
-msgid "Featured reuses"
-msgstr "Réutilisations à la une"
+#: templates/sections/datasets.html:24 templates/sections/reuses.html:23
+msgid "See more"
+msgstr "Voir plus"
 
 #: templates/sections/last-post.html:7
 msgid "News in data"
 msgstr "L'actualité en données"
-
-#: templates/sections/latest-datasets.html:6
-msgid "Latest datasets"
-msgstr "Derniers jeux de données"
-
-#: templates/sections/latest-datasets.html:22
-#: templates/sections/latest-reuses.html:20
-msgid "See more"
-msgstr "Voir plus"
-
-#: templates/sections/latest-reuses.html:6
-msgid "Latest reuses"
-msgstr "Dernières réutilisations"
 
