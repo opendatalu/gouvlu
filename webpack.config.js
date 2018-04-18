@@ -18,8 +18,9 @@ const less_loader = ExtractTextPlugin.extract({
 
 module.exports = {
     entry: {
-        theme: 'theme',
         admin: 'admin',
+        oembed: 'oembed',
+        theme: 'theme',
     },
     output: {
         path: static_path,
