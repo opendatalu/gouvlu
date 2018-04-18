@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Add CSV Harvester [#86](https://github.com/opendatalu/gouvlu/pull/86)
 
 ## 1.0.3 (2018-04-25)
 
