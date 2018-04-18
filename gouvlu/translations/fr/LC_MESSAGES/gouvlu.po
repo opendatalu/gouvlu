@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-21 16:39+0100\n"
-"PO-Revision-Date: 2018-02-26 06:02-0500\n"
+"POT-Creation-Date: 2018-04-04 10:59+0200\n"
+"PO-Revision-Date: 2018-04-18 09:27-0400\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr ""
 #: gouvlu/templates/faq/citizen.html:5 gouvlu/templates/faq/developer.html:5
 #: gouvlu/templates/faq/home.html:5 gouvlu/templates/faq/producer.html:5
 #: gouvlu/templates/faq/reuser.html:5 gouvlu/templates/faq/system-integrator.html:5
-msgid "Questions fréquemment posées sur la plateforme data.gouv.fr"
+msgid "Questions fréquemment posées sur la plateforme data.public.lu"
 msgstr ""
 
 #: gouvlu/templates/faq/developer.html:4
