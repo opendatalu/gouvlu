@@ -19,8 +19,13 @@
                 height: 100%;
             }
 
-            @media (max-width: @grid-float-breakpoint-max) {
+            @media (min-width: @screen-sm-min) and (max-width: @grid-float-breakpoint-max) {
                 height: 60px;
+                padding: 5px;
+            }
+
+            @media (max-width: @screen-sm-max) {
+                height: 55px;
                 padding: 5px;
             }
 
@@ -32,17 +37,27 @@
             margin: 30px 0 0 @spacing;
             padding-left: @spacing;
             border-left: 1px solid @brand-primary;
-            width: 200px;
+            width: 275px;
             font-size: 22px;
             line-height: 23px;
+            white-space: pre-line;
 
-            @media (max-width: @grid-float-breakpoint-max) {
+            @media (min-width: @screen-sm-min) and (max-width: @grid-float-breakpoint-max) {
                 @spacing: 5px;
                 margin: 10px 0 0 @spacing;
                 padding-left: @spacing;
                 font-size: 18px;
                 line-height: 21px;
-                width: 180px;
+                width: 220px;
+            }
+
+            @media (max-width: @screen-sm-max) {
+                @spacing: 5px;
+                margin: 10px 0 0 @spacing;
+                padding-left: @spacing;
+                font-size: 16px;
+                line-height: 21px;
+                width: 190px;
             }
         }
     }
