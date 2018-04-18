@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: gouvlu 0.1.6.dev0\n"
+"Project-Id-Version: gouvlu 1.0.3.dev0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-21 16:39+0100\n"
+"POT-Creation-Date: 2018-04-04 10:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgstr ""
 #: gouvlu/templates/faq/citizen.html:5 gouvlu/templates/faq/developer.html:5
 #: gouvlu/templates/faq/home.html:5 gouvlu/templates/faq/producer.html:5
 #: gouvlu/templates/faq/reuser.html:5 gouvlu/templates/faq/system-integrator.html:5
-msgid "Questions fréquemment posées sur la plateforme data.gouv.fr"
+msgid "Questions fréquemment posées sur la plateforme data.public.lu"
 msgstr ""
 
 #: gouvlu/templates/faq/developer.html:4

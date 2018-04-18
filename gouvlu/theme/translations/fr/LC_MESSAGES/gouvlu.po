@@ -112,8 +112,8 @@ msgid "Toggle navigation"
 msgstr "Navigation"
 
 #: templates/header.html:18 templates/mobile-menu.html:6
-msgid "The luxembourgish data platform"
-msgstr "La plate-forme de données luxembourgeoise"
+msgid "The luxembourgish\n data platform"
+msgstr "La plate-forme de\n données luxembourgeoise"
 
 #: templates/header.html:40 templates/mobile-menu.html:39
 msgid "Browse by theme"
