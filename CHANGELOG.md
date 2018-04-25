@@ -1,5 +1,9 @@
 # Changelog
 
+## Current (in progress)
+
+- Nothing yet
+
 ## 1.0.3 (2018-04-25)
 
 - Add the missing topics theme
