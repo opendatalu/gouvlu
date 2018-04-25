@@ -1,6 +1,6 @@
 # Changelog
 
-## Current (in progress)
+## 1.0.3 (2018-04-25)
 
 - Add the missing topics theme
 - OEmbed cards theming [#80](https://github.com/opendatalu/gouvlu/pull/80)
