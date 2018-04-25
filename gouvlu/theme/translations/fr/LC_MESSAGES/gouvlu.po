@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-04-04 10:59+0200\n"
-"PO-Revision-Date: 2018-04-18 09:27-0400\n"
+"PO-Revision-Date: 2018-04-25 03:50-0400\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,7 @@ msgstr "Navigation"
 #: templates/header.html:18
 msgid "The luxembourgish\n"
 " data platform"
-msgstr ""
+msgstr "La plate-forme de données luxembourgeoise"
 
 #: templates/header.html:40 templates/mobile-menu.html:39
 msgid "Browse by theme"
