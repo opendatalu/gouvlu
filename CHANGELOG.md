@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Add Roadmap page [#88](https://github.com/opendatalu/gouvlu/pull/88)
 
 ## 1.0.4 (2018-05-08)
 

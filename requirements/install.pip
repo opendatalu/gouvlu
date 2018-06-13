@@ -1,2 +1,2 @@
-udata>=1.3.0
+udata==1.3.9
 feedparser
