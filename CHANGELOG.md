@@ -1,6 +1,6 @@
 # Changelog
 
-## Current (in progress)
+## 1.0.7 (2018-06-27)
 
 - Nothing yet
 
