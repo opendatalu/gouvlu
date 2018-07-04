@@ -1,6 +1,6 @@
 # Changelog
 
-## Current (in progress)
+## 1.0.8 (2018-07-04)
 
 - Fix worker bug
 - Update IGSS Harvester Source
