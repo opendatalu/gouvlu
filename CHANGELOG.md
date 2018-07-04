@@ -2,7 +2,8 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Fix worker bug
+- Update IGSS Harvester Source
 
 ## 1.0.7 (2018-06-27)
 
