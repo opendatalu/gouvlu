@@ -38,6 +38,11 @@ def strategy():
     return theme.render('strategy.html')
 
 
+@blueprint.route('/5yearplan/')
+def fiveyearplan():
+    return theme.render('5yearplan.html')
+
+
 @sitemap.register_generator
 def gouvlu_sitemap_urls():
     yield 'gouvlu.faq_redirect', {}, None, 'weekly', 1
