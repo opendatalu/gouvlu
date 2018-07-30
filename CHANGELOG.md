@@ -4,6 +4,19 @@
 
 - Nothing yet
 
+## 1.0.8 (2018-07-04)
+
+- Fix worker bug
+- Update IGSS Harvester Source
+
+## 1.0.7 (2018-06-27)
+
+- Nothing yet
+
+## 1.0.5 (2018-06-27)
+
+- Add Roadmap page [#88](https://github.com/opendatalu/gouvlu/pull/88)
+
 ## 1.0.4 (2018-05-08)
 
 - Add CSV Harvester [#86](https://github.com/opendatalu/gouvlu/pull/86)

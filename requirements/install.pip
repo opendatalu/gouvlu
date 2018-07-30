@@ -1,2 +1,4 @@
-udata>=1.3.0
+udata==1.3.12
 feedparser
+requests==2.18.4
+kombu==4.1.0
