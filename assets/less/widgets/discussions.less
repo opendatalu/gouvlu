@@ -1,15 +1,41 @@
 .discussion-threads {
-
+    @bg-color: @primary-bg;
+    @color: @brand-secondary;
+    
     .discussion-thread {
-        .list-group-item {
-            &.body-only {
-                border-top: none;
-                margin-top: -11px;
+        .shadow();
+
+        a {
+
+            .fa {
+                color: @brand-secondary;
+            }
+
+            &:hover .fa {
+                color: @brand-primary;
             }
         }
     }
+    
+    a.new-discussion {
+        height: 70px;
+        background: @bg-color;
+        border: 1px dashed @shadow-border-color;
+        padding: 8px;
+        
+        .format-label {
+            background: @color;
+            color: @bg-color;
+        }
 
-    p {
-        margin: 0 0 7px;
+        .list-group-item-heading {
+            font-size: 18px;
+        }
+
+        &:hover {
+            border-color: @brand-primary;
+            .format-label {background: @brand-primary}
+            .list-group-item-heading {color: @brand-primary}
+        }
     }
 }
