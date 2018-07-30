@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Upgrade to udata 1.4
 
 ## 1.0.8 (2018-07-04)
 
