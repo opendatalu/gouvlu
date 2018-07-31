@@ -1,5 +1,4 @@
 .card {
-    min-height: 145px;
     border-radius: 0.25rem;
     .shadow();
 
@@ -43,6 +42,7 @@
     }
 
     &.dataset-card {
+        min-height: 145px;
         border-bottom: 2px solid @brand-primary;
 
         &:hover {
@@ -50,119 +50,160 @@
         }
     }
 
+    &.resource-card {
+        border-color: @shadow-border-color;
+        
+        &.add {
+            border: 1px dashed @shadow-border-color;
+            
+            .card-logo {
+                font-size: 40px;
+                font-weight: bold;
+                background: @brand-secondary;
+                color: @primary-bg;
 
-    &.reuse-card.card--with-cover {
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        padding: 0;
-        height: @reuse-card-height;
+                span {
+                    // Fix font + alignment
+                    margin-top: -8px;
+                }
+            }
 
-        > * {
-            width: 100%;
-        }
-
-        .card-list.card-list--columned & {
-            height: @reuse-card-height;
+            h4 {
+                color: @color-inactive;
+                font-size: 18px;
+            }
         }
 
         &:hover {
-            .card-image {
-              filter: contrast(100%);
+            border-color: @brand-primary;
+
+            .card-logo {
+                background: @brand-primary;
             }
-        }
 
-        .card-image {
-            width: 100%;
-            height: 40%;
-            max-height: 40%;
-            overflow: hidden;
-
-            img {
-                object-fit: cover;
-                max-width: 100%;
-            }
-        }
-
-        .card-title {
-            color: @text-color;
-            line-height: 15px;
-            padding: @padding;
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .card-metadata {
-            list-style: none;
-            display: inline-flex;
-            padding: 0;
-            margin: 0;
-            color: @brand-primary;
-
-            .btn {
+            h4 {
                 color: @brand-primary;
-                font-size: 12px;
-                padding: 1px 5px;
-
-                .fa {
-                    color: darken(@brand-primary, 5%);
-                }
             }
         }
+    }
 
-        .card-body {
-            flex: 1 0;
-            padding: @padding;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
-        }
 
-        .author {
-            @avatar-size: 25px;
-            width: 100%;
-            padding: @padding;
+    &.reuse-card {
+        min-height: 145px;
+
+        &.card--with-cover {
             display: flex;
-            height: @avatar-size + 2 * @padding - 1;
-            line-height: 14px;
-
-            .avatar {
-                display: inline;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0;
+            height: @reuse-card-height;
+    
+            > * {
+                width: 100%;
             }
-
-            .author-body {
-                flex: 1 0;
-                display: block;
-                margin-left: @padding;
-                position: relative;
-                width: calc(100% - (@avatar-size + 2 *  @padding));
-
-                > * {
-                    display: block;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+    
+            .card-list.card-list--columned & {
+                height: @reuse-card-height;
+            }
+    
+            &:hover {
+                .card-image {
+                  filter: contrast(100%);
                 }
-
-                .user {
+            }
+    
+            .card-image {
+                width: 100%;
+                height: 40%;
+                max-height: 40%;
+                overflow: hidden;
+    
+                img {
+                    object-fit: cover;
+                    max-width: 100%;
+                }
+            }
+    
+            .card-title {
+                color: @text-color;
+                line-height: 15px;
+                padding: @padding;
+                margin: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+    
+            .card-metadata {
+                list-style: none;
+                display: inline-flex;
+                padding: 0;
+                margin: 0;
+                color: @brand-primary;
+    
+                .btn {
+                    color: @brand-primary;
                     font-size: 12px;
-                    font-weight: bold;
-                    line-height: 14px;
-                }
-
-                .date {
-                    font-size: 10px;
-                    line-height: 11px;
+                    padding: 1px 5px;
+    
+                    .fa {
+                        color: darken(@brand-primary, 5%);
+                    }
                 }
             }
-
-
-        }
-
-        footer {
-            padding: @padding
+    
+            .card-body {
+                flex: 1 0;
+                padding: @padding;
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+            }
+    
+            .author {
+                @avatar-size: 25px;
+                width: 100%;
+                padding: @padding;
+                display: flex;
+                height: @avatar-size + 2 * @padding - 1;
+                line-height: 14px;
+    
+                .avatar {
+                    display: inline;
+                }
+    
+                .author-body {
+                    flex: 1 0;
+                    display: block;
+                    margin-left: @padding;
+                    position: relative;
+                    width: calc(100% - (@avatar-size + 2 *  @padding));
+    
+                    > * {
+                        display: block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+    
+                    .user {
+                        font-size: 12px;
+                        font-weight: bold;
+                        line-height: 14px;
+                    }
+    
+                    .date {
+                        font-size: 10px;
+                        line-height: 11px;
+                    }
+                }
+    
+    
+            }
+    
+            footer {
+                padding: @padding
+            }
         }
     }
 }

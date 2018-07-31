@@ -4,6 +4,10 @@
 
 - Nothing yet
 
+## 1.1.0 (2018-07-31)
+
+- Upgrade to udata 1.4
+
 ## 1.0.8 (2018-07-04)
 
 - Fix worker bug
