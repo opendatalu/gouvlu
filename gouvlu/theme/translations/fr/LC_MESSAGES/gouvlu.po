@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-06-13 15:43+0200\n"
-"PO-Revision-Date: 2018-07-25 07:40\n"
+"PO-Revision-Date: 2018-07-31 09:07\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr "Stratégie des données ouvertes"
 
 #: __init__.py:38
 msgid "Open Data Road Map"
-msgstr ""
+msgstr "Feuille de route de données ouvertes"
 
 #: __init__.py:39
 msgid "Terms of use"
