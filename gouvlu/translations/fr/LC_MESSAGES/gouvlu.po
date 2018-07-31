@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-06-13 15:43+0200\n"
-"PO-Revision-Date: 2018-07-25 07:40\n"
+"PO-Revision-Date: 2018-07-31 09:07\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: gouvlu/templates/5yearplan.html:4
 msgid "Luxembourg's Open Data Roadmap"
-msgstr ""
+msgstr "Feuille de route des données ouvertes luxembourgeoises"
 
 #: gouvlu/templates/5yearplan.html:7
 msgid "road map"
-msgstr ""
+msgstr "feuille de route"
 
 #: gouvlu/templates/publishing.html:5
 msgid "Luxembourg's open data publication guidelines"
@@ -55,31 +55,31 @@ msgstr "utilisation"
 
 #: gouvlu/templates/faq/citizen.html:4
 msgid "Découvrir l’OpenData en tant que citoyen - FAQ"
-msgstr ""
+msgstr "Découvrir l'OpenData en tant que citoyen - FAQ"
 
 #: gouvlu/templates/faq/citizen.html:5 gouvlu/templates/faq/developer.html:5
 #: gouvlu/templates/faq/home.html:5 gouvlu/templates/faq/producer.html:5
 #: gouvlu/templates/faq/reuser.html:5 gouvlu/templates/faq/system-integrator.html:5
 msgid "Questions fréquemment posées sur la plateforme data.public.lu"
-msgstr ""
+msgstr "Questions fréquemment posées sur la plateforme data.public.lu"
 
 #: gouvlu/templates/faq/developer.html:4
 msgid "Découvrir l’OpenData en tant que développeur - FAQ"
-msgstr ""
+msgstr "Découvrir l'OpenData en tant que développeur - FAQ"
 
 #: gouvlu/templates/faq/home.html:4
 msgid "Découvrir l’OpenData - FAQ"
-msgstr ""
+msgstr "Découvrir l'OpenData - FAQ"
 
 #: gouvlu/templates/faq/producer.html:4
 msgid "Découvrir l’OpenData en tant que producteur - FAQ"
-msgstr ""
+msgstr "Découvrir l'OpenData en tant que producteur - FAQ"
 
 #: gouvlu/templates/faq/reuser.html:4
 msgid "Découvrir l’OpenData en tant que réutilisateur - FAQ"
-msgstr ""
+msgstr "Découvrir l'OpenData en tant que réutilisateur - FAQ"
 
 #: gouvlu/templates/faq/system-integrator.html:4
 msgid "Découvrir l’OpenData en tant qu’intégrateur - FAQ"
-msgstr ""
+msgstr "Découvrir l'OpenData en tant qu'intégrateur - FAQ"
 
