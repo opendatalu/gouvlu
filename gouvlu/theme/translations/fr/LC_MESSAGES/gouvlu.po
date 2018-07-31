@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: udata-gouvlu\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-04 10:59+0200\n"
-"PO-Revision-Date: 2018-04-25 03:50-0400\n"
+"POT-Creation-Date: 2018-06-13 15:43+0200\n"
+"PO-Revision-Date: 2018-07-31 09:07\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
+"Generated-By: Babel 2.5.3\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: udata-gouvlu\n"
@@ -66,6 +66,10 @@ msgid "Open Data Strategy"
 msgstr "Stratégie des données ouvertes"
 
 #: __init__.py:38
+msgid "Open Data Road Map"
+msgstr "Feuille de route de données ouvertes"
+
+#: __init__.py:39
 msgid "Terms of use"
 msgstr "Conditions générales d'utilisation"
 
