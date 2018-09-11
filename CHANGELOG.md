@@ -1,6 +1,6 @@
 # Changelog
 
-## Current (in progress)
+## 1.1.1 (2018-09-11)
 
 - Upgrade to udata 1.5.3
 
