@@ -99,3 +99,4 @@ ENV/
 # assets
 /node_modules
 /gouvlu/theme/static/
+/gouvlu/theme/manifest.json

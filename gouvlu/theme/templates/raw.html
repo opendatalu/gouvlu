@@ -24,6 +24,11 @@
 <meta name="theme-color" content="{{ current_theme.info.color }}">
 {% endblock %}
 
+{% block theme_css %}
+{{ super() }}
+<link href="{{ manifest('theme', 'theme.css') }}" rel="stylesheet">
+{% endblock %}
+
 
 {% block extra_js %}
 {{ super() }}

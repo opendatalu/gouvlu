@@ -2,7 +2,8 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Use an assets manifest for improved caching [#102](https://github.com/opendatalu/gouvlu/pull/102)
+- Expose theme assets for udata 1.6 [#102](https://github.com/opendatalu/gouvlu/pull/102)
 
 ## 1.1.1 (2018-09-11)
 
