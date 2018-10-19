@@ -4,8 +4,11 @@ const path = require('path');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ManifestPlugin = require('webpack-manifest-plugin');
 
-const static_path = path.resolve('./gouvlu/theme/static');
+const public_path = '/_themes/gouvlu/';
+const theme_path = path.resolve('./gouvlu/theme');
+const static_path = path.join(theme_path, 'static');
 const source_path = path.resolve('./assets');
 
 module.exports = function(env, argv) {
@@ -18,8 +21,9 @@ module.exports = function(env, argv) {
         },
         output: {
             path: static_path,
-            publicPath: "/_themes/gouvlu/",
-            filename: "[name].js"
+            publicPath: public_path,
+            filename: "[name].[hash].js",
+            chunkFilename: 'chunks/[id].[hash].js'
         },
         resolve: {
             modules: [
@@ -35,15 +39,21 @@ module.exports = function(env, argv) {
                     {loader: 'less-loader', options: {sourceMap: true}},
                 ]},
                 {test: /img\/.*\.(jpg|jpeg|png|gif|svg)$/, loader: 'file-loader', options: {
-                    name: '[path][name].[ext]?[hash]', context: source_path
+                    name: '[path][name].[ext]', context: source_path
                 }},
             ]
         },
         devtool: isProd ? 'source-map' : 'eval',
         plugins: [
+            new ManifestPlugin({
+                fileName: path.join(theme_path, 'manifest.json'),
+                // Filter out chunks and source maps
+                filter: ({name, isInitial, isChunk}) => !name.endsWith('.map') && (isInitial || !isChunk),
+                publicPath: public_path,
+            }),
             new MiniCssExtractPlugin({
-                filename: "[name].css",
-                chunkFilename: "[id].css"
+                filename: '[name].[hash].css',
+                chunkFilename: '[id].[hash].css',
             }),
         ]
     };

@@ -1,5 +1,5 @@
 {% extends 'oembed.html' %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{ theme_static('oembed.css', external=True) }}" />
+<link href="{{ manifest('theme', 'oembed.css', external=True) }}" rel="stylesheet">
 {% endblock %}
