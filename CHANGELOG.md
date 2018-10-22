@@ -1,6 +1,6 @@
 # Changelog
 
-## Current (in progress)
+## 1.1.2 (2018-10-22)
 
 - Use an assets manifest for improved caching [#102](https://github.com/opendatalu/gouvlu/pull/102)
 - Expose theme assets for udata 1.6 [#102](https://github.com/opendatalu/gouvlu/pull/102)
