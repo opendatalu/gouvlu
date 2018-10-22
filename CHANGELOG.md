@@ -1,5 +1,9 @@
 # Changelog
 
+## Current (in progress)
+
+- Nothing yet
+
 ## 1.1.2 (2018-10-22)
 
 - Use an assets manifest for improved caching [#102](https://github.com/opendatalu/gouvlu/pull/102)
