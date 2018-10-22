@@ -1,6 +1,6 @@
 # Changelog
 
-## Current (in progress)
+## 1.1.3 (2018-10-22)
 
 - Nothing yet
 
