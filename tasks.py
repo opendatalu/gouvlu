@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals, absolute_import
-
 import os
 import sys
 
@@ -123,7 +120,7 @@ def qa(ctx):
         else:
             success('No lint to fix')
         info('Ensure PyPI can render README and CHANGELOG')
-        readme_results = ctx.run('python setup.py check -r -s', pty=True, warn=True, hide=True)
+        readme_results = ctx.run('python setup.py check -m -s', pty=True, warn=True, hide=True)
         if readme_results.failed:
             print(readme_results.stdout)
             error('README and/or CHANGELOG is not renderable by PyPI')

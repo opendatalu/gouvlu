@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from udata.harvest.backends.base import BaseBackend
 from udata.models import Resource
 from urllib import urlencode
