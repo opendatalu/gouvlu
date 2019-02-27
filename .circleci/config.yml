@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Install some tools
           command: |
-            apk add --update ca-certificates openssl jq fontconfig-dev
+            apk add --update ca-certificates openssl jq fontconfig-dev git
             update-ca-certificates
             wget -q -O- "https://github.com/dustinblackman/phantomized/releases/download/2.1.1a/dockerized-phantomjs.tar.gz" | tar xz -C /
             wget https://raw.githubusercontent.com/opendatateam/udata-dockers/2-alpine/circleci/.bashrc
