@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Migrate to udata 2.0 (and python3 🐍) [#110](https://github.com/opendatalu/gouvlu/pull/110)
 
 ## 1.1.6 (2018-10-23)
 

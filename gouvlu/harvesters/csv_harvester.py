@@ -1,16 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from udata.harvest.backends.base import BaseBackend
 from udata.models import Resource, License
 import csv
-import urllib2
-
-
-class UnicodeDictReader(csv.DictReader, object):
-    def next(self):
-        row = super(UnicodeDictReader, self).next()
-        return {unicode(key, 'utf-8'): unicode(value, 'utf-8') for key, value in row.iteritems()}
+import urllib
 
 
 class CSVBackend(BaseBackend):
@@ -18,8 +9,8 @@ class CSVBackend(BaseBackend):
 
     def initialize(self):
         self.items = []
-        response = urllib2.urlopen(self.source.url)
-        for row in UnicodeDictReader(response):
+        response = urllib.urlopen(self.source.url)
+        for row in csv.DictReader(response):
             self.items.append(row)
         datasets = self.__get_datasets(self.items)
 

@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from udata import theme
 from udata.i18n import I18nBlueprint
 from udata.sitemap import sitemap

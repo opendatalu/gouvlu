@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import io
 import os
 import re
@@ -106,6 +105,7 @@ setup(
     author_email='info@data.public.lu',
     packages=find_packages(),
     include_package_data=True,
+    python_requires='>=3.5',
     install_requires=install_requires,
     tests_require=tests_require,
     extras_require={

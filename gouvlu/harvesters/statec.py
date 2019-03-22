@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from udata.harvest.backends.base import BaseBackend
 from udata.models import Resource
-from urllib import urlencode
+from urllib.parse import urlencode
 import feedparser
-import urlparse
+from urllib.parse import urlparse
 
 
 class StatecBackend(BaseBackend):
