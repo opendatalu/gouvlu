@@ -1,7 +1,7 @@
 from udata.harvest.backends.base import BaseBackend
 from udata.models import Resource, License
 import csv
-import urllib2
+import urllib
 
 
 class CSVBackend(BaseBackend):
@@ -9,7 +9,7 @@ class CSVBackend(BaseBackend):
 
     def initialize(self):
         self.items = []
-        response = urllib2.urlopen(self.source.url)
+        response = urllib.urlopen(self.source.url)
         for row in csv.DictReader(response):
             self.items.append(row)
         datasets = self.__get_datasets(self.items)
