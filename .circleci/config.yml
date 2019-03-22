@@ -4,7 +4,7 @@ version: 2
 jobs:
   python:
     docker:
-      - image: udata/circleci
+      - image: udata/circleci:2-alpine
       - image: mongo:3.2
       - image: redis
       - image: udata/elasticsearch:2.4.5
@@ -13,21 +13,30 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Compute Python dependencies key
+          command: cat requirements/*.pip > python.deps
+      - run:
           name: Get the base reference branch
           command: export BASE_BRANCH=$(base_branch)
       - restore_cache:
           keys:
-          - py-cache-v3-{{ arch }}-{{ .Branch }}
-          - py-cache-v3-{{ arch }}-{{ .Environment.BASE_BRANCH }}
+          - py-v4-{{ arch }}-{{ checksum "python.deps" }}
+          - py-v4-{{ arch }}-{{ .Branch }}
+          - py-v4-{{ arch }}-{{ .Environment.BASE_BRANCH }}
       - run:
           name: Install python dependencies
           command: |
-            virtualenv venv
+            python -m venv venv
             source venv/bin/activate
+            pip install -U pip
             pip install -e . || pip install -e .
             pip install -r requirements/develop.pip || pip install -r requirements/develop.pip
       - save_cache:
-          key: py-cache-v3-{{ arch }}-{{ .Branch }}
+          key: py-v4-{{ arch }}-{{ checksum "python.deps" }}
+          paths:
+          - venv
+      - save_cache:
+          key: py-v4-{{ arch }}-{{ .Branch }}
           paths:
           - venv
       - run:
@@ -48,11 +57,17 @@ jobs:
 
   assets:
     docker:
-      - image: udata/circleci
-    environment:
-       BASH_ENV: /root/.bashrc
+      - image: node:8-alpine
     steps:
       - checkout
+      - run:
+          name: Install some tools
+          command: |
+            apk add --update ca-certificates openssl jq fontconfig-dev git
+            update-ca-certificates
+            wget -q -O- "https://github.com/dustinblackman/phantomized/releases/download/2.1.1a/dockerized-phantomjs.tar.gz" | tar xz -C /
+            wget https://raw.githubusercontent.com/opendatateam/udata-dockers/2-alpine/circleci/.bashrc
+            . .bashrc
       - run:
           name: Compute JS dependencies key
           command: cat .nvmrc package.json > js.deps
@@ -61,26 +76,23 @@ jobs:
           command: export BASE_BRANCH=$(base_branch)
       - restore_cache:
           keys:
-            - js-cache-{{ arch }}-{{ checksum "js.deps" }}
-            - js-cache-{{ arch }}-{{ .Branch }}
-            - js-cache-{{ arch }}-{{ .Environment.BASE_BRANCH }}
+            - js-v1-{{ arch }}-{{ checksum "js.deps" }}
+            - js-v1-{{ arch }}-{{ .Branch }}
+            - js-v1-{{ arch }}-{{ .Environment.BASE_BRANCH }}
       - run:
           name: Install NodeJS and dependencies
-          command: nvm install && npm install
+          command: npm install
       - save_cache:
-          key: js-cache-{{ arch }}-{{ checksum "js.deps" }}
+          key: js-v1-{{ arch }}-{{ checksum "js.deps" }}
           paths:
           - node_modules
       - save_cache:
-          key: js-cache-{{ arch }}-{{ .Branch }}
+          key: js-v1-{{ arch }}-{{ .Branch }}
           paths:
           - node_modules
       - run:
           name: Compile assets
-          command: |
-            nvm use
-            npm run build
-
+          command: npm run build
       - persist_to_workspace:
           root: .
           paths:
@@ -88,7 +100,7 @@ jobs:
 
   dist:
     docker:
-      - image: udata/circleci
+      - image: udata/circleci:2-alpine
     environment:
        BASH_ENV: /root/.bashrc
     steps:
@@ -99,8 +111,6 @@ jobs:
           name: Build a distributable package
           command: |
             source venv/bin/activate
-            # Check long description renders properly
-            python setup.py check -r -s
             # Build a wheel release
             if [[ $CIRCLE_TAG ]]; then
                 # This is a tagged release
@@ -121,7 +131,7 @@ jobs:
 
   publish:
     docker:
-      - image: udata/circleci
+      - image: udata/circleci:2-alpine
     steps:
       - attach_workspace:
           at: .
@@ -134,15 +144,13 @@ jobs:
 
   github:
     docker:
-      - image: udata/circleci
-    environment:
-       BASH_ENV: /root/.bashrc
+      - image: apihackers/ghr
     steps:
       - attach_workspace:
           at: .
       - run:
           name: Upload github release
-          command: gh_release
+          command: -t ${GITHUB_OAUTH_TOKEN} ${CIRCLE_TAG} dist
 
 workflows:
   version: 2
@@ -150,10 +158,26 @@ workflows:
     jobs:
       - python:
           filters:
+            branches:
+              only:
+                - master
+                - /[0-9]+(\.[0-9]+)+/
+                - /pull/[0-9]+/
+                - /pyup-update-.+/
+                - l10n_master
+                - /py3(-.*)?/
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
       - assets:
           filters:
+            branches:
+              only:
+                - master
+                - /[0-9]+(\.[0-9]+)+/
+                - /pull/[0-9]+/
+                - /pyup-update-.+/
+                - l10n_master
+                - /py3(-.*)?/
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
       - dist:
@@ -161,6 +185,14 @@ workflows:
             - python
             - assets
           filters:
+            branches:
+              only:
+                - master
+                - /[0-9]+(\.[0-9]+)+/
+                - /pull/[0-9]+/
+                - /pyup-update-.+/
+                - l10n_master
+                - /py3(-.*)?/
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
       - publish:
