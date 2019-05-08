@@ -1,6 +1,6 @@
 # Changelog
 
-## Current (in progress)
+## 1.1.10 (2019-05-08)
 
 - Nothing yet
 
