@@ -4,6 +4,14 @@
 
 - Nothing yet
 
+## 1.1.9 (2019-05-07)
+
+- Nothing yet
+
+## 1.1.8 (2019-05-07)
+
+- Nothing yet
+
 ## 1.1.7 (2018-11-13)
 
 - Nothing yet

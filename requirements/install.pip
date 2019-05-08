@@ -1,3 +1,7 @@
 udata==1.6.6
 feedparser
+<<<<<<< HEAD
 requests==2.21.0
+=======
+#requests==2.21.1
+>>>>>>> ca0106fad69ec760c7b1bc90d88dcb03362ce1cc
