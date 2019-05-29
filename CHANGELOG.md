@@ -1,6 +1,14 @@
 # Changelog
 
-## Current (in progress)
+## 1.1.12 (2019-05-27)
+
+- Nothing yet
+
+## 1.1.11 (2019-05-15)
+
+- Nothing yet
+
+## 1.1.10 (2019-05-08)
 
 - Nothing yet
 
