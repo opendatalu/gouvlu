@@ -19,7 +19,7 @@ class StatecBackend(BaseBackend):
 
         for category in categories:
             resources = self.__get_category_resources(items, category)
-            self.add_item(category, title=category, resources=resources)
+            self.add_item(category.encode('utf-8'), title=category, resources=resources)
 
     def __get_categories(self, items):
         categories = []
