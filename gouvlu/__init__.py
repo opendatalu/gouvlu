@@ -4,5 +4,5 @@ Official udata theme and extensions of the Open Data Portal of Luxembourg
 '''
 from __future__ import unicode_literals
 
-__version__ = '1.1.14'
+__version__ = '1.1.15.dev'
 __description__ = 'Official udata theme and extensions of the Open Data Portal of Luxembourg'
