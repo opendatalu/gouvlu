@@ -1,4 +1,4 @@
-#udata version 1.6.12
+#udata version update
 udata==1.6.12
 feedparser
 requests==2.21.0
