@@ -38,12 +38,66 @@ class StatecBackend(BaseBackend):
                 if item['category'] == category:
                     resource = {
                             'title': item['title'],
-                            'link': item['link']
+                            'url': item['link']
                     }
                     resources.append(resource)
             except KeyError:
                 pass
         return resources
+
+    def __dataset_exists(self,title, existing_dataset):
+        if title == existing_dataset['title']:
+            if existing_dataset['deleted'] is None:
+                print(title + ' exists')
+                return True
+            else:
+                print(title + ' exists but is deleted')
+                return False
+        return False
+
+    def __intersect(self, a, b):
+        # return the intersection of two lists
+        return list(set(a) & set(b))
+
+    # returns similarity value by intersecting the lists and compare the length of the lists (return value 0-1)
+    def __get_similarity_value(self, originalList, otherList):
+        intersected_list = self.__intersect(originalList, otherList)
+        return (len(intersected_list)/len(originalList))
+
+    def __update_resources(self, item, existing_dataset):
+        kwargs = item.kwargs
+
+        dataset_exists = self.__dataset_exists(kwargs['title'], existing_dataset)
+
+        new_resources = []
+
+        if dataset_exists:
+            existing_resources = existing_dataset["resources"]
+
+            updated_resources = kwargs['resources']
+
+            for updated_resource in updated_resources:
+                updated_resource_title_list = updated_resource['title'].split()
+                updated_resource_title_list = list(set(updated_resource_title_list))
+
+                for existing_resource in existing_resources:
+                    existing_resource_title_list = existing_resource['title'].split()
+                    existing_resource_title_list = list(set(existing_resource_title_list))
+
+                    similarity = self.__get_similarity_value(updated_resource_title_list, existing_resource_title_list)
+
+                    if similarity >= 0.80:
+                        updated_resources['format'] = existing_resource['format']
+                        new_resources.append(updated_resource)
+                        existing_resources.remove(existing_resource)
+                        break
+                    pass
+                pass
+
+            new_resources = new_resources + existing_resources
+            return new_resources
+
+        return updated_resources
 
     def process(self, item):
         dataset = self.get_dataset(item.remote_id)
@@ -55,12 +109,10 @@ class StatecBackend(BaseBackend):
         # - store extra significant data in the `extra` attribute
         # - map resources data
 
-        kwargs = item.kwargs
-        dataset.title = kwargs['title']
-        dataset.tags = ["statec-harvesting"]
-        resources = kwargs['resources']
+        dataset.tags = ["statec-harvesting"] + dataset.tags
+        resources = self.__update_resources(item, dataset)
 
-        description = u"Ce jeu de données contient: <br>"
+        description = u"This dataset includes the following resource(s): <br>"
         for resource in resources:
             description += resource['title'] + "<br>"
         description += "<br>---------------------------------------"
@@ -72,7 +124,7 @@ class StatecBackend(BaseBackend):
         # Force recreation of all resources
         dataset.resources = []
         for resource in resources:
-            url = resource['link']
+            url = resource['url']
             url = url.replace('tableView', 'download')
             params = {
                 'IF_DOWNLOADFORMAT': 'csv',
@@ -87,9 +139,10 @@ class StatecBackend(BaseBackend):
 
             new_resource = Resource(
                 title=resource['title'],
+                description=resource['title'],
                 url=download_url,
                 filetype='remote',
-                format='csv'
+                format=resource['format']
             )
             if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:  # noqa
                 dataset.resources.append(new_resource)
