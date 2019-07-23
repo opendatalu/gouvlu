@@ -92,7 +92,10 @@ class StatecBackend(BaseBackend):
                     pass
                 pass
 
-            new_resources = new_resources + existing_resources
+            for exisiting_resource in existing_resources:
+                new_resources.append(exisiting_resource)
+                pass
+
             return new_resources
 
         return updated_resources
@@ -140,7 +143,7 @@ class StatecBackend(BaseBackend):
                 description=resource['title'],
                 url=download_url,
                 filetype='remote',
-                format=resource['format']
+                # format=resource['format'] TODO KeyError u
             )
             if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:  # noqa
                 dataset.resources.append(new_resource)
