@@ -67,12 +67,12 @@ class StatecBackend(BaseBackend):
     def __update_resources(self, item, existing_dataset):
         kwargs = item.kwargs
 
-        dataset_exists = self.__dataset_exists(kwargs['title'], existing_dataset)
+        dataset_exists = self.__dataset_exists(kwargs['title'].encode('utf-8'), existing_dataset)
 
         new_resources = []
 
         if dataset_exists:
-            existing_resources = existing_dataset["resources"]
+            existing_resources = existing_dataset['resources']
 
             updated_resources = kwargs['resources']
 
@@ -90,7 +90,6 @@ class StatecBackend(BaseBackend):
                         updated_resources['format'] = existing_resource['format']
                         new_resources.append(updated_resource)
                         existing_resources.remove(existing_resource)
-                        break
                     pass
                 pass
 
