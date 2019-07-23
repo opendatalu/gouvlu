@@ -70,11 +70,10 @@ class StatecBackend(BaseBackend):
         dataset_exists = self.__dataset_exists(kwargs['title'].encode('utf-8'), existing_dataset)
 
         new_resources = []
+        updated_resources = kwargs['resources']
 
         if dataset_exists:
             existing_resources = existing_dataset['resources']
-
-            updated_resources = kwargs['resources']
 
             for updated_resource in updated_resources:
                 updated_resource_title_list = updated_resource['title'].split()
@@ -87,7 +86,7 @@ class StatecBackend(BaseBackend):
                     similarity = self.__get_similarity_value(updated_resource_title_list, existing_resource_title_list)
 
                     if similarity >= 0.80:
-                        updated_resources['format'] = existing_resource['format']
+                        updated_resource['format'] = existing_resource['format']
                         new_resources.append(updated_resource)
                         existing_resources.remove(existing_resource)
                     pass
