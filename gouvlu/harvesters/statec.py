@@ -55,14 +55,33 @@ class StatecBackend(BaseBackend):
                 return False
         return False
 
-    def __intersect(self, a, b):
-        # return the intersection of two lists
-        return list(set(a) & set(b))
+    # Take a string and return a list of bigrams.
+    def __get_bigrams(self, string):
+        s = string.lower()
+        return [s[i:i+2] for i in list(range(len(s) - 1))]
 
-    # returns similarity value by intersecting the lists and compare the length of the lists (return value 0-1)
-    def __get_similarity_value(self, originalList, otherList):
-        intersected_list = self.__intersect(originalList, otherList)
-        return (len(intersected_list)/len(originalList))
+    # Perform bigram comparison between two strings and return a percentage match in decimal form.
+    def __string_similarity(self, str1, str2):
+        pairs1 = self.__get_bigrams(str1)
+        pairs2 = self.__get_bigrams(str2)
+        union  = len(pairs1) + len(pairs2)
+        hit_count = 0
+        for x in pairs1:
+            for y in pairs2:
+                if x == y:
+                    hit_count += 1
+                    break
+        return (2.0 * hit_count) / union
+
+
+    # def __intersect(self, a, b):
+    #     # return the intersection of two lists
+    #     return list(set(a) & set(b))
+
+    # # returns similarity value by intersecting the lists and compare the length of the lists (return value 0-1)
+    # def __get_similarity_value(self, originalList, otherList):
+    #     intersected_list = self.__intersect(originalList, otherList)
+    #     return (len(intersected_list)/len(originalList))
 
     def __update_resources(self, item, existing_dataset):
         kwargs = item.kwargs
@@ -75,38 +94,66 @@ class StatecBackend(BaseBackend):
         if dataset_exists:
             existing_resources = existing_dataset['resources']
 
-            newDict = []
-            for existing_resource in existing_resources:
-                resource_title = existing_resource['title']
-                newDict.append(resource_title)
-                pass
-
-            print(kwargs['title'] + " / " + newDict)
-
             for updated_resource in updated_resources:
-                updated_resource_title_list = updated_resource['title'].split()
-                updated_resource_title_list = list(set(updated_resource_title_list))
+                updated_resource_title = updated_resource['title']
 
                 for existing_resource in existing_resources:
-                    existing_resource_title_list = existing_resource['title'].split()
-                    existing_resource_title_list = list(set(existing_resource_title_list))
+                    existing_resource_title = existing_resource['title']
 
-                    similarity = self.__get_similarity_value(updated_resource_title_list, existing_resource_title_list)
+                    similarity = self.__string_similarity(updated_resource_title, existing_resource_title)
 
-                    if similarity >= 0.80:
+                    # Titles are more than 90% the same and therefore qualifie for an update
+                    if similarity >= 0.90:
                         updated_resource['format'] = existing_resource['format']
                         new_resources.append(updated_resource)
                         existing_resources.remove(existing_resource)
-                    pass
                 pass
+
+            pass
 
             for exisiting_resource in existing_resources:
                 new_resources.append(exisiting_resource)
-                pass
+            pass
 
             return new_resources
 
         return updated_resources
+
+        # if dataset_exists:
+        #     existing_resources = existing_dataset['resources']
+
+        #     newDict = []
+        #     for existing_resource in existing_resources:
+        #         resource_title = existing_resource['title']
+        #         newDict.append(resource_title)
+        #         pass
+
+        #     print(kwargs['title'] + " / " + newDict)
+
+        #     for updated_resource in updated_resources:
+        #         updated_resource_title_list = updated_resource['title'].split()
+        #         updated_resource_title_list = list(set(updated_resource_title_list))
+
+        #         for existing_resource in existing_resources:
+        #             existing_resource_title_list = existing_resource['title'].split()
+        #             existing_resource_title_list = list(set(existing_resource_title_list))
+
+        #             similarity = self.__get_similarity_value(updated_resource_title_list, existing_resource_title_list)
+
+        #             if similarity >= 0.80:
+        #                 updated_resource['format'] = existing_resource['format']
+        #                 new_resources.append(updated_resource)
+        #                 existing_resources.remove(existing_resource)
+        #             pass
+        #         pass
+
+        #     for exisiting_resource in existing_resources:
+        #         new_resources.append(exisiting_resource)
+        #         pass
+
+        #     return new_resources
+
+        # return updated_resources
 
     def process(self, item):
         dataset = self.get_dataset(item.remote_id)
