@@ -77,7 +77,7 @@ class StatecBackend(BaseBackend):
 
             newDict = []
             for existing_resource in existing_resources:
-                resource_title = existing_resources['title']
+                resource_title = existing_resource['title']
                 newDict.append(resource_title)
                 pass
 
