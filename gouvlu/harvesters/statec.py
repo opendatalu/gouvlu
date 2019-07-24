@@ -47,13 +47,8 @@ class StatecBackend(BaseBackend):
 
     # Check if a dataset already exists
     def __dataset_exists(self,title, existing_dataset):
-        test = "FALSE"
-        exisiting_dataset_title = existing_dataset['title']
-
-        print(title + " == " + exisiting_dataset_title)
-
+        exisiting_dataset_title = existing_dataset.title
         if title == exisiting_dataset_title:
-            test = "TRUE"
             if existing_dataset['deleted'] is None:
                 return True
             else:
@@ -145,7 +140,14 @@ class StatecBackend(BaseBackend):
             dataset.title = item.kwargs['title']
             pass
 
-        dataset.tags = [u"statec-harvesting"] + dataset.tags
+        tags = []
+        for tag in dataset.tags:
+            tags.append(tag)
+            pass
+
+        tags.append("statec-harvesting")
+
+        dataset.tags = tags
         resources = self.__update_resources(item, dataset)
 
         # Rebuild the dataset description
