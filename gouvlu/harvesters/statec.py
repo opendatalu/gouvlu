@@ -73,16 +73,6 @@ class StatecBackend(BaseBackend):
                     break
         return (2.0 * hit_count) / union
 
-
-    # def __intersect(self, a, b):
-    #     # return the intersection of two lists
-    #     return list(set(a) & set(b))
-
-    # # returns similarity value by intersecting the lists and compare the length of the lists (return value 0-1)
-    # def __get_similarity_value(self, originalList, otherList):
-    #     intersected_list = self.__intersect(originalList, otherList)
-    #     return (len(intersected_list)/len(originalList))
-
     def __update_resources(self, item, existing_dataset):
         kwargs = item.kwargs
 
@@ -104,56 +94,32 @@ class StatecBackend(BaseBackend):
 
                     # Titles are more than 90% the same and therefore qualifie for an update
                     if similarity >= 0.90:
-                        updated_resource['format'] = existing_resource['format']
-                        new_resources.append(updated_resource)
+
+                        new_resource = {
+                            'title': updated_resource['title'],
+                            'url': updated_resource['url'],
+                            'format': existing_resource['format']
+                        }
+                        new_resources.append(new_resource)
                         existing_resources.remove(existing_resource)
                 pass
 
             pass
 
             for exisiting_resource in existing_resources:
-                new_resources.append(exisiting_resource)
+                new_resource = {
+                    'title': exisiting_resource['title'],
+                    'url': exisiting_resource['url'],
+                    'format': exisiting_resource['format']
+                }
+                new_resources.append(new_resource)
             pass
+
+
 
             return new_resources
 
         return updated_resources
-
-        # if dataset_exists:
-        #     existing_resources = existing_dataset['resources']
-
-        #     newDict = []
-        #     for existing_resource in existing_resources:
-        #         resource_title = existing_resource['title']
-        #         newDict.append(resource_title)
-        #         pass
-
-        #     print(kwargs['title'] + " / " + newDict)
-
-        #     for updated_resource in updated_resources:
-        #         updated_resource_title_list = updated_resource['title'].split()
-        #         updated_resource_title_list = list(set(updated_resource_title_list))
-
-        #         for existing_resource in existing_resources:
-        #             existing_resource_title_list = existing_resource['title'].split()
-        #             existing_resource_title_list = list(set(existing_resource_title_list))
-
-        #             similarity = self.__get_similarity_value(updated_resource_title_list, existing_resource_title_list)
-
-        #             if similarity >= 0.80:
-        #                 updated_resource['format'] = existing_resource['format']
-        #                 new_resources.append(updated_resource)
-        #                 existing_resources.remove(existing_resource)
-        #             pass
-        #         pass
-
-        #     for exisiting_resource in existing_resources:
-        #         new_resources.append(exisiting_resource)
-        #         pass
-
-        #     return new_resources
-
-        # return updated_resources
 
     def process(self, item):
         dataset = self.get_dataset(item.remote_id)
@@ -185,24 +151,27 @@ class StatecBackend(BaseBackend):
         dataset.resources = []
         for resource in resources:
             url = resource['url']
-            url = url.replace('tableView', 'download')
-            params = {
-                'IF_DOWNLOADFORMAT': 'csv',
-                'IF_DOWNLOAD_ALL_ITEMS': 'yes'
-            }
+            download_url = url
 
-            url_parts = list(urlparse.urlparse(url))
-            query = dict(urlparse.parse_qsl(url_parts[4]))
-            query.update(params)
-            url_parts[4] = urlencode(query)
-            download_url = urlparse.urlunparse(url_parts)
+            if resource['format'] == 'csv':
+                url = url.replace('tableView', 'download')
+                params = {
+                    'IF_DOWNLOADFORMAT': 'csv',
+                    'IF_DOWNLOAD_ALL_ITEMS': 'yes'
+                }
+
+                url_parts = list(urlparse.urlparse(url))
+                query = dict(urlparse.parse_qsl(url_parts[4]))
+                query.update(params)
+                url_parts[4] = urlencode(query)
+                download_url = urlparse.urlunparse(url_parts)
 
             new_resource = Resource(
                 title=resource['title'],
                 description=resource['title'],
                 url=download_url,
                 filetype='remote',
-                # format=resource['format'] TODO KeyError u
+                format=resource['format']
             )
             if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:  # noqa
                 dataset.resources.append(new_resource)
