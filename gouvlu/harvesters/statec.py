@@ -47,7 +47,13 @@ class StatecBackend(BaseBackend):
 
     # Check if a dataset already exists
     def __dataset_exists(self,title, existing_dataset):
-        if title == existing_dataset['title'].encode('utf-8'):
+        test = "FALSE"
+        exisiting_dataset_title = existing_dataset['title']
+
+        print(title + " == " + exisiting_dataset_title)
+
+        if title == exisiting_dataset_title:
+            test = "TRUE"
             if existing_dataset['deleted'] is None:
                 return True
             else:
@@ -76,7 +82,7 @@ class StatecBackend(BaseBackend):
     def __update_resources(self, item, existing_dataset):
         kwargs = item.kwargs
 
-        dataset_exists = self.__dataset_exists(kwargs['title'].encode('utf-8'), existing_dataset)
+        dataset_exists = self.__dataset_exists(kwargs['title'], existing_dataset)
 
         new_resources = []
         updated_resources = kwargs['resources']
@@ -129,13 +135,18 @@ class StatecBackend(BaseBackend):
         # - store extra significant data in the `extra` attribute
         # - map resources data
 
-        dataset.tags = [u"statec-harvesting"] + dataset.tags
-        resources = self.__update_resources(item, dataset)
+        # titleList = []
+        # for res in dataset['resources']:
+        #     titleList.append['title']
+        #     pass
 
         # check if this is a new dataset and give it a title
         if dataset.title is None:
             dataset.title = item.kwargs['title']
             pass
+
+        dataset.tags = [u"statec-harvesting"] + dataset.tags
+        resources = self.__update_resources(item, dataset)
 
         # Rebuild the dataset description
         description = u"This dataset includes the following resource(s): <br>"
