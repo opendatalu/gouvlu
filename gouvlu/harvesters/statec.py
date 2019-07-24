@@ -75,8 +75,13 @@ class StatecBackend(BaseBackend):
         if dataset_exists:
             existing_resources = existing_dataset['resources']
 
-            resource_title = existing_resources['title']
-            print(kwargs['title'] + " / " + resource_title)
+            newDict = []
+            for existing_resource in existing_resources:
+                resource_title = existing_resources['title']
+                newDict.append(resource_title)
+                pass
+
+            print(kwargs['title'] + " / " + newDict)
 
             for updated_resource in updated_resources:
                 updated_resource_title_list = updated_resource['title'].split()
@@ -115,6 +120,10 @@ class StatecBackend(BaseBackend):
 
         dataset.tags = ["statec-harvesting"] + dataset.tags
         resources = self.__update_resources(item, dataset)
+
+        if dataset.title is None:
+            dataset.title = item.kwargs['title']
+            pass
 
         description = u"This dataset includes the following resource(s): <br>"
         for resource in resources:
