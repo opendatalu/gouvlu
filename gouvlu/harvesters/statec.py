@@ -47,7 +47,7 @@ class StatecBackend(BaseBackend):
 
     # Check if a dataset already exists
     def __dataset_exists(self,title, existing_dataset):
-        if title == existing_dataset['title']:
+        if title == existing_dataset['title'].encode('utf-8'):
             if existing_dataset['deleted'] is None:
                 return True
             else:
@@ -76,7 +76,7 @@ class StatecBackend(BaseBackend):
     def __update_resources(self, item, existing_dataset):
         kwargs = item.kwargs
 
-        dataset_exists = self.__dataset_exists(kwargs['title'].encode('utf-8'), existing_dataset.decode('utf-8'))
+        dataset_exists = self.__dataset_exists(kwargs['title'].encode('utf-8'), existing_dataset)
 
         new_resources = []
         updated_resources = kwargs['resources']
