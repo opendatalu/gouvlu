@@ -75,7 +75,8 @@ class StatecBackend(BaseBackend):
         if dataset_exists:
             existing_resources = existing_dataset['resources']
 
-            print(kwargs['title'] + " / " + existing_resources)
+            resource_title = existing_resources['title']
+            print(kwargs['title'] + " / " + resource_title)
 
             for updated_resource in updated_resources:
                 updated_resource_title_list = updated_resource['title'].split()
