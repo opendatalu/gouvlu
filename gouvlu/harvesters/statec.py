@@ -45,6 +45,7 @@ class StatecBackend(BaseBackend):
                 pass
         return resources
 
+    # Check if a dataset already exists
     def __dataset_exists(self,title, existing_dataset):
         if title == existing_dataset['title']:
             if existing_dataset['deleted'] is None:
@@ -71,6 +72,7 @@ class StatecBackend(BaseBackend):
                     break
         return (2.0 * hit_count) / union
 
+    # Update the resources of an exisiting dataset with the harvested resources or return the harvested resources if it is a new dataset
     def __update_resources(self, item, existing_dataset):
         kwargs = item.kwargs
 
@@ -127,13 +129,15 @@ class StatecBackend(BaseBackend):
         # - store extra significant data in the `extra` attribute
         # - map resources data
 
-        dataset.tags = ["statec-harvesting"] + dataset.tags
+        dataset.tags = [u"statec-harvesting"] + dataset.tags
         resources = self.__update_resources(item, dataset)
 
+        # check if this is a new dataset and give it a title
         if dataset.title is None:
             dataset.title = item.kwargs['title']
             pass
 
+        # Rebuild the dataset description
         description = u"This dataset includes the following resource(s): <br>"
         for resource in resources:
             description += resource['title'] + "<br>"
@@ -149,10 +153,12 @@ class StatecBackend(BaseBackend):
             url = resource['url']
             download_url = url
 
+            # check to see that this is a new resource with no known format
             if "format" not in resource:
                 resource['format'] = 'csv'
             pass
 
+            # check if the resource format is csv and handle the link creation accordingly
             if resource['format'] == 'csv':
                 url = url.replace('tableView', 'download')
                 params = {
@@ -167,6 +173,7 @@ class StatecBackend(BaseBackend):
                 download_url = urlparse.urlunparse(url_parts)
                 pass
 
+            # The newly created resource
             new_resource = Resource(
                 title=resource['title'],
                 description=resource['title'],
