@@ -76,7 +76,7 @@ class StatecBackend(BaseBackend):
     def __update_resources(self, item, existing_dataset):
         kwargs = item.kwargs
 
-        dataset_exists = self.__dataset_exists(kwargs['title'].decode('utf-8', 'ignore'), existing_dataset.decode('utf-8', 'ignore'))
+        dataset_exists = self.__dataset_exists(kwargs['title'].encode('utf-8'), existing_dataset.decode('utf-8'))
 
         new_resources = []
         updated_resources = kwargs['resources']
