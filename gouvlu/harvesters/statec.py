@@ -149,6 +149,10 @@ class StatecBackend(BaseBackend):
             url = resource['url']
             download_url = url
 
+            if "format" not in resource:
+                resource['format'] = 'csv'
+            pass
+
             if resource['format'] == 'csv':
                 url = url.replace('tableView', 'download')
                 params = {
@@ -161,6 +165,7 @@ class StatecBackend(BaseBackend):
                 query.update(params)
                 url_parts[4] = urlencode(query)
                 download_url = urlparse.urlunparse(url_parts)
+                pass
 
             new_resource = Resource(
                 title=resource['title'],
@@ -171,6 +176,7 @@ class StatecBackend(BaseBackend):
             )
             if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:  # noqa
                 dataset.resources.append(new_resource)
+                pass
             else:
                 pass
 
