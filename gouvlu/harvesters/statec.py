@@ -103,7 +103,11 @@ class StatecBackend(BaseBackend):
                             'format': existing_resource['format']
                         }
                         new_resources.append(new_resource)
-                        copy_exisiting_resources.remove(existing_resource)
+
+                        for i in range(len(copy_exisiting_resources)):
+                            if copy_exisiting_resources[i]['title'] == existing_resource_title:
+                                del copy_exisiting_resources[i]
+                                break
                 pass
 
             pass
