@@ -79,20 +79,12 @@ class StatecBackend(BaseBackend):
 
         dataset_exists = self.__dataset_exists(kwargs['title'], existing_dataset)
 
-        tags = []
-        for tag in existing_dataset.tags:
-            tags.append(tag)
-            pass
-
-        tags.append("statec-harvesting")
-
-        print(dataset_exists + " / " + kwargs['title'].encode('utf-8') + tags)
-
         new_resources = []
         updated_resources = kwargs['resources']
 
         if dataset_exists:
             existing_resources = existing_dataset['resources']
+            copy_exisiting_resources = existing_resources
 
             for updated_resource in updated_resources:
                 updated_resource_title = updated_resource['title']
@@ -111,16 +103,16 @@ class StatecBackend(BaseBackend):
                             'format': existing_resource['format']
                         }
                         new_resources.append(new_resource)
-                        existing_resources.remove(existing_resource)
+                        copy_exisiting_resources.remove(existing_resource)
                 pass
 
             pass
 
-            for exisiting_resource in existing_resources:
+            for copy_exisiting_resource in copy_exisiting_resources:
                 new_resource = {
-                    'title': exisiting_resource['title'],
-                    'url': exisiting_resource['url'],
-                    'format': exisiting_resource['format']
+                    'title': copy_exisiting_resource['title'],
+                    'url': copy_exisiting_resource['url'],
+                    'format': copy_exisiting_resource['format']
                 }
                 new_resources.append(new_resource)
             pass
