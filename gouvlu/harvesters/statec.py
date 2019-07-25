@@ -116,9 +116,11 @@ class StatecBackend(BaseBackend):
                 }
                 new_resources.append(new_resource)
             pass
+            print(new_resources + " / " + kwargs['title'])
 
             return new_resources
         else:
+            print(updated_resources + " / " + kwargs['title'])
             return updated_resources
 
     def process(self, item):
