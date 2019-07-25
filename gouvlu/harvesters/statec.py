@@ -6,7 +6,7 @@ from udata.models import Resource
 from urllib import urlencode
 import feedparser
 import urlparse
-import copy, json
+import copy
 
 class StatecBackend(BaseBackend):
     display_name = 'Statec RSS Feed Harvester'
@@ -85,7 +85,6 @@ class StatecBackend(BaseBackend):
         if dataset_exists:
             existing_resources = existing_dataset['resources']
             copy_exisiting_resources = copy.deepcopy(existing_resources)
-            dictdump = json.loads(copy_exisiting_resources)
 
             for updated_resource in updated_resources:
                 updated_resource_title = updated_resource['title']
@@ -105,10 +104,13 @@ class StatecBackend(BaseBackend):
                         }
                         new_resources.append(new_resource)
 
-                        for i in range(len(dictdump)):
-                            if dictdump[i]['title'] == existing_resource_title:
-                                del dictdump[i]
+                        i = 0
+                        for copy_exisiting_resource in copy_exisiting_resources:
+                            if copy_exisiting_resource['title'].encode('utf-8') == existing_resource_title.encode('utf-8'):
+                                del copy_exisiting_resources[i]
                                 break
+                            i += 1
+                            pass
                 pass
 
             pass
