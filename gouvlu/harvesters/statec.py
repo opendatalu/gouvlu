@@ -38,7 +38,8 @@ class StatecBackend(BaseBackend):
                 if item['category'] == category:
                     resource = {
                             'title': item['title'],
-                            'url': item['link']
+                            'url': item['link'],
+                            'format': 'csv'
                     }
                     resources.append(resource)
             except KeyError:
@@ -97,12 +98,8 @@ class StatecBackend(BaseBackend):
                     # Titles are more than 90% the same and therefore qualifie for an update
                     if similarity >= 0.90:
 
-                        new_resource = {
-                            'title': updated_resource['title'],
-                            'url': updated_resource['url'],
-                            'format': existing_resource['format']
-                        }
-                        new_resources.append(new_resource)
+                        resource = ResourceTemplate(updated_resource_title, updated_resource['url'], existing_resource['format'])
+                        new_resources.append(resource)
 
                         i = 0
                         for copy_exisiting_resource in copy_exisiting_resources:
@@ -116,12 +113,8 @@ class StatecBackend(BaseBackend):
             pass
 
             for copy_exisiting_resource in copy_exisiting_resources:
-                new_resource = {
-                    'title': copy_exisiting_resource['title'],
-                    'url': copy_exisiting_resource['url'],
-                    'format': copy_exisiting_resource['format']
-                }
-                new_resources.append(new_resource)
+                resource = ResourceTemplate(copy_exisiting_resource['title'], copy_exisiting_resource['url'], copy_exisiting_resource['format'])
+                new_resources.append(resource)
             pass
 
             return new_resources
@@ -165,20 +158,15 @@ class StatecBackend(BaseBackend):
 
         dataset.description = description
 
-        print(resources + " / " + item.kwargs['title'])
+
         # Force recreation of all resources
         dataset.resources = []
         for resource in resources:
-            url = resource['url']
+            url = resource.url
             download_url = url
 
-            # check to see that this is a new resource with no known format
-            if "format" not in resource:
-                resource['format'] = 'csv'
-            pass
-
             # check if the resource format is csv and handle the link creation accordingly
-            if resource['format'] == 'csv':
+            if resource.format == 'csv':
                 url = url.replace('tableView', 'download')
                 params = {
                     'IF_DOWNLOADFORMAT': 'csv',
@@ -194,11 +182,11 @@ class StatecBackend(BaseBackend):
 
             # The newly created resource
             new_resource = Resource(
-                title=resource['title'],
-                description=resource['title'],
+                title=resource.title,
+                description=resource.title,
                 url=download_url,
                 filetype='remote',
-                format=resource['format']
+                format=resource.format
             )
 
             dataset.resources.append(new_resource)
@@ -208,4 +196,14 @@ class StatecBackend(BaseBackend):
             # else:
             #     pass
 
+        print(resources + " / " + item.kwargs['title'] + dataset)
+
         return dataset
+
+class ResourceTemplate():
+
+    def __init__(self, title, url, fileFormat):
+        self.title = title
+        self.url = url
+        self.filetype = 'remote'
+        self.format = fileFormat
