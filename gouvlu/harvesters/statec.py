@@ -110,9 +110,9 @@ class StatecBackend(BaseBackend):
 
             for copy_exisiting_resource in copy_exisiting_resources:
                 new_resource = {
-                    'title': copy_exisiting_resource.title,
-                    'url': copy_exisiting_resource.url,
-                    'format': copy_exisiting_resource.format
+                    'title': copy_exisiting_resource['title'],
+                    'url': copy_exisiting_resource['url'],
+                    'format': copy_exisiting_resource['format']
                 }
                 new_resources.append(new_resource)
             pass
