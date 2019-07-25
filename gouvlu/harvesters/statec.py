@@ -82,8 +82,19 @@ class StatecBackend(BaseBackend):
         new_resources = []
         updated_resources = kwargs['resources']
 
+        old_resources = []
+        for res in existing_dataset.resources:
+            new_res = {
+                'title': res.title,
+                'url': res.url,
+                'format': res.format
+            }
+            old_resources.append(new_res)
+            pass
+
+
         if dataset_exists:
-            existing_resources = existing_dataset['resources']
+            existing_resources = old_resources
             copy_exisiting_resources = existing_resources
 
             for updated_resource in updated_resources:
@@ -137,19 +148,6 @@ class StatecBackend(BaseBackend):
         if dataset.title is None:
             dataset.title = item.kwargs['title']
             pass
-
-        old_resources = []
-        for res in dataset.resources:
-            new_res = {
-                'title': res.title,
-                'url': res.url,
-                'format': res.format
-            }
-            old_resources.append(new_res)
-
-            pass
-        print(old_resources + " / " + item.kwargs['title'])
-
 
         tags = []
         for tag in dataset.tags:
