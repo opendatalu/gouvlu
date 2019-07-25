@@ -133,15 +133,23 @@ class StatecBackend(BaseBackend):
         # - store extra significant data in the `extra` attribute
         # - map resources data
 
-        # titleList = []
-        # for res in dataset['resources']:
-        #     titleList.append['title']
-        #     pass
-
         # check if this is a new dataset and give it a title
         if dataset.title is None:
             dataset.title = item.kwargs['title']
             pass
+
+        old_resources = []
+        for res in dataset.resources:
+            new_res = {
+                'title': res.title,
+                'url': res.url,
+                'format': res.format
+            }
+            old_resources.append(new_res)
+
+            pass
+        print(old_resources + " / " + item.kwargs['title'])
+
 
         tags = []
         for tag in dataset.tags:
