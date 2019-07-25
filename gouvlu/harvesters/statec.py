@@ -85,6 +85,7 @@ class StatecBackend(BaseBackend):
         if dataset_exists:
             existing_resources = existing_dataset['resources']
             copy_exisiting_resources = copy.deepcopy(existing_resources)
+            dictdump = json.loads(copy_exisiting_resources)
 
             for updated_resource in updated_resources:
                 updated_resource_title = updated_resource['title']
@@ -104,9 +105,9 @@ class StatecBackend(BaseBackend):
                         }
                         new_resources.append(new_resource)
 
-                        for i in range(len(copy_exisiting_resources)):
-                            if copy_exisiting_resources[i].title == existing_resource_title:
-                                del copy_exisiting_resources[i]
+                        for i in range(len(dictdump)):
+                            if dictdump[i]['title'] == existing_resource_title:
+                                del dictdump[i]
                                 break
                 pass
 
