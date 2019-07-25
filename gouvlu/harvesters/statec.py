@@ -123,11 +123,9 @@ class StatecBackend(BaseBackend):
                 }
                 new_resources.append(new_resource)
             pass
-            print(new_resources + " / " + kwargs['title'])
 
             return new_resources
         else:
-            print(updated_resources + " / " + kwargs['title'])
             return updated_resources
 
     def process(self, item):
@@ -155,6 +153,8 @@ class StatecBackend(BaseBackend):
         dataset.tags = tags
         resources = self.__update_resources(item, dataset)
 
+
+
         # Rebuild the dataset description
         description = u"This dataset includes the following resource(s): <br>"
         for resource in resources:
@@ -165,6 +165,7 @@ class StatecBackend(BaseBackend):
 
         dataset.description = description
 
+        print(resources + " / " + item.kwargs['title'])
         # Force recreation of all resources
         dataset.resources = []
         for resource in resources:
