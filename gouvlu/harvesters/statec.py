@@ -48,7 +48,7 @@ class StatecBackend(BaseBackend):
     # Check if a dataset already exists
     def __dataset_exists(self,title, existing_dataset):
         exisiting_dataset_title = existing_dataset.title
-        if title == exisiting_dataset_title:
+        if title.encode('utf-8') == exisiting_dataset_title.encode('utf-8'):
             if existing_dataset['deleted'] is None:
                 return True
             else:
@@ -78,6 +78,15 @@ class StatecBackend(BaseBackend):
         kwargs = item.kwargs
 
         dataset_exists = self.__dataset_exists(kwargs['title'], existing_dataset)
+
+        tags = []
+        for tag in existing_dataset.tags:
+            tags.append(tag)
+            pass
+
+        tags.append("statec-harvesting")
+
+        print(dataset_exists + " / " + kwargs['title'].encode('utf-8') + tags)
 
         new_resources = []
         updated_resources = kwargs['resources']
