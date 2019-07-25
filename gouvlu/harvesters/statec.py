@@ -163,7 +163,8 @@ class StatecBackend(BaseBackend):
                     portail statistique (category %s)""" % dataset.title
 
         dataset.description = description
-
+        olddatares = dataset.resources
+        print(resources + item.kwargs['title'] + olddatares)
 
         # Force recreation of all resources
         dataset.resources = []
