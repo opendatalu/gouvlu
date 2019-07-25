@@ -119,7 +119,13 @@ class StatecBackend(BaseBackend):
 
             return new_resources
         else:
-            return updated_resources
+
+            for updated_resource in updated_resources:
+                resource = ResourceTemplate(updated_resource['title'], updated_resource['url'], updated_resource['format'])
+                new_resources.append(resource)
+            pass
+
+            return new_resources
 
     def process(self, item):
         dataset = self.get_dataset(item.remote_id)
@@ -196,7 +202,7 @@ class StatecBackend(BaseBackend):
             # else:
             #     pass
 
-        print(resources + " / " + item.kwargs['title'] + dataset)
+
 
         return dataset
 
