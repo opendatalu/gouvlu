@@ -105,7 +105,7 @@ class StatecBackend(BaseBackend):
                         new_resources.append(new_resource)
 
                         for i in range(len(copy_exisiting_resources)):
-                            if copy_exisiting_resources[i]['title'] == existing_resource_title:
+                            if copy_exisiting_resources[i].title == existing_resource_title:
                                 del copy_exisiting_resources[i]
                                 break
                 pass
