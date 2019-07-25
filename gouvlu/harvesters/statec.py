@@ -163,7 +163,20 @@ class StatecBackend(BaseBackend):
                     portail statistique (category %s)""" % dataset.title
 
         dataset.description = description
+
         olddatares = dataset.resources
+
+        for resTest in resources:
+            test = Resource(
+                title=resTest.title,
+                description=resTest.title,
+                url=resTest.url,
+                filetype='remote',
+                format=resTest.format
+            )
+            olddatares.append(test)
+            pass
+
         print(resources + item.kwargs['title'] + olddatares)
 
         # Force recreation of all resources
