@@ -6,7 +6,7 @@ from udata.models import Resource
 from urllib import urlencode
 import feedparser
 import urlparse
-import copy
+import copy, json
 
 class StatecBackend(BaseBackend):
     display_name = 'Statec RSS Feed Harvester'
