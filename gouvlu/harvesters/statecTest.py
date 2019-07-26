@@ -8,7 +8,7 @@ import feedparser
 import urlparse
 import copy
 
-class StatecBackend(BaseBackend):
+class StatecTestBackend(BaseBackend):
     display_name = 'Statec RSS Feed Harvester'
 
     def initialize(self):
