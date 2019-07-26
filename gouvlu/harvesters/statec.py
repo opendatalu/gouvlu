@@ -138,46 +138,46 @@ class StatecBackend(BaseBackend):
         # - map resources data
 
         # check if this is a new dataset and give it a title
-        if dataset.title is None:
-            dataset.title = item.kwargs['title']
-            pass
+        # if dataset.title is None:
+        #     dataset.title = item.kwargs['title']
+        #     pass
 
-        tags = []
-        for tag in dataset.tags:
-            tags.append(tag)
-            pass
+        # tags = []
+        # for tag in dataset.tags:
+        #     tags.append(tag)
+        #     pass
 
-        tags.append("statec-harvesting")
+        # tags.append("statec-harvesting")
 
-        dataset.tags = tags
-        resources = self.__update_resources(item, dataset)
+        # dataset.tags = tags
+        # resources = self.__update_resources(item, dataset)
 
 
 
-        # Rebuild the dataset description
-        description = u"This dataset includes the following resource(s): <br>"
-        for resource in resources:
-            description += resource.title + "<br>"
-        description += "<br>---------------------------------------"
-        description += """<br> Automatically synched from
-                    portail statistique (category %s)""" % dataset.title
+        # # Rebuild the dataset description
+        # description = u"This dataset includes the following resource(s): <br>"
+        # for resource in resources:
+        #     description += resource.title + "<br>"
+        # description += "<br>---------------------------------------"
+        # description += """<br> Automatically synched from
+        #             portail statistique (category %s)""" % dataset.title
 
-        dataset.description = description
+        # dataset.description = description
 
-        olddatares = dataset.resources
+        # olddatares = dataset.resources
 
-        for resTest in resources:
-            test = Resource(
-                title=resTest.title,
-                description=resTest.title,
-                url=resTest.url,
-                filetype='remote',
-                format=resTest.format
-            )
-            olddatares.append(test)
-            pass
+        # for resTest in resources:
+        #     test = Resource(
+        #         title=resTest.title,
+        #         description=resTest.title,
+        #         url=resTest.url,
+        #         filetype='remote',
+        #         format=resTest.format
+        #     )
+        #     olddatares.append(test)
+        #     pass
 
-        print(resources + item.kwargs['title'] + olddatares)
+        # print(resources + item.kwargs['title'] + olddatares)
 
         return dataset
 
