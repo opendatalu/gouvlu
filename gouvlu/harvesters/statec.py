@@ -212,12 +212,7 @@ class StatecBackend(BaseBackend):
                 format=resource.format
             )
 
-            # dataset.resources.append(new_resource)
-            if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:  # noqa
-                dataset.resources.append(new_resource)
-                pass
-            else:
-                pass
+            dataset.resources.append(new_resource)
 
         return dataset
 
