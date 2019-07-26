@@ -139,31 +139,33 @@ class StatecBackend(BaseBackend):
         # - map resources data
 
         # check if this is a new dataset and give it a title
-        # if dataset.title is None:
-        #     dataset.title = item.kwargs['title']
-        #     pass
+        if dataset.title is None:
+            dataset.title = ''
+            pass
 
-        # tags = []
-        # for tag in dataset.tags:
-        #     tags.append(tag)
-        #     pass
+        tags = []
+        for tag in dataset.tags:
+            tags.append(tag)
+            pass
 
-        # tags.append("statec-harvesting")
+        tags.append("statec-harvesting")
+        tags = list(set(tags))
 
-        # dataset.tags = tags
-        # resources = self.__update_resources(item, dataset)
+        dataset.tags = tags
+        resources = self.__update_resources(item, dataset)
 
+        if datset.title == '':
+            dataset.title = item.kwargs['title']
 
+        # Rebuild the dataset description
+        description = u"This dataset includes the following resource(s): <br>"
+        for resource in resources:
+            description += resource.title + "<br>"
+        description += "<br>---------------------------------------"
+        description += """<br> Automatically synched from
+                    portail statistique (category %s)""" % dataset.title
 
-        # # Rebuild the dataset description
-        # description = u"This dataset includes the following resource(s): <br>"
-        # for resource in resources:
-        #     description += resource.title + "<br>"
-        # description += "<br>---------------------------------------"
-        # description += """<br> Automatically synched from
-        #             portail statistique (category %s)""" % dataset.title
-
-        # dataset.description = description
+        dataset.description = description
 
         # olddatares = dataset.resources
 
@@ -180,48 +182,44 @@ class StatecBackend(BaseBackend):
 
         # print(resources + item.kwargs['title'] + olddatares)
 
+        # Force recreation of all resources
+        dataset.resources = []
+        for resource in resources:
+            url = resource.url
+            download_url = url
+
+            # check if the resource format is csv and handle the link creation accordingly
+            if resource.format == 'csv':
+                url = url.replace('tableView', 'download')
+                params = {
+                    'IF_DOWNLOADFORMAT': 'csv',
+                    'IF_DOWNLOAD_ALL_ITEMS': 'yes'
+                }
+
+                url_parts = list(urlparse.urlparse(url))
+                query = dict(urlparse.parse_qsl(url_parts[4]))
+                query.update(params)
+                url_parts[4] = urlencode(query)
+                download_url = urlparse.urlunparse(url_parts)
+                pass
+
+            # The newly created resource
+            new_resource = Resource(
+                title=resource.title,
+                description=resource.title,
+                url=download_url,
+                filetype='remote',
+                format=resource.format
+            )
+
+            # dataset.resources.append(new_resource)
+            if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:  # noqa
+                dataset.resources.append(new_resource)
+                pass
+            else:
+                pass
+
         return dataset
-
-        # # Force recreation of all resources
-        # dataset.resources = []
-        # for resource in resources:
-        #     url = resource.url
-        #     download_url = url
-
-        #     # check if the resource format is csv and handle the link creation accordingly
-        #     if resource.format == 'csv':
-        #         url = url.replace('tableView', 'download')
-        #         params = {
-        #             'IF_DOWNLOADFORMAT': 'csv',
-        #             'IF_DOWNLOAD_ALL_ITEMS': 'yes'
-        #         }
-
-        #         url_parts = list(urlparse.urlparse(url))
-        #         query = dict(urlparse.parse_qsl(url_parts[4]))
-        #         query.update(params)
-        #         url_parts[4] = urlencode(query)
-        #         download_url = urlparse.urlunparse(url_parts)
-        #         pass
-
-        #     # The newly created resource
-        #     new_resource = Resource(
-        #         title=resource.title,
-        #         description=resource.title,
-        #         url=download_url,
-        #         filetype='remote',
-        #         format=resource.format
-        #     )
-
-        #     dataset.resources.append(new_resource)
-        #     # if len(filter(lambda d: d['title'] in [resource['title']] and d['url'] in [download_url], dataset.resources)) == 0:  # noqa
-        #     #     dataset.resources.append(new_resource)
-        #     #     pass
-        #     # else:
-        #     #     pass
-
-
-
-        # return dataset
 
 class ResourceTemplate():
 

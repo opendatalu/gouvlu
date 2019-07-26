@@ -116,7 +116,6 @@ setup(
             'gouvlu = gouvlu.theme'
         ],
         'udata.harvesters': [
-            'statecTest = gouvlu.harvesters.statecTest:StatecTestBackend',
             'statec = gouvlu.harvesters.statec:StatecBackend',
             'csv_harvester = gouvlu.harvesters.csv_harvester:CSVBackend',
         ],
