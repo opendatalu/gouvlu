@@ -128,6 +128,7 @@ class StatecBackend(BaseBackend):
             return new_resources
 
     def process(self, item):
+        #Test
         dataset = self.get_dataset(item.remote_id)
 
         # Here you comes your implementation. You should :
