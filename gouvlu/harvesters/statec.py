@@ -154,7 +154,7 @@ class StatecBackend(BaseBackend):
         dataset.tags = tags
         resources = self.__update_resources(item, dataset)
 
-        if datset.title == '':
+        if dataset.title == '':
             dataset.title = item.kwargs['title']
 
         # Rebuild the dataset description
