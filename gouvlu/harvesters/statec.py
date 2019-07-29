@@ -125,7 +125,10 @@ class StatecBackend(BaseBackend):
 
             # Add the remaining unchanged resources back to the to-be-returned list
             for copy_exisiting_resource in copy_exisiting_resources:
-                resource = ResourceTemplate(copy_exisiting_resource['title'], copy_exisiting_resource['url'], copy_exisiting_resource['format'])
+                title = copy_exisiting_resource['title']
+                url = copy_exisiting_resource['url']
+                format = copy_exisiting_resource['format']
+                resource = ResourceTemplate(title, url, format)
                 new_resources.append(resource)
             pass
 
@@ -133,7 +136,10 @@ class StatecBackend(BaseBackend):
         else:
             # Else: return only the gathered item's resources
             for updated_resource in updated_resources:
-                resource = ResourceTemplate(updated_resource['title'], updated_resource['url'], updated_resource['format'])
+                title = updated_resource['title']
+                url = updated_resource['url']
+                format = updated_resource['format']
+                resource = ResourceTemplate(title, url, format)
                 new_resources.append(resource)
             pass
 
@@ -164,7 +170,8 @@ class StatecBackend(BaseBackend):
         tags = list(set(tags))
         dataset.tags = tags
 
-        # return the gathered resources of the items or return the updated list of all the resources of the given dataset
+        # return the gathered resources of the items
+        # or return the updated list of all the resources of the given dataset
         resources = self.__update_resources(item, dataset)
 
         if dataset.title == '':
