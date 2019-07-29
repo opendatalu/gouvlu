@@ -8,6 +8,7 @@ import feedparser
 import urlparse
 import copy
 
+
 class StatecBackend(BaseBackend):
 
     display_name = 'Statec RSS Feed Harvester'
@@ -69,7 +70,7 @@ class StatecBackend(BaseBackend):
     def __string_similarity(self, str1, str2):
         pairs1 = self.__get_bigrams(str1)
         pairs2 = self.__get_bigrams(str2)
-        union  = len(pairs1) + len(pairs2)
+        union = len(pairs1) + len(pairs2)
         hit_count = 0
         for x in pairs1:
             for y in pairs2:
@@ -95,21 +96,25 @@ class StatecBackend(BaseBackend):
             copy_exisiting_resources = copy.deepcopy(existing_resources)
 
             for updated_resource in updated_resources:
-                updated_resource_title = updated_resource['title']
+                updated_title = updated_resource['title']
 
                 for existing_resource in existing_resources:
-                    existing_resource_title = existing_resource['title']
+                    existing_title = existing_resource['title']
 
-                    similarity = self.__string_similarity(updated_resource_title, existing_resource_title)
+                    similarity = self.__string_similarity(updated_title, existing_title)
 
                     # Titles are more than 90% the same and therefore qualifie for an update
                     if similarity >= 0.90:
-                        resource = ResourceTemplate(updated_resource_title, updated_resource['url'], existing_resource['format'])
+                        url = updated_resource['url']
+                        format = existing_resource['format']
+                        resource = ResourceTemplate(updated_title, url, format)
                         new_resources.append(resource)
 
                         i = 0
                         for copy_exisiting_resource in copy_exisiting_resources:
-                            if copy_exisiting_resource['title'].encode('utf-8') == existing_resource_title.encode('utf-8'):
+                            encode_copy_title = copy_exisiting_resource['title'].encode('utf-8')
+                            encode_exist_title = existing_title.encode('utf-8')
+                            if encode_copy_title == encode_exist_title:
                                 del copy_exisiting_resources[i]
                                 break
                             i += 1
