@@ -208,6 +208,7 @@ class StatecBackend(BaseBackend):
 
         return dataset
 
+# Helper class to access the resource data more easily
 class ResourceTemplate():
 
     def __init__(self, title, url, fileFormat):
