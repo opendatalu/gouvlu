@@ -11,6 +11,7 @@ import copy
 class StatecBackend(BaseBackend):
     display_name = 'Statec RSS Feed Harvester'
 
+    # Feed the harvester with the gathered items
     def initialize(self):
         self.items = []
         d = feedparser.parse(self.source.url)
@@ -21,6 +22,7 @@ class StatecBackend(BaseBackend):
             resources = self.__get_category_resources(items, category)
             self.add_item(category.encode('utf-8'), title=category, resources=resources)
 
+    # Gather all the catgeories of the source url
     def __get_categories(self, items):
         categories = []
         for item in items:
@@ -31,6 +33,7 @@ class StatecBackend(BaseBackend):
                 pass
         return categories
 
+    # Gather all resources of a Category
     def __get_category_resources(self, items, category):
         resources = []
         for item in items:
@@ -83,9 +86,11 @@ class StatecBackend(BaseBackend):
         new_resources = []
         updated_resources = kwargs['resources']
 
+        # if the dataset already exists: iterate over the gathered item's resources(kwargs) and perform a similarity check to check if a resource has changed its title(mostly year number)
         if dataset_exists:
             existing_resources = existing_dataset['resources']
             copy_exisiting_resources = copy.deepcopy(existing_resources)
+
 
             for updated_resource in updated_resources:
                 updated_resource_title = updated_resource['title']
@@ -112,6 +117,7 @@ class StatecBackend(BaseBackend):
 
             pass
 
+            # Add the remaining unchanged resources back to the to-be-returned list
             for copy_exisiting_resource in copy_exisiting_resources:
                 resource = ResourceTemplate(copy_exisiting_resource['title'], copy_exisiting_resource['url'], copy_exisiting_resource['format'])
                 new_resources.append(resource)
@@ -119,7 +125,7 @@ class StatecBackend(BaseBackend):
 
             return new_resources
         else:
-
+            # Else: return only the gathered item's resources
             for updated_resource in updated_resources:
                 resource = ResourceTemplate(updated_resource['title'], updated_resource['url'], updated_resource['format'])
                 new_resources.append(resource)
@@ -127,8 +133,8 @@ class StatecBackend(BaseBackend):
 
             return new_resources
 
+    # Process each gathered item of the initialization
     def process(self, item):
-        #Test
         dataset = self.get_dataset(item.remote_id)
 
         # Here you comes your implementation. You should :
@@ -143,15 +149,16 @@ class StatecBackend(BaseBackend):
             dataset.title = ''
             pass
 
+        # Create the new list of tags and mmake sure the list has only unique tags
         tags = []
         for tag in dataset.tags:
             tags.append(tag)
             pass
-
         tags.append("statec-harvesting")
         tags = list(set(tags))
-
         dataset.tags = tags
+
+        # return the gathered resources of the items or return the updated list of all the resources of the given dataset
         resources = self.__update_resources(item, dataset)
 
         if dataset.title == '':
@@ -166,21 +173,6 @@ class StatecBackend(BaseBackend):
                     portail statistique (category %s)""" % dataset.title
 
         dataset.description = description
-
-        # olddatares = dataset.resources
-
-        # for resTest in resources:
-        #     test = Resource(
-        #         title=resTest.title,
-        #         description=resTest.title,
-        #         url=resTest.url,
-        #         filetype='remote',
-        #         format=resTest.format
-        #     )
-        #     olddatares.append(test)
-        #     pass
-
-        # print(resources + item.kwargs['title'] + olddatares)
 
         # Force recreation of all resources
         dataset.resources = []
