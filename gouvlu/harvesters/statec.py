@@ -9,6 +9,7 @@ import urlparse
 import copy
 
 class StatecBackend(BaseBackend):
+
     display_name = 'Statec RSS Feed Harvester'
 
     # Feed the harvester with the gathered items
@@ -50,7 +51,7 @@ class StatecBackend(BaseBackend):
         return resources
 
     # Check if a dataset already exists
-    def __dataset_exists(self,title, existing_dataset):
+    def __dataset_exists(self, title, existing_dataset):
         exisiting_dataset_title = existing_dataset.title
         if title.encode('utf-8') == exisiting_dataset_title.encode('utf-8'):
             if existing_dataset['deleted'] is None:
@@ -77,7 +78,8 @@ class StatecBackend(BaseBackend):
                     break
         return (2.0 * hit_count) / union
 
-    # Update the resources of an exisiting dataset with the harvested resources or return the harvested resources if it is a new dataset
+    # Update the resources of an exisiting dataset with the harvested resources
+    # or return the harvested resources if it is a new dataset
     def __update_resources(self, item, existing_dataset):
         kwargs = item.kwargs
 
@@ -86,11 +88,11 @@ class StatecBackend(BaseBackend):
         new_resources = []
         updated_resources = kwargs['resources']
 
-        # if the dataset already exists: iterate over the gathered item's resources(kwargs) and perform a similarity check to check if a resource has changed its title(mostly year number)
+        # if the dataset already exists: iterate over the gathered item's resources(kwargs)
+        # and perform a similarity check to check if a resource has changed its title
         if dataset_exists:
             existing_resources = existing_dataset['resources']
             copy_exisiting_resources = copy.deepcopy(existing_resources)
-
 
             for updated_resource in updated_resources:
                 updated_resource_title = updated_resource['title']
@@ -102,7 +104,6 @@ class StatecBackend(BaseBackend):
 
                     # Titles are more than 90% the same and therefore qualifie for an update
                     if similarity >= 0.90:
-
                         resource = ResourceTemplate(updated_resource_title, updated_resource['url'], existing_resource['format'])
                         new_resources.append(resource)
 
@@ -207,6 +208,7 @@ class StatecBackend(BaseBackend):
             dataset.resources.append(new_resource)
 
         return dataset
+
 
 # Helper class to access the resource data more easily
 class ResourceTemplate():
