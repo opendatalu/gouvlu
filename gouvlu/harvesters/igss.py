@@ -383,8 +383,6 @@ class Category():
 
     def generate_pdf_datasets(self, pdf_theme_dict):
         for title, resources in pdf_theme_dict.iteritems():
-            print(title)
-            print(resources)
             dataset = Dataset(title.decode("utf-8"), resources)
             dataset.tags.append("document")
             dataset.tags.append("dokument")
