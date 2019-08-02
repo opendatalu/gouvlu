@@ -46,7 +46,7 @@ class IGSSBackend(BaseBackend):
         item.remote_id = kwargs['remote_id']
         dataset = self.get_dataset(item.remote_id)
         dataset.title = kwargs['title']
-        tags = kwargs.get('tags', '').split(',')
+        tags = kwargs['tags']
         tags.append("igss-harvesting")
         dataset.tags = tags
         dataset.private = False
