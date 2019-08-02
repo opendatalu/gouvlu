@@ -408,7 +408,7 @@ class Category():
             div_resources = detail.findChildren("div", recursive=False)
 
             for div_resource in div_resources:
-                if not recursive and "<div class=\"accordion\">" in str(div_resource):
+                if not recursive and "<div class=\"accordion\">" in str(div_resource.encode("utf-8")):
                     ul_resource = div_resource.findChildren("ul", recursive=False)
                     if len(ul_resource) != 0:
                         resources = self.__get_resources(ul_resource[0])
