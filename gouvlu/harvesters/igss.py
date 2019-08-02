@@ -313,6 +313,7 @@ class Dataset():
         return tags
 
     def removeAccents(self, text):
+        text = text.decode("utf-8")
         text = unicodedata.normalize('NFD', text)
         text = text.encode('ascii', 'ignore')
         return str(text)
@@ -321,9 +322,7 @@ class Dataset():
 
     def format_title_for_id(self):
         dataset_title = self.title
-        if "IGSS/" in dataset_title:
-            dataset_title = dataset_title.decode("utf-8")
-            pass
+        dataset_title = dataset_title.decode("utf-8")
         dataset_title = unicodedata.normalize('NFD', dataset_title)
         dataset_title = dataset_title.encode('ascii', 'ignore')
         dataset_title = str(dataset_title)
@@ -385,7 +384,7 @@ class Category():
 
     def generate_pdf_datasets(self, pdf_theme_dict):
         for title, resources in pdf_theme_dict.iteritems():
-            dataset = Dataset(title.encode("utf-8"), resources)
+            dataset = Dataset(title, resources)
             dataset.tags.append("document")
             dataset.tags.append("dokument")
             categ_title = self.__format_title_for_id()
