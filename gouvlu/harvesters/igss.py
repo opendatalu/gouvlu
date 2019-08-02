@@ -323,7 +323,9 @@ class Dataset():
 
     def format_title_for_id(self):
         dataset_title = self.title
-        dataset_title = dataset_title.decode("utf-8")
+        if "IGSS/" in dataset_title:
+            dataset_title = dataset_title.decode("utf-8")
+        pass
         dataset_title = unicodedata.normalize('NFD', dataset_title)
         dataset_title = dataset_title.encode('ascii', 'ignore')
         dataset_title = str(dataset_title)
