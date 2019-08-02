@@ -57,7 +57,7 @@ class IGSSBackend(BaseBackend):
 
         description = u"This dataset includes the following resource(s): <br>"
         for resource in resources:
-            description += resource['title'] + "<br>"
+            description += resource.title + "<br>"
         description += "<br>---------------------------------------"
         description += """<br> Automatically synched from
                     IGSS (category %s)""" % dataset.title
