@@ -71,7 +71,7 @@ class IGSSBackend(BaseBackend):
                 title=resource.title,
                 url=resource.url,
                 filetype='remote',
-                format=resource.file_format
+                format=resource.format
             )
             dataset.resources.append(new_resource)
         return dataset
@@ -194,7 +194,7 @@ class IGSSDatasetsHarvester():
             link = self.__get_pdf_download_link(soup,a_tag)
             theme = self.__get_theme_of_pdf(soup, a_tag, title)
 
-            resource = Resource(title, link, "pdf")
+            resource = Resource_T(title, link, "pdf")
 
             if theme not in pdf_theme_dict:
                 pdf_theme_dict[theme] = []
@@ -247,15 +247,15 @@ class IGSSDatasetsHarvester():
             self.categories.append(catgeory)
         pass
 
-class Resource():
+class Resource_T():
     def __init__(self, title, url, file_format):
         self.title = title
         self.url = url
-        self.file_format = file_format
+        self.format = file_format
     pass
     pass
 
-class Dataset():
+class Dataset_T():
     def __init__(self, title, resources):
         self.title = title
         self.resources = resources
@@ -380,7 +380,7 @@ class Category():
 
             url_split = url.split(".")
             file_format = url_split[len(url_split)-1]
-            resource = Resource(title, url, file_format)
+            resource = Resource_T(title, url, file_format)
 
             resources.append(resource)
             pass
@@ -388,7 +388,7 @@ class Category():
 
     def generate_pdf_datasets(self, pdf_theme_dict):
         for title, resources in pdf_theme_dict.iteritems():
-            dataset = Dataset(title, resources)
+            dataset = Dataset_T(title, resources)
             dataset.tags.append("document")
             dataset.tags.append("dokument")
             categ_title = self.__format_title_for_id()
@@ -420,7 +420,7 @@ class Category():
                     ul_resource = div_resource.findChildren("ul", recursive=False)
                     if len(ul_resource) != 0:
                         resources = self.__get_resources(ul_resource[0])
-                        dataset = Dataset(dataset_title, resources)
+                        dataset = Dataset_T(dataset_title, resources)
                         categ_title = self.__format_title_for_id()
                         dataset_title = dataset.format_title_for_id()
                         combined_title = "_" + categ_title + "_" + dataset_title
@@ -432,7 +432,7 @@ class Category():
                     pass
                 else:
                     resources = self.__get_resources(div_resource)
-                    dataset = Dataset(dataset_title, resources)
+                    dataset = Dataset_T(dataset_title, resources)
                     categ_title = self.__format_title_for_id()
                     dataset_title = dataset.format_title_for_id()
                     combined_title = "_" + categ_title + "_" + dataset_title
