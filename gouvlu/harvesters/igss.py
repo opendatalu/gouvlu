@@ -417,7 +417,7 @@ class Category():
                         dataset.remote_id = "igss_" + str(self.id) + "_" + self.__format_title_for_id() + "_" + dataset.format_title_for_id()
                         self.datasets.append(dataset)
 
-                if "<div class=\"accordion\">" in str(div_resource):
+                if "<div class=\"accordion\">" in str(div_resource).decode("ascii", "ignore"):
                     self.get_datasets(div_resource, dataset_title, True)
                     pass
                 else:
