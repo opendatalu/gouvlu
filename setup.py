@@ -118,6 +118,7 @@ setup(
         'udata.harvesters': [
             'statec = gouvlu.harvesters.statec:StatecBackend',
             'csv_harvester = gouvlu.harvesters.csv_harvester:CSVBackend',
+            'igss = gouvlu.harvesters.igss:IGSSBackend',
         ],
         'udata.views': [
             'gouvlu = gouvlu.views',

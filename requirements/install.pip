@@ -2,3 +2,4 @@
 udata==1.6.13
 feedparser
 requests==2.21.0
+beautifulsoup4
