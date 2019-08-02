@@ -313,6 +313,7 @@ class Dataset():
         return tags
 
     def removeAccents(self, text):
+        text = text.encode("utf-8")
         text = text.decode("utf-8")
         text = unicodedata.normalize('NFD', text)
         text = text.encode('ascii', 'ignore')
