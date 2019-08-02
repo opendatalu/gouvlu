@@ -383,10 +383,14 @@ class Category():
 
     def generate_pdf_datasets(self, pdf_theme_dict):
         for title, resources in pdf_theme_dict.iteritems():
-            dataset = Dataset(title.decode("utf-8"), resources)
+            dataset = Dataset(title.decode("ascii", "ignore"), resources)
             dataset.tags.append("document")
             dataset.tags.append("dokument")
-            dataset.remote_id = "igss_" + str(self.id) + "_" + self.__format_title_for_id() + "_" + dataset.format_title_for_id()
+            categ_title = self.__format_title_for_id()
+            dataset_title = dataset.format_title_for_id()
+            combined_title = "_" + categ_title + "_" + dataset_title
+            dataset.remote_id = "igss_" + str(self.id) + combined_title
+
             self.datasets.append(dataset)
 
     def get_datasets(self, soup, title, recursive):
@@ -406,23 +410,28 @@ class Category():
             div_resources = detail.findChildren("div", recursive=False)
 
             for div_resource in div_resources:
-                if not recursive and "<div class=\"accordion\">" in str(div_resource).decode("ascii", "ignore"):
+                decode_div_res = str(div_resource).decode("ascii", "ignore")
+                if not recursive and "<div class=\"accordion\">" in decode_div_res:
                     ul_resource = div_resource.findChildren("ul", recursive=False)
                     if len(ul_resource) != 0:
                         resources = self.__get_resources(ul_resource[0])
-
                         dataset = Dataset(dataset_title, resources)
-                        dataset.remote_id = "igss_" + str(self.id) + "_" + self.__format_title_for_id() + "_" + dataset.format_title_for_id()
+                        categ_title = self.__format_title_for_id()
+                        dataset_title = dataset.format_title_for_id()
+                        combined_title = "_" + categ_title + "_" + dataset_title
+                        dataset.remote_id = "igss_" + str(self.id) + combined_title
                         self.datasets.append(dataset)
 
-                if "<div class=\"accordion\">" in str(div_resource).decode("ascii", "ignore"):
+                if "<div class=\"accordion\">" in decode_div_res:
                     self.get_datasets(div_resource, dataset_title, True)
                     pass
                 else:
                     resources = self.__get_resources(div_resource)
-
                     dataset = Dataset(dataset_title, resources)
-                    dataset.remote_id = "igss_" + str(self.id) + "_" + self.__format_title_for_id() + "_" + dataset.format_title_for_id()
+                    categ_title = self.__format_title_for_id()
+                    dataset_title = dataset.format_title_for_id()
+                    combined_title = "_" + categ_title + "_" + dataset_title
+                    dataset.remote_id = "igss_" + str(self.id) + combined_title
                     self.datasets.append(dataset)
                     pass
                 pass
