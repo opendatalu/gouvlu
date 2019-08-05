@@ -41,7 +41,7 @@ class IGSSBackend(BaseBackend):
         pass
     pass
 
-    def __get_resources_as_dict(resources):
+    def __get_resources_as_dict(self, resources):
         new_resources = []
         for resource in resources:
             new_resource = {
