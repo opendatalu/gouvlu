@@ -34,12 +34,23 @@ class IGSSBackend(BaseBackend):
                     remote_id,
                     title=title,
                     tags=dataset.tags,
-                    resources=resources,
+                    resources=self.__get_resources_as_dict(resources),
                     remote_id=remote_id
                 )
             pass
         pass
     pass
+
+    def __get_resources_as_dict(resources):
+        new_resources = []
+        for resource in resources:
+            new_resource = {
+                    'title': resource.title,
+                    'url': resource.url,
+                    'format': resource.file_format
+            }
+            new_resources.append(new_resource)
+        return new_resources
 
     def process(self, item):
         kwargs = item.kwargs
@@ -66,14 +77,14 @@ class IGSSBackend(BaseBackend):
 
         # Force recreation of all resources
         dataset.resources = []
-        # for resource in resources:
-        #     new_resource = Resource(
-        #         title=u""+resource.title,
-        #         url=u""+resource.url,
-        #         filetype='remote',
-        #         format=u""+resource.file_format
-        #     )
-        #     dataset.resources.append(new_resource)
+        for resource in resources:
+            new_resource = Resource(
+                title=u""+resource.title,
+                url=u""+resource.url,
+                filetype='remote',
+                format=u""+resource.file_format
+            )
+            dataset.resources.append(new_resource)
         return dataset
 
 
