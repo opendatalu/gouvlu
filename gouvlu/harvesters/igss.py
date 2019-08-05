@@ -68,7 +68,7 @@ class IGSSBackend(BaseBackend):
 
         description = u"This dataset includes the following resource(s): <br>"
         for resource in resources:
-            description += resource.title + "<br>"
+            description += resource["title"] + "<br>"
         description += "<br>---------------------------------------"
         description += """<br> Automatically synched from
                     IGSS (category %s)""" % dataset.title
@@ -79,10 +79,10 @@ class IGSSBackend(BaseBackend):
         dataset.resources = []
         for resource in resources:
             new_resource = Resource(
-                title=u""+resource.title,
-                url=u""+resource.url,
+                title=resource["title"],
+                url=resource["url"],
                 filetype='remote',
-                format=u""+resource.file_format
+                format=resource["format"]
             )
             dataset.resources.append(new_resource)
         return dataset
