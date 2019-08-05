@@ -66,14 +66,14 @@ class IGSSBackend(BaseBackend):
 
         # Force recreation of all resources
         dataset.resources = []
-        for resource in resources:
-            new_resource = Resource(
-                title=u""+resource.title,
-                url=u""+resource.url,
-                filetype='remote',
-                format=u""+resource.file_format
-            )
-            dataset.resources.append(new_resource)
+        # for resource in resources:
+        #     new_resource = Resource(
+        #         title=u""+resource.title,
+        #         url=u""+resource.url,
+        #         filetype='remote',
+        #         format=u""+resource.file_format
+        #     )
+        #     dataset.resources.append(new_resource)
         return dataset
 
 
