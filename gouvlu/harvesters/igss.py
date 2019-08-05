@@ -68,10 +68,10 @@ class IGSSBackend(BaseBackend):
         dataset.resources = []
         for resource in resources:
             new_resource = Resource(
-                title=resource.title,
-                url=resource.url,
+                title=u""+resource.title,
+                url=u""+resource.url,
                 filetype='remote',
-                format=resource.file_format
+                format=u""+resource.file_format
             )
             dataset.resources.append(new_resource)
         return dataset
