@@ -24,7 +24,7 @@ class IGSSBackend(BaseBackend):
     def initialize(self):
         working_link = "https://igss.gouvernement.lu/fr/"
         if working_link == self.source.url:
-            igss_harvester = IGSSDatasetsHarvester()
+            igss_harvester = IGSSDatasetsHarvester(self.source.url)
             categories = igss_harvester.get_categories()
 
             for category in categories:
