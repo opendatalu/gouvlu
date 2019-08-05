@@ -434,8 +434,8 @@ class Category():
                         resources = self.__get_resources(ul_resource[0])
                         dataset = Dataset_T(dataset_title, resources)
                         categ_title = self.__format_title_for_id()
-                        dataset_title = dataset.format_title_for_id()
-                        combined_title = "_" + categ_title + "_" + dataset_title
+                        format_title = dataset.format_title_for_id()
+                        combined_title = "_" + categ_title + "_" + format_title
                         dataset.remote_id = "igss_" + str(self.id) + combined_title
                         self.datasets.append(dataset)
 
@@ -446,8 +446,8 @@ class Category():
                     resources = self.__get_resources(div_resource)
                     dataset = Dataset_T(dataset_title, resources)
                     categ_title = self.__format_title_for_id()
-                    dataset_title = dataset.format_title_for_id()
-                    combined_title = "_" + categ_title + "_" + dataset_title
+                    format_title = dataset.format_title_for_id()
+                    combined_title = "_" + categ_title + "_" + format_title
                     dataset.remote_id = "igss_" + str(self.id) + combined_title
                     self.datasets.append(dataset)
                     pass
