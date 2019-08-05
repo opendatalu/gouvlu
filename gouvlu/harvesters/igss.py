@@ -22,23 +22,25 @@ import itertools
 
 class IGSSBackend(BaseBackend):
     def initialize(self):
-        igss_harvester = IGSSDatasetsHarvester("https://igss.gouvernement.lu/fr/")
-        categories = igss_harvester.get_categories()
+        working_link = "https://igss.gouvernement.lu/fr/"
+        if working_link == self.source.url:
+            igss_harvester = IGSSDatasetsHarvester()
+            categories = igss_harvester.get_categories()
 
-        for category in categories:
-            for dataset in category.datasets:
-                resources = dataset.resources
-                title = dataset.title
-                remote_id = dataset.remote_id
-                self.add_item(
-                    remote_id,
-                    title=title,
-                    tags=dataset.tags,
-                    resources=self.__get_resources_as_dict(resources),
-                    remote_id=remote_id
-                )
+            for category in categories:
+                for dataset in category.datasets:
+                    resources = dataset.resources
+                    title = dataset.title
+                    remote_id = dataset.remote_id
+                    self.add_item(
+                        remote_id,
+                        title=title,
+                        tags=dataset.tags,
+                        resources=self.__get_resources_as_dict(resources),
+                        remote_id=remote_id
+                    )
+                pass
             pass
-        pass
     pass
 
     def __get_resources_as_dict(self, resources):
@@ -109,7 +111,8 @@ class IGSSDatasetsHarvester():
         self.categories.append(pdf_category)
 
     def __curl_publications(self):
-        status, output = commands.getstatusoutput("curl --silent " + self.igss_url + "publications.html")
+        curl_link = self.igss_url + "publications.html"
+        status, output = commands.getstatusoutput("curl --silent " + curl_link)
         soup = BeautifulSoup(output, "html.parser")
         return soup
 
@@ -120,7 +123,8 @@ class IGSSDatasetsHarvester():
         return pdf_meta_count
 
     def __get_a_tag_pdf_on_site(self, pdf_index):
-        status, output = commands.getstatusoutput("curl --silent " + self.igss_url + "publications.html?b=" + str(pdf_index))
+        curl_link = self.igss_url + "publications.html?b=" + str(pdf_index)
+        status, output = commands.getstatusoutput("curl --silent " + curl_link)
         soup = BeautifulSoup(output, "html.parser")
         ol_col = soup.findAll("div", {"class": "mo-body"})
         a_tag = ol_col[0].findAll("a")[0]
@@ -237,7 +241,8 @@ class IGSSDatasetsHarvester():
         pass
 
     def __curl_main_categories(self):
-        status, output = commands.getstatusoutput("curl --silent " + self.igss_url + "statistiques.html")
+        curl_link = self.igss_url + "statistiques.html"
+        status, output = commands.getstatusoutput("curl --silent " + curl_link)
         soup = BeautifulSoup(output, "html.parser")
         return soup
 
@@ -304,12 +309,13 @@ class Dataset_T():
             if ")" in preTag:
                 preTag = preTag.replace(")", "")
 
-            if len(preTag) >= 5 or preTag == "vie" or preTag == "age" and preTag != "autre":
+            check_tag = (preTag == "vie" or preTag == "age" and preTag != "autre")
+            if len(preTag) >= 5 or check_tag:
                 if preTag.lower() not in tags:
-
-                    if preTag.endswith("s") and preTag != "fonds" and preTag != "soins" and preTag != "frais":
+                    check_tag = (preTag != "fonds" and preTag != "soins")
+                    if preTag.endswith("s") and check_tag and preTag != "frais":
                         preTag = preTag[:-1]
-
+                        pass
                     if preTag == "lallocation" or preTag == "l'allocation":
                         preTag = "allocation"
                         pass
