@@ -376,7 +376,8 @@ class Category():
         for resource_link in resource_links:
             title = resource_link.getText()
             url = resource_link.get("href")
-            url = url.replace("//", "https://")
+            if "http://" not in url:
+                url = url.replace("//", "https://")
 
             url_split = url.split(".")
             file_format = url_split[len(url_split)-1]
