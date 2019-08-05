@@ -71,7 +71,7 @@ class IGSSBackend(BaseBackend):
                 title=resource.title,
                 url=resource.url,
                 filetype='remote',
-                format=resource.format
+                format=resource.file_format
             )
             dataset.resources.append(new_resource)
         return dataset
@@ -251,7 +251,7 @@ class Resource_T():
     def __init__(self, title, url, file_format):
         self.title = title
         self.url = url
-        self.format = file_format
+        self.file_format = file_format
     pass
     pass
 
