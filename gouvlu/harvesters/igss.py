@@ -367,10 +367,7 @@ class Dataset_T():
 
 
 class Category():
-    id_generator = itertools.count(1)
-
     def __init__(self, title, url):
-        self.id = next(self.id_generator)
         self.title = title
         self.url = url
         self.datasets = []
@@ -412,7 +409,7 @@ class Category():
             categ_title = self.__format_title_for_id()
             dataset_title = dataset.format_title_for_id()
             combined_title = "_" + categ_title + "_" + dataset_title
-            dataset.remote_id = "igss_" + str(self.id) + combined_title
+            dataset.remote_id = "igss_" + combined_title
 
             self.datasets.append(dataset)
 
@@ -442,7 +439,7 @@ class Category():
                         categ_title = self.__format_title_for_id()
                         format_title = dataset.format_title_for_id()
                         combined_title = "_" + categ_title + "_" + format_title
-                        dataset.remote_id = "igss_" + str(self.id) + combined_title
+                        dataset.remote_id = "igss_" + combined_title
                         self.datasets.append(dataset)
 
                 if "<div class=\"accordion\">" in decode_div_res:
@@ -454,7 +451,7 @@ class Category():
                     categ_title = self.__format_title_for_id()
                     format_title = dataset.format_title_for_id()
                     combined_title = "_" + categ_title + "_" + format_title
-                    dataset.remote_id = "igss_" + str(self.id) + combined_title
+                    dataset.remote_id = "igss_" + combined_title
                     self.datasets.append(dataset)
                     pass
                 pass
