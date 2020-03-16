@@ -2,10 +2,7 @@
 <!DOCTYPE html>
   {% extends theme("base.html") %}
 
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>API</title>
+  {% block css %}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui.css" >
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
     <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
@@ -31,8 +28,7 @@
         background: #fafafa;
       }
     </style>
-  </head>
-</html>  
+  {% endblock %}
 
   {% set meta = {
       'title': _('Luxembourg\'s Open Data API'),
