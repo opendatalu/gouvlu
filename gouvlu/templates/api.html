@@ -2,35 +2,6 @@
 <!DOCTYPE html>
   {% extends theme("base.html") %}
 
-  {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui.css" >
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
-    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
-    <style>
-      html
-      {
-        box-sizing: border-box;
-        overflow: -moz-scrollbars-vertical;
-        overflow-y: scroll;
-      }
-
-      *,
-      *:before,
-      *:after
-      {
-        box-sizing: inherit;
-      }
-
-      body
-      {
-        margin:0;
-        background: #fafafa;
-      }
-    </style>
-  {% endblock %}
-
   {% set meta = {
       'title': _('Luxembourg\'s Open Data API'),
       'description': "",
@@ -40,6 +11,29 @@
   } %}
   
   {% block content %}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+    <style>
+        html
+        {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+        }
+
+        *,
+        *:before,
+        *:after
+        {
+        box-sizing: inherit;
+        }
+
+        body
+        {
+        margin:0;
+        background: #fafafa;
+        }
+    </style>
         <section class="default">
                 <div class="container">
                     <div class="page-header">
