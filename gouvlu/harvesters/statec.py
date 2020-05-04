@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from udata.harvest.backends.base import BaseBackend
 from udata.models import Resource
 from urllib import urlencode
 import feedparser
-import urlparse
+from urlib.parse import urlparse, parse_qsl, urlunparse
+
 import copy
 
 
@@ -201,11 +201,11 @@ class StatecBackend(BaseBackend):
                     'IF_DOWNLOAD_ALL_ITEMS': 'yes'
                 }
 
-                url_parts = list(urlparse.urlparse(url))
-                query = dict(urlparse.parse_qsl(url_parts[4]))
+                url_parts = list(urlparse(url))
+                query = dict(parse_qsl(url_parts[4]))
                 query.update(params)
                 url_parts[4] = urlencode(query)
-                download_url = urlparse.urlunparse(url_parts)
+                download_url = urlunparse(url_parts)
                 pass
 
             # The newly created resource

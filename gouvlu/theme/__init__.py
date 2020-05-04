@@ -11,6 +11,7 @@ import logging
 from udata import theme
 from udata.app import nav
 from udata.i18n import lazy_gettext as _
+from flask import current_app
 
 log = logging.getLogger(__name__)
 
@@ -30,7 +31,8 @@ gouvlu_menu = nav.Bar('gouvlu_menu', [
 theme.menu(gouvlu_menu)
 
 nav.Bar('gouvlu_footer', [
-    nav.Item(_('API'), 'apidoc.swaggerui'),
+    #nav.Item(_('API'), None, url=current_app.config.get('API_DOC_EXTERNAL_LINK', '#')),
+    nav.Item(_('API'), 'gouvlu.docapi'),
     nav.Item(_('FAQ'), 'gouvlu.faq'),
     nav.Item(_('Usage Guidelines for Open Data'), 'gouvlu.usage'),
     nav.Item(_('Publishing Guidelines for Open Data'), 'gouvlu.publishing'),

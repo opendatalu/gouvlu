@@ -1,0 +1,365 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+  {% extends theme("base.html") %}
+
+  {% set meta = {
+      'title': _('Luxembourg\'s Open Data API'),
+      'description': "",
+      'keywords': [
+          _('api'),
+      ],
+  } %}
+  
+  {% block content %}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+    <style>
+        html
+        {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+        }
+
+        *,
+        *:before,
+        *:after
+        {
+        box-sizing: inherit;
+        }
+
+        body
+        {
+        margin:0;
+        background: #fafafa;
+        }
+    </style>
+        <section class="default">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Documentation de l'API</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>Cette page décrit le comportement de l'API gratuite et ouverte de ce site.</p>
+                        </div>
+                    </div>
+            
+            
+                    <div class="page-header">
+                        <h2>Authentification</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>
+                                De façon à pouvoir exécuter des opérations d'écriture,
+                                
+                                    vous devez d'abord être authentifié et obtenir une clé d'API dans les paramètres de votre profil.
+                                
+                            </p>
+                            <p>Cette clé doit être fournie à chaque appel dans l'entête HTTP <code>X-API-KEY</code>.</p>
+                        </div>
+                    </div>
+            
+            
+                    <div class="page-header">
+                        <h2>Autorisations</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>Les appels d'API sont soumis aux même permissions que l'interface web.</p>
+                            <p>Par exemple, vous devez être membre de l'organisation pour modifier l'un de ses jeux de données.</p>
+                        </div>
+                    </div>
+            
+            
+                    <div class="page-header">
+                        <h2>Pagination</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>Certaines méthodes sont paginées et suivent le même modèle de pagination. La liste d'objets est encapsulée dans un objet <code>Page</code>.</p>
+            
+                            <p>Vous n'avez pas à calculer vous-même les pages précédentes et suivantes
+            puisque les URL sont disponible dans la réponse
+            dans les attributs <code>previous_page</code> et <code>next_page</code>.
+            Ils seront définis à <code>null</code> si il n'y a pas de page précédente et/ou suivante.</p>
+            
+                            <p><u>Exemple</u>:
+                            </p><pre><code class="json hljs">{
+                <span class="hljs-attr">"data"</span>: [{...}, {...}],
+                <span class="hljs-attr">"page"</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">"page_size"</span>: <span class="hljs-number">20</span>,
+                <span class="hljs-attr">"total"</span>: <span class="hljs-number">10</span>,
+                <span class="hljs-attr">"next_page"</span>: <span class="hljs-string">"https://data.public.lu/api/endpoint/?page=2"</span>,
+                <span class="hljs-attr">"previous_page"</span>: <span class="hljs-literal">null</span>
+            }</code></pre>
+                        </div>
+                    </div>
+            
+                    <div class="page-header">
+                        <h2>Exemples</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>Tous les exemples utilisent <a href="http://httpie.org">httpie</a> et <a href="http://stedolan.github.io/jq/">jq</a> pour faciliter la lisibilité. Vous n'êtes pas contraint d'utiliser ces bibliothèques pour votre code, ce sont juste des outils pour mieux comprendre l'API.</p>
+            
+                            <h3>Vérifier que httpie fonctionne</h3>
+            
+                            <p>Une fois httpie installé, vous pouvez vérifier qu'il fonctionne comme convenu en tapant cette commande dans votre terminal :</p>
+            
+                            <pre><code class="json hljs">$ http 'https://data.public.lu/api/<span class="hljs-number">1</span>/organizations/?page_size=<span class="hljs-number">1</span>'</code></pre>
+            
+                            <p>Cela doit retourner une réponse de ce style :</p>
+            
+            <pre><code class="json hljs">
+            HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
+            Access-Control-Allow-Credentials: <span class="hljs-literal">true</span>
+            ... LOTS OF HEADERS ...
+            
+            {
+                <span class="hljs-attr">"data"</span>: [
+                    {
+            
+                        ... LOTS OF DATA ...
+            
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Stelareum"</span>,
+                        <span class="hljs-attr">"page"</span>: <span class="hljs-string">"https://data.public.lu/organizations/stelareum/"</span>,
+                        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"stelareum"</span>,
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://data.public.lu/api/1/organizations/5cb1d1ed0f7fb0438df74602/"</span>,
+                        <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://www.stelareum.io/"</span>
+                    }
+                ],
+                <span class="hljs-attr">"next_page"</span>: <span class="hljs-string">"https://data.public.lu/api/1/organizations/?page=2&amp;page_size=1"</span>,
+                <span class="hljs-attr">"page"</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">"page_size"</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">"previous_page"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"total"</span>: <span class="hljs-string">"10"</span>
+            }
+            </code></pre>
+            
+                            <p>C'est très verbeux et nous n'avons pas besoin de toute cette information pour l'instant. C'est la raison pour laquelle nous utilisons jq.</p>
+            
+                            <h3>Vérifier que jq fonctionne</h3>
+            
+                            <p>Une fois jq installé, vous pouvez vérifier qu'il fonctionne en tapant cette commande dans votre terminal :</p>
+            
+                            <pre><code class="json hljs">$ http 'https://data.public.lu/api/<span class="hljs-number">1</span>/organizations/?page_size=<span class="hljs-number">1</span>' | jq '.data[].name'</code></pre>
+            
+                            <p>Cela doit retourner une réponse de ce style :</p>
+            
+                            <pre><code class="json hljs"><span class="hljs-string">"Stelareum"</span></code></pre>
+            
+                            <p>C'est bien mieux ! Maintenant que tout fonctionne bien, réduisons un peu la taille de notre ligne de commande :</p>
+            
+                            <pre><code class="json hljs">$ export API=<span class="hljs-string">"https://data.public.lu/api/1/"</span></code></pre>
+            
+                            <p>La commande précédente est maintenant équivalente à la commande plus lisible (ne pas oublier les apostrophes) :</p>
+            
+                            <pre><code class="json hljs">$ http $API'organizations/?page_size=<span class="hljs-number">1</span>' | jq '.data[].name'</code></pre>
+            
+                            <p>C'est un bon début, maintenant plongeons dans l'API en elle-même. Nous ne le savons pas encore mais nous avons déjà récupéré notre première organisation.</p>
+            
+            
+                            <h3>Parcourir et récupérer des données</h3>
+            
+                            <p>Vous pouvez récupérer une liste d'organisations (filtrée ou non) ou une organisation unitaire. Lorsque vous récupérez un point d'accès, le nombre d'éléments par page par défaut est de 20. Récupérons les 20 premières organisations via l'API :</p>
+            
+                            <pre><code class="json hljs">$ http $API'organizations/' | jq '.data[].name'</code></pre>
+            
+            <pre><code class="json hljs">
+            <span class="hljs-string">"Stelareum"</span>
+            <span class="hljs-string">"Département des Travaux Publics - MMTP"</span>
+            <span class="hljs-string">"NEXXTLAB S.A."</span>
+            <span class="hljs-string">"Legato Team"</span>
+            <span class="hljs-string">"Legato Team  uni.lu"</span>
+            <span class="hljs-string">"Service National de la Jeunesse"</span>
+            <span class="hljs-string">"OpenAgenda"</span>
+            <span class="hljs-string">"toto"</span>
+            <span class="hljs-string">"Autorité luxembourgeoise indépendante de l'audiovisuel"</span>
+            <span class="hljs-string">"Centre de gestion informatique de l'éducation"</span>
+            
+            </code></pre>
+            
+                            <p>C'est une bonne chose d'avoir cette liste mais que se passe-t-il si nous souhaitons parcourir les organisations retournées ? Récupérons les 5 premières URI d'organisations.</p>
+            
+                            <pre><code class="json hljs">$ http $API'organizations/?page_size=<span class="hljs-number">5</span>' | jq '.data[].uri'</code></pre>
+            
+            <pre><code class="json hljs">
+            <span class="hljs-string">"https://data.public.lu/api/1/organizations/5cb1d1ed0f7fb0438df74602/"</span>
+            <span class="hljs-string">"https://data.public.lu/api/1/organizations/5c403e1528c4b2621cd384e9/"</span>
+            <span class="hljs-string">"https://data.public.lu/api/1/organizations/5b5b26157676667aa7f57afe/"</span>
+            <span class="hljs-string">"https://data.public.lu/api/1/organizations/5953ebee111e9b2a8e7133bd/"</span>
+            <span class="hljs-string">"https://data.public.lu/api/1/organizations/5953d44c111e9b2a5fcb4b59/"</span>
+            
+            </code></pre>
+            
+                            <p>Maintenant, nous sommes capables de récupérer une organisation seulement via l'URI retournée.</p>
+            
+                            <pre><code class="json hljs">$ http $API'organizations/<span class="hljs-number">5</span>cb<span class="hljs-number">1</span>d<span class="hljs-number">1</span>ed<span class="hljs-number">0</span>f<span class="hljs-number">7</span>fb<span class="hljs-number">0</span><span class="hljs-number">4</span><span class="hljs-number">3</span><span class="hljs-number">8</span>df<span class="hljs-number">7</span><span class="hljs-number">4</span><span class="hljs-number">6</span><span class="hljs-number">0</span><span class="hljs-number">2</span>/' | jq '.'</code></pre>
+            
+                            <p>Cela fait beaucoup de données à parcourir. Affinons ces données, si nous voulons seulement extraire les métriques :</p>
+            
+                            <pre><code class="json hljs">$ http $API'organizations/<span class="hljs-number">5</span>cb<span class="hljs-number">1</span>d<span class="hljs-number">1</span>ed<span class="hljs-number">0</span>f<span class="hljs-number">7</span>fb<span class="hljs-number">0</span><span class="hljs-number">4</span><span class="hljs-number">3</span><span class="hljs-number">8</span>df<span class="hljs-number">7</span><span class="hljs-number">4</span><span class="hljs-number">6</span><span class="hljs-number">0</span><span class="hljs-number">2</span>/' | jq '.metrics'</code></pre>
+            
+            <pre><code class="json hljs">
+            {
+             <span class="hljs-attr">"datasets"</span>: <span class="hljs-number">0</span>,
+             <span class="hljs-attr">"members"</span>: <span class="hljs-number">1</span>,
+             <span class="hljs-attr">"views"</span>: <span class="hljs-number">0</span>,
+             <span class="hljs-attr">"followers"</span>: <span class="hljs-number">0</span>,
+             <span class="hljs-attr">"reuses"</span>: <span class="hljs-number">0</span>,
+             <span class="hljs-attr">"dataset_views"</span>: <span class="hljs-number">0</span>,
+             <span class="hljs-attr">"reuse_views"</span>: <span class="hljs-number">0</span>,
+             <span class="hljs-attr">"resource_downloads"</span>: <span class="hljs-number">0</span>,
+             
+            }
+            </code></pre>
+            
+                            <p>Ou peut-être juste le nom des membres de cette organisation&nbsp;:</p>
+            
+                            <pre><code class="json hljs">$ http $API'organizations/<span class="hljs-number">5</span>cb<span class="hljs-number">1</span>d<span class="hljs-number">1</span>ed<span class="hljs-number">0</span>f<span class="hljs-number">7</span>fb<span class="hljs-number">0</span><span class="hljs-number">4</span><span class="hljs-number">3</span><span class="hljs-number">8</span>df<span class="hljs-number">7</span><span class="hljs-number">4</span><span class="hljs-number">6</span><span class="hljs-number">0</span><span class="hljs-number">2</span>/' | jq '.members[].user.last_name'</code></pre>
+            
+            <pre><code class="json hljs">
+            <span class="hljs-string">"Crypto"</span>
+            
+            </code></pre>
+            
+                            <p>Il est vraiment de votre ressort de récupérer les données pertinentes pour votre projet. N'hésitez pas à consulter le <a href="http://stedolan.github.io/jq/tutorial/">tutoriel de jq</a> et <a href="http://stedolan.github.io/jq/manual/">son manuel</a> si vous voulez parcourir l'API via la ligne de commande plus en détail.
+                            </p>
+            
+            
+                            <h3>Modifier et supprimer des données</h3>
+            
+                            <p>Attention, vous entrez dans une zone de danger. Les modifications et suppressions de données via l'API sont définitives et nous ne proposons pas de bac à sable pour faire des tests avant de les exécuter (pour l'instant). Soyez conscient de ces responsabilités avant d'utiliser vos super pouvoirs.</p>
+            
+                            <p>Si vous tentez de modifier une ressource sans le token d'authentification, une erreur 401 sera renvoyée&nbsp;:</p>
+            
+                            <pre><code class="json hljs">$ http PUT $API'organizations/organization-uri-x/'</code></pre>
+            
+            <pre><code class="json hljs">
+            HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">401</span> UNAUTHORIZED
+            ... LOTS OF HEADERS ...
+            
+            {
+                <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Unauthorized"</span>,
+                <span class="hljs-attr">"status"</span>: <span class="hljs-number">401</span>
+            }
+            </code></pre>
+            
+                            <p>Vous devez spécifier votre Clé d'API (voir ci-dessus) et utiliser le header HTTP <code>X-API-KEY</code>. Si vous tentez de modifier une ressource que vous ne contrôlez pas, une erreur 400 sera retournée :</p>
+            
+                            <pre><code class="json hljs">$ http PUT $API'organizations/organization-uri-x/' X-API-KEY:your.api.key.here</code></pre>
+            
+            <pre><code class="json hljs">
+            HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">401</span> UNAUTHORIZED
+            ... LOTS OF HEADERS ...
+            
+            {
+                <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Invalid API Key"</span>,
+                <span class="hljs-attr">"status"</span>: <span class="hljs-number">401</span>
+            }
+            </code></pre>
+            
+                            <p>C'est le message que vous obtiendrez si vous avez spécifié une mauvaise clé d'API. C'est un autre message d'erreur potentiel que vous pouvez rencontrer.</p>
+            
+            <pre><code class="json hljs">
+            HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">403</span> FORBIDDEN
+            ... LOTS OF HEADERS ...
+            
+            {
+                <span class="hljs-attr">"message"</span>: <span class="hljs-string">"You do not have the permission to modify that object."</span>,
+                <span class="hljs-attr">"status"</span>: <span class="hljs-number">403</span>
+            }
+            </code></pre>
+            
+                            <p>Cela arrive si vous essayez d'accéder à une ressource que vous ne pouvez éditer avec vos accréditations. Si votre clé est valide vous devriez obtenir quelque chose comme ça:</p>
+            
+            
+            <pre><code class="json hljs">
+            HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
+            ... LOTS OF HEADERS ...
+            
+            {
+                ...
+            }
+            </code></pre>
+            
+                            <p>Mais ça ne change pas tout ! C'est parfaitement normal, nous avons oublié de spécifier la bonne donnée à envoyer au serveur.</p>
+            
+                            <pre><code class="json hljs">$ http PUT $API'organizations/organization-uri-x/' X-API-KEY:your.api.key.here name=<span class="hljs-string">"Lorem ipsum"</span> description=<span class="hljs-string">"The quick brown fox jumps over the lazy dog."</span> | jq '{name: .name, description: .description}'</code></pre>
+            
+            <pre><code class="json hljs">
+            {
+              <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Lorem ipsum"</span>,
+              <span class="hljs-attr">"description"</span>: <span class="hljs-string">"The quick brown fox jumps over the lazy dog."</span>
+            }
+            </code></pre>
+            
+                            <p>La ressource a été modifiée avec vos nouvelles valeurs. Finalement, vous pouvez supprimer une ressource avec le verbe HTTP approprié (attention, aucun retour arrière n'est possible en utilisant l'API pour le moment):</p>
+            
+            
+                            <pre><code class="json hljs">$ http DELETE $API'organizations/organization-uri-x/' X-API-KEY:your.api.key.here</code></pre>
+            
+            <pre><code class="json hljs">
+            HTTP/<span class="hljs-number">1.0</span> <span class="hljs-number">204</span> NO CONTENT
+            ... LOTS OF HEADERS ...
+            
+            </code></pre>
+            
+                            <p>Une fois effectué, vous pouvez vérifier que c'est effectif en envoyant un GET sur l'URL précédente:</p>
+            
+            
+                            <pre><code class="json hljs">$ http GET $API'organizations/organization-uri-x/'</code></pre>
+            
+            <pre><code class="json hljs">
+            HTTP/<span class="hljs-number">1.0</span> <span class="hljs-number">410</span> GONE
+            ... LOTS OF HEADERS ...
+            
+            {
+                <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Organization has been deleted"</span>,
+                <span class="hljs-attr">"status"</span>: <span class="hljs-number">410</span>
+            }
+            
+            </code></pre>
+            
+                            <p>Consultez la documentation de référence ci-dessous pour d'autres intéractions avec l'API ou posez-nous vos questions sur le sujet !</p>
+            
+                        </div>
+                    </div>
+            
+                    <div class="page-header">
+                        <h2>Référence</h2>
+                    </div>
+                    <div class="row">
+                            <div id="swagger-ui"></div>
+
+            </div>
+            </section>
+
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui-bundle.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui-standalone-preset.js"> </script>
+    <script>
+    window.onload = function() {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        url: "https://data.public.lu/api/1/swagger.json",
+        dom_id: '#swagger-ui',
+        deepLinking: false,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset.slice(1)
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      })
+      // End Swagger UI call region
+
+      window.ui = ui
+    }
+  </script>
+{% endblock %}

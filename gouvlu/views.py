@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from udata import theme
 from udata.i18n import I18nBlueprint
@@ -22,6 +21,9 @@ def faq(section):
                         page_name=section,
                         url_pattern=FAQ_URL_PATTERN)
 
+@blueprint.route('/docapi/')
+def docapi():
+    return theme.render('api.html')
 
 @blueprint.route('/usage/')
 def usage():
@@ -52,3 +54,4 @@ def gouvlu_sitemap_urls():
     yield 'gouvlu.usage_redirect', {}, None, 'monthly', 0.2
     yield 'gouvlu.publishing_redirect', {}, None, 'monthly', 0.2
     yield 'gouvlu.strategy_redirect', {}, None, 'monthly', 0.2
+    yield 'gouvlu.docapi_redirect', {}, None, 'monthly', 0.2
