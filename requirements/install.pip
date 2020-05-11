@@ -1,5 +1,5 @@
 #udata version update
 udata==2.0.0
 feedparser
-requests==2.21.0
+#requests==2.21.0
 beautifulsoup4
