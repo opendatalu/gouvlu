@@ -2,7 +2,7 @@
 from udata.harvest.backends.base import BaseBackend
 from udata.models import Resource, License
 import csv
-import urllib2
+from urllib.request import urlopen 
 
 
 class UnicodeDictReader(csv.DictReader, object):
@@ -16,7 +16,7 @@ class CSVBackend(BaseBackend):
 
     def initialize(self):
         self.items = []
-        response = urllib2.urlopen(self.source.url)
+        response = urlopen(self.source.url)
         for row in UnicodeDictReader(response):
             self.items.append(row)
         datasets = self.__get_datasets(self.items)
