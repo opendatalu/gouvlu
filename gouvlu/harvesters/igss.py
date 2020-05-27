@@ -8,7 +8,7 @@ import unicodedata
 import feedparser
 import requests
 from urllib import urlencode
-from urlib.parse import urlparse
+from urllib.parse import urlparse
 
 from time import sleep
 from bs4 import BeautifulSoup
