@@ -13,7 +13,7 @@ from time import sleep
 from bs4 import BeautifulSoup
 
 import os, ssl
-import commands
+import subprocess
 import itertools
 
 
@@ -109,7 +109,7 @@ class IGSSDatasetsHarvester():
 
     def __curl_publications(self):
         curl_link = self.igss_url + "publications.html"
-        status, output = commands.getstatusoutput("curl --silent " + curl_link)
+        status, output = subprocess.getstatusoutput("curl --silent " + curl_link)
         soup = BeautifulSoup(output, "html.parser")
         return soup
 
@@ -121,7 +121,7 @@ class IGSSDatasetsHarvester():
 
     def __get_a_tag_pdf_on_site(self, pdf_index):
         curl_link = self.igss_url + "publications.html?b=" + str(pdf_index)
-        status, output = commands.getstatusoutput("curl --silent " + curl_link)
+        status, output = subprocess.getstatusoutput("curl --silent " + curl_link)
         soup = BeautifulSoup(output, "html.parser")
         ol_col = soup.findAll("div", {"class": "mo-body"})
         a_tag = ol_col[0].findAll("a")[0]
@@ -138,7 +138,7 @@ class IGSSDatasetsHarvester():
     def __curl_pdf_download_page(self, a_tag):
         href_link = a_tag.get("href")
         link = href_link.replace("/fr", "https://igss.gouvernement.lu/fr")
-        status, output = commands.getstatusoutput("curl --silent " + link)
+        status, output = subprocess.getstatusoutput("curl --silent " + link)
         soup = BeautifulSoup(output, "html.parser")
         return soup
 
@@ -239,7 +239,7 @@ class IGSSDatasetsHarvester():
 
     def __curl_main_categories(self):
         curl_link = self.igss_url + "statistiques.html"
-        status, output = commands.getstatusoutput("curl --silent " + curl_link)
+        status, output = subprocess.getstatusoutput("curl --silent " + curl_link)
         soup = BeautifulSoup(output, "html.parser")
         return soup
 
@@ -371,7 +371,7 @@ class Category():
     pass
 
     def curl_sub_categories(self):
-        status, output = commands.getstatusoutput("curl --silent " + self.url)
+        status, output = subprocess.getstatusoutput("curl --silent " + self.url)
         soup = BeautifulSoup(output, "html.parser")
         return soup
 
