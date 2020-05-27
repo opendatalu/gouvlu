@@ -2,9 +2,8 @@
 
 from udata.harvest.backends.base import BaseBackend
 from udata.models import Resource
-from urllib import urlencode
 import feedparser
-from urllib.parse import urlparse, parse_qsl, urlunparse
+from urllib.parse import urlparse, parse_qsl, urlunparse, urlencode
 
 import copy
 

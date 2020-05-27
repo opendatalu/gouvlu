@@ -7,8 +7,7 @@ import unicodedata
 
 import feedparser
 import requests
-from urllib import urlencode
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlencode
 
 from time import sleep
 from bs4 import BeautifulSoup
