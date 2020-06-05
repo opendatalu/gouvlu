@@ -117,7 +117,7 @@ setup(
             'gouvlu = gouvlu.theme'
         ],
         'udata.harvesters': [
-            'statec = gouvlu.harvesters.statec:StatecBackend',
+            'statec = gouvlu.harvesters.statec:STATECBackend',
             'csv_harvester = gouvlu.harvesters.csv_harvester:CSVBackend',
             'igss = gouvlu.harvesters.igss:IGSSBackend',
         ],
