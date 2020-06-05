@@ -21,7 +21,7 @@ class STATECBackend(BaseBackend):
 
             for dataset in datasets:
                 resources = dataset.resources
-                title = dataset.title
+                title = dataset.categoryname
                 remote_id = dataset.remote_id
                 self.add_item(
                     remote_id,
