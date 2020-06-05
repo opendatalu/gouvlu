@@ -1,4 +1,5 @@
 #update to udata 2, bumpr ready
 udata==2.0.0
+unidecode
 feedparser
 beautifulsoup4
