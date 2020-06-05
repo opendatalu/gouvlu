@@ -92,7 +92,12 @@ class IGSSDatasetsHarvester():
     def __init__(self, url):
         self.igss_url = url
         self.categories = []
+        self.__loaded()
     pass
+
+    def __loaded(self):
+        print("IGSS Harvester is ready!")
+    pass 
 
     def get_categories(self):
         self.__harvest_categories()
@@ -112,12 +117,17 @@ class IGSSDatasetsHarvester():
         status, output = subprocess.getstatusoutput("curl --silent " + curl_link)
         soup = BeautifulSoup(output, "html.parser")
         return soup
+    pass 
 
     def __get_pdf_meta_count(self, soup):
         span_meta_count = soup.findAll("span", {"class": "search-meta-count"})
         pdf_meta_results = span_meta_count[0].getText()
         pdf_meta_count = int(pdf_meta_results.split(" ")[0])
+
+        #print(pdf_meta_count)
+
         return pdf_meta_count
+    pass
 
     def __get_a_tag_pdf_on_site(self, pdf_index):
         curl_link = self.igss_url + "publications.html?b=" + str(pdf_index)
@@ -161,6 +171,41 @@ class IGSSDatasetsHarvester():
 
         return theme
 
+    def __get_pdf_theme_dict(self, pdf_meta_count):
+
+        pdf_theme_dict = {}
+        resources = []
+
+        for i in range(pdf_meta_count):
+            a_tag = self.__get_a_tag_pdf_on_site(i)
+            title = a_tag.getText()
+            soup = self.__curl_pdf_download_page(a_tag)
+            link = self.__get_pdf_download_link(soup,a_tag)
+            theme = self.__get_theme_of_pdf(soup, a_tag, title)
+
+
+            # print("------------Resource------------")
+
+            # print(title)
+            # print(link)
+            # print(theme)
+
+            # print("--------------------------------")
+
+
+            resource = Resource_T(title, link, "pdf")
+
+            if theme not in pdf_theme_dict:
+                pdf_theme_dict[theme] = []
+                pdf_theme_dict[theme].append(resource)
+                pass
+            else:
+                pdf_theme_dict[theme].append(resource)
+                pass
+            pass
+
+        return pdf_theme_dict
+
     def __clean_theme_string(self, theme):
         theme = u"IGSS/" + theme
         theme = theme.replace(" / ", "/")
@@ -194,31 +239,6 @@ class IGSSDatasetsHarvester():
 
         return theme
 
-    def __get_pdf_theme_dict(self, pdf_meta_count):
-
-        pdf_theme_dict = {}
-        resources = []
-
-        for i in range(pdf_meta_count):
-            a_tag = self.__get_a_tag_pdf_on_site(i)
-            title = a_tag.getText()
-            soup = self.__curl_pdf_download_page(a_tag)
-            link = self.__get_pdf_download_link(soup,a_tag)
-            theme = self.__get_theme_of_pdf(soup, a_tag, title)
-
-            resource = Resource_T(title, link, "pdf")
-
-            if theme not in pdf_theme_dict:
-                pdf_theme_dict[theme] = []
-                pdf_theme_dict[theme].append(resource)
-                pass
-            else:
-                pdf_theme_dict[theme].append(resource)
-                pass
-            pass
-
-        return pdf_theme_dict
-
     def __get_clean_str(self, string):
         removal_list = ['  ', '\t', '\n', '\r\n']
         for s in removal_list:
@@ -227,7 +247,7 @@ class IGSSDatasetsHarvester():
             else:
                 string = string.replace(s, '')
         return string
-
+        
     def __harvest_categories(self):
         soup = self.__curl_main_categories()
         self.__get_main_categories(soup)
@@ -260,12 +280,14 @@ class IGSSDatasetsHarvester():
             self.categories.append(catgeory)
         pass
 
+    
+
+
 class Resource_T():
     def __init__(self, title, url, file_format):
         self.title = title
         self.url = url
         self.file_format = file_format
-    pass
     pass
 
 class Dataset_T():
@@ -337,12 +359,12 @@ class Dataset_T():
 
     def format_title_for_id(self):
         dataset_title = self.title
-        if "IGSS/" in dataset_title:
-            dataset_title = dataset_title.encode("utf-8")
-            dataset_title = dataset_title.decode("utf-8")
-        pass
-        dataset_title = unicodedata.normalize('NFD', dataset_title)
-        dataset_title = dataset_title.encode('ascii', 'ignore')
+        # if "IGSS/" in dataset_title:
+        #     dataset_title = dataset_title.encode("utf-8")
+        #     dataset_title = dataset_title.decode("utf-8")
+        # pass
+        # dataset_title = unicodedata.normalize('NFD', dataset_title)
+        #dataset_title = dataset_title.encode('ascii', 'ignore')
         dataset_title = str(dataset_title)
         dataset_title = dataset_title.lower()
         dataset_title = dataset_title.replace("(", " ")
@@ -352,6 +374,7 @@ class Dataset_T():
         dataset_title = dataset_title.replace(" -", " ")
         dataset_title = dataset_title.replace("/", " ")
         dataset_title = dataset_title.replace(" : ", " ")
+        dataset_title = dataset_title.replace("’", " ")
         dataset_title = dataset_title.replace("'", " ")
         dataset_title = dataset_title.replace("  ", " ")
         dataset_title = dataset_title.replace("   ", " ")
@@ -394,18 +417,25 @@ class Category():
             file_format = url_split[len(url_split)-1]
             resource = Resource_T(title, url, file_format)
 
+            # print("------------Resource------------")
+
+            # print(title)
+            # print(url)
+
+            # print("--------------------------------")
+
             resources.append(resource)
             pass
         return resources
 
     def generate_pdf_datasets(self, pdf_theme_dict):
-        for title, resources in pdf_theme_dict.iteritems():
+        for title, resources in pdf_theme_dict.items():
             dataset = Dataset_T(title, resources)
             dataset.tags.append("document")
             dataset.tags.append("dokument")
             categ_title = self.__format_title_for_id()
             dataset_title = dataset.format_title_for_id()
-            combined_title = "_" + categ_title + "_" + dataset_title
+            combined_title = unidecode(categ_title + "_" + dataset_title)
             dataset.remote_id = "igss_" + combined_title
 
             self.datasets.append(dataset)
@@ -427,7 +457,7 @@ class Category():
             div_resources = detail.findChildren("div", recursive=False)
 
             for div_resource in div_resources:
-                decode_div_res = str(div_resource).decode("ascii", "ignore")
+                decode_div_res = str(div_resource)#.decode("ascii", "ignore")
                 if not recursive and "<div class=\"accordion\">" in decode_div_res:
                     ul_resource = div_resource.findChildren("ul", recursive=False)
                     if len(ul_resource) != 0:
@@ -435,8 +465,8 @@ class Category():
                         dataset = Dataset_T(dataset_title, resources)
                         categ_title = self.__format_title_for_id()
                         format_title = dataset.format_title_for_id()
-                        combined_title = "_" + categ_title + "_" + format_title
-                        dataset.remote_id = "igss_" + combined_title
+                        combined_title = categ_title + "_" + format_title
+                        dataset.remote_id = unidecode("igss_" + combined_title)
                         self.datasets.append(dataset)
 
                 if "<div class=\"accordion\">" in decode_div_res:
@@ -447,8 +477,8 @@ class Category():
                     dataset = Dataset_T(dataset_title, resources)
                     categ_title = self.__format_title_for_id()
                     format_title = dataset.format_title_for_id()
-                    combined_title = "_" + categ_title + "_" + format_title
-                    dataset.remote_id = "igss_" + combined_title
+                    combined_title = categ_title + "_" + format_title
+                    dataset.remote_id = unidecode("igss_" + combined_title)
                     self.datasets.append(dataset)
                     pass
                 pass
@@ -458,8 +488,10 @@ class Category():
     def __format_title_for_id(self):
         category_title = self.title
 
-        category_title = unicodedata.normalize('NFD', category_title)
-        category_title = category_title.encode('ascii', 'ignore')
+        #print(category_title)
+
+        # category_title = unicodedata.normalize('NFD', category_title)
+        # category_title = category_title.encode('ascii', 'ignore')
         category_title = str(category_title)
         category_title = category_title.lower()
         category_title = category_title.replace("-", " ")
