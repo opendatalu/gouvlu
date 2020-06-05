@@ -1,5 +1,5 @@
 from udata.harvest.backends.base import BaseBackend
-from udata.models import Resource
+from udata.models import Resource, License
 import feedparser
 
 import os, ssl
