@@ -13,6 +13,9 @@ from urllib.parse import urlencode, urlparse, parse_qsl, urlunparse
 from time import sleep
 
 class STATECBackend(BaseBackend):
+
+    display_name = 'STATEC Harvester'
+
     def initialize(self):
         working_link = "https://statistiques.public.lu/fr/"
         if working_link == self.source.url:

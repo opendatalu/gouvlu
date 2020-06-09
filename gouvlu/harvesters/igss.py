@@ -18,6 +18,9 @@ import itertools
 
 
 class IGSSBackend(BaseBackend):
+
+    display_name = 'IGSS Harvester'
+
     def initialize(self):
         working_link = "https://igss.gouvernement.lu/fr/"
         if working_link == self.source.url:
