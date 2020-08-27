@@ -28,13 +28,13 @@
                 <h3>{{ _('Contact Us') }}</h3>
                 <ul>
                     <li>
-                        <a href="{{ current_theme.info.social.twitter }}" title="Twitter">
+                        <a href="{{ current_theme.info.social.twitter }}" rel="noopener noreferrer" title="Twitter">
                             <span class="fa fa-fw fa-twitter"></span>
                             Twitter
                         </a>
                     </li>
                     <li>
-                        <a href="{{ current_theme.info.social.github }}" title="Github">
+                        <a href="{{ current_theme.info.social.github }}" rel="noopener noreferrer" title="Github">
                             <span class="fa fa-fw fa-github"></span>
                             Github
                         </a>
@@ -76,12 +76,12 @@
                 <img class="footer-logo img-responsive" src="{{ theme_static('img/logo-bloc.svg') }}" alt="data.gouv.lu logo" />
                 <ul class="versions">
                     <li>
-                        <a href="https://github.com/opendatateam/udata/" title="{{ _('Open-source engine') }}">udata</a>
-                        <a href="https://pypi.python.org/pypi/udata/{{ package_version('udata') }}/" title="{{ _('Deployed version') }}">{{ package_version('udata') }}</a>
+                        <a href="https://github.com/opendatateam/udata/" rel="noopener noreferrer" title="{{ _('Open-source engine') }}">udata</a>
+                        <a href="https://pypi.python.org/pypi/udata/{{ package_version('udata') }}/" rel="noopener noreferrer" title="{{ _('Deployed version') }}">{{ package_version('udata') }}</a>
                     </li>
                     <li>
-                        <a href="https://github.com/opendatalu/gouvlu/" title="{{ _('Data.public.lu extension') }}">gouvlu</a>
-                        <a href="https://pypi.python.org/pypi/gouvlu/{{ package_version('gouvlu') }}/" title="{{ _('Deployed version') }}">{{ package_version('gouvlu') }}</a>
+                        <a href="https://github.com/opendatalu/gouvlu/" rel="noopener noreferrer" title="{{ _('Data.public.lu extension') }}">gouvlu</a>
+                        <a href="https://pypi.python.org/pypi/gouvlu/{{ package_version('gouvlu') }}/" rel="noopener noreferrer" title="{{ _('Deployed version') }}">{{ package_version('gouvlu') }}</a>
                     </li>
                 </ul>
             </section>
