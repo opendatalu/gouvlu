@@ -37,7 +37,7 @@ msgstr "guide"
 msgid "publication"
 msgstr "publication"
 
-#: gouvlu/templates/strategy.html:4
+#: gouvlu/templates/requesting.html:4
 msgid "Requesting Data for Reuse"
 msgstr "Demande de données aux fins de réutilisation"
 

@@ -36,7 +36,7 @@ nav.Bar('gouvlu_footer', [
     nav.Item(_('FAQ'), 'gouvlu.faq'),
     nav.Item(_('Usage Guidelines for Open Data'), 'gouvlu.usage'),
     nav.Item(_('Publishing Guidelines for Open Data'), 'gouvlu.publishing'),
-    nav.Item(_('Requesting data for reuse'), 'gouvlu.requesting'),
+    nav.Item(_('Requesting Data for Reuse'), 'gouvlu.requesting'), 
     nav.Item(_('Open Data Strategy'), 'gouvlu.strategy'),
     nav.Item(_('Open Data Road Map'), 'gouvlu.fiveyearplan'),
     nav.Item(_('Terms of use'), 'site.terms'),
