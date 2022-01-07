@@ -45,6 +45,11 @@ def fiveyearplan():
     return theme.render('5yearplan.html')
 
 
+@blueprint.route('/requesting/')
+def requesting():
+    return theme.render('requesting.html')
+
+
 @sitemap.register_generator
 def gouvlu_sitemap_urls():
     yield 'gouvlu.faq_redirect', {}, None, 'weekly', 1
@@ -55,3 +60,4 @@ def gouvlu_sitemap_urls():
     yield 'gouvlu.publishing_redirect', {}, None, 'monthly', 0.2
     yield 'gouvlu.strategy_redirect', {}, None, 'monthly', 0.2
     yield 'gouvlu.docapi_redirect', {}, None, 'monthly', 0.2
+    yield 'gouvlu.requesting_redirect', {}, None, 'monthly', 0.2

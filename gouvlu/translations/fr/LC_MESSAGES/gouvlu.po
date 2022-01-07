@@ -38,6 +38,14 @@ msgid "publication"
 msgstr "publication"
 
 #: gouvlu/templates/strategy.html:4
+msgid "Requesting Data for Reuse"
+msgstr "Demande de données aux fins de réutilisation"
+
+#: gouvlu/templates/requesting.html:7
+msgid "requesting"
+msgstr "demande"
+
+#: gouvlu/templates/strategy.html:4
 msgid "Luxembourg's Open Data Strategy"
 msgstr "Stratégie des données ouvertes du Luxembourg"
 
